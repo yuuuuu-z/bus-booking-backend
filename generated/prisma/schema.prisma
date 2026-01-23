@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String? // ✅ ADD THIS
+  phone     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Province {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  fromTrips Trip[] @relation("FromProvince")
+  toTrips   Trip[] @relation("ToProvince")
+
+  @@map("province")
+}
+
+model Trip {
+  id Int @id @default(autoincrement())
+
+  fromProvinceId Int
+  toProvinceId   Int
+  date           DateTime
+  departureTime  DateTime
+
+  price          Float
+  totalSeats     Int
+  availableSeats Int
+
+  // simple bus info (inline)
+  busNumber   String? // "Bus 01"
+  plateNumber String? // "PP-1234"
+
+  fromProvince Province @relation("FromProvince", fields: [fromProvinceId], references: [id])
+  toProvince   Province @relation("ToProvince", fields: [toProvinceId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@map("trip")
+}
