@@ -11,7 +11,7 @@ export const getUsers = async (req, res) => {
         id: true,
         email: true,
         name: true,
-        phone: true,
+
         createdAt: true,
       },
     });
@@ -35,7 +35,6 @@ export const getUserById = async (req, res) => {
         id: true,
         email: true,
         name: true,
-        phone: true,
         createdAt: true,
       },
     });
@@ -54,37 +53,37 @@ export const getUserById = async (req, res) => {
  * POST /users
  */
 export const createUser = async (req, res) => {
-    try {
-      const { email, password, phone, name } = req.body;
-  
-      if (!email || !password || !name) {
-        return res.status(400).json({ message: "Email, password, name required" });
-      }
-  
-      const hashedPassword = await bcrypt.hash(password, 10);
-  
-      const user = await prisma.user.create({
-        data: {
-          email,
-          password: hashedPassword,
-          phone,
-          name,
-        },
-        select: {
-          id: true,
-          email: true,
-          name: true,
-          phone: true,
-          createdAt: true,
-        },
-      });
-  
-      res.status(201).json(user);
-    } catch (err) {
-      res.status(500).json({ error: err.message });
+  try {
+    const { email, password, name } = req.body;
+
+    if (!email || !password || !name) {
+      return res
+        .status(400)
+        .json({ message: "Email, password, name required" });
     }
-  };
-  
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = await prisma.user.create({
+      data: {
+        email,
+        password: hashedPassword,
+        name,
+      },
+      select: {
+        id: true,
+        email: true,
+        name: true,
+
+        createdAt: true,
+      },
+    });
+
+    res.status(201).json(user);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
 /**
  * PUT /users/:id
