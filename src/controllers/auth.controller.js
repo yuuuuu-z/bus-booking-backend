@@ -1,5 +1,8 @@
 import prisma from "../lib/prisma.js";
 import bcrypt from "bcrypt";
+import passport from "passport";
+import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+
 import jwt from "jsonwebtoken";
 
 export const login = async (req, res) => {
@@ -82,3 +85,62 @@ export const register = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: "http://localhost:8000/auth/google/callback",
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      try {
+        console.log("Google profile:", profile.id);
+        console.log("Email:", profile.emails[0].value);
+
+        // Check if user exists by googleId or email
+        const existingUser = await prisma.user.findFirst({
+          where: {
+            OR: [{ googleId: profile.id }, { email: profile.emails[0].value }],
+          },
+        });
+
+        if (existingUser) {
+          console.log("User exists:", existingUser.email);
+
+          // Update googleId if missing
+          if (!existingUser.googleId) {
+            await prisma.user.update({
+              where: { id: existingUser.id },
+              data: {
+                googleId: profile.id,
+                provider: "google",
+                avatar: profile.photos[0]?.value || existingUser.avatar,
+              },
+            });
+          }
+
+          return done(null, existingUser);
+        }
+
+        // Create new user
+        const newUser = await prisma.user.create({
+          data: {
+            googleId: profile.id,
+            email: profile.emails[0].value,
+            name: profile.displayName,
+            avatar: profile.photos[0]?.value,
+            provider: "google",
+            // No password for Google users
+          },
+        });
+
+        console.log("✅ New user created:", newUser.email);
+        return done(null, newUser);
+      } catch (error) {
+        console.error("❌ Google OAuth error:", error);
+        return done(error, null);
+      }
+    },
+  ),
+);
