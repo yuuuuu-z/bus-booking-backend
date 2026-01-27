@@ -10,36 +10,29 @@ router.post("/login", login);
 
 router.get(
   "/google",
-  passport.authenticate("google", { scope: ["profile", "email"] }),
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+    session: false,
+  }),
 );
 
+// 2️⃣ Google callback
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "/login", // Redirect to login page on failure
-    failureMessage: true,
+    session: false,
+    failureRedirect: "http://localhost:3000/login",
   }),
   (req, res) => {
-    // Generate JWT token for API access
-    const token = jwt.sign({ userId: req.user.id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
-    });
+    const token = jwt.sign(
+      { id: req.user.id, email: req.user.email },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" },
+    );
 
-    // ✅ CORRECT: Redirect to frontend dashboard
-    res.redirect(`http://localhost:8000/dashboard?token=${token}`);
-
-    // OR if you want to send user data too:
-    // res.redirect(
-    //   `http://localhost:3000/dashboard?token=${token}&userId=${req.user.id}`
-    // );
+    // 🔁 Redirect to frontend with token
+    res.redirect(`http://localhost:3000/auth/callback?token=${token}`);
   },
 );
-
-router.get("/auth/logout", (req, res) => {
-  req.logout((err) => {
-    if (err) return res.status(500).json({ error: err.message });
-    res.json({ message: "Logged out" });
-  });
-});
 
 export default router;

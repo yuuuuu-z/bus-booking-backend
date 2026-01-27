@@ -10,6 +10,7 @@ import tripRoutes from "./routes/trip.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import passport from "passport";
 import prisma from "./lib/prisma.js";
+import { protect } from "./middlewares/auth.middleware.js";
 
 const app = express();
 
@@ -64,13 +65,17 @@ app.get("/", (req, res) => {
   res.json({ message: "API is running" });
 });
 
-// Your existing routes
-app.use("/auth", authRoutes);
-app.use("/users", userRoutes);
-app.use("/dashboard", (req, res) => {
-  res.json({ message: "Hiuuuuuu" });
+app.use("/auth", authRoutes); // login / register / google
+
+// 🔐 PROTECTED routes
+app.use("/users", protect, userRoutes);
+app.use("/dashboard", protect, (req, res) => {
+  res.json({
+    message: "Welcome to dashboard",
+    user: req.user,
+  });
 });
-app.use("/provinces", provinceRoutes);
-app.use("/trips", tripRoutes);
+app.use("/provinces", protect, provinceRoutes);
+app.use("/trips", protect, tripRoutes);
 
 export default app;
