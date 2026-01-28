@@ -10,6 +10,7 @@ A modern backend API for bus booking system built with Node.js, Express, and Pri
 - **Express.js** - Web framework
 - **Prisma ORM** - Database toolkit
 - **PostgreSQL (Neon)** - Cloud database
+- **Supabase** - File Storage
 - **bcrypt** - Password hashing
 
 ---
@@ -44,6 +45,7 @@ Create a `.env` file in the root directory:
 ```env
 DATABASE_URL=your_neon_postgres_url
 PORT=8000
+
 ```
 
 #### 4️⃣ Prisma setup

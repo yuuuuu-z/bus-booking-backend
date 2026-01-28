@@ -2187,16 +2187,19 @@ export namespace Prisma {
   export type ProvinceMinAggregateOutputType = {
     id: number | null
     name: string | null
+    image: string | null
   }
 
   export type ProvinceMaxAggregateOutputType = {
     id: number | null
     name: string | null
+    image: string | null
   }
 
   export type ProvinceCountAggregateOutputType = {
     id: number
     name: number
+    image: number
     _all: number
   }
 
@@ -2212,16 +2215,19 @@ export namespace Prisma {
   export type ProvinceMinAggregateInputType = {
     id?: true
     name?: true
+    image?: true
   }
 
   export type ProvinceMaxAggregateInputType = {
     id?: true
     name?: true
+    image?: true
   }
 
   export type ProvinceCountAggregateInputType = {
     id?: true
     name?: true
+    image?: true
     _all?: true
   }
 
@@ -2314,6 +2320,7 @@ export namespace Prisma {
   export type ProvinceGroupByOutputType = {
     id: number
     name: string
+    image: string
     _count: ProvinceCountAggregateOutputType | null
     _avg: ProvinceAvgAggregateOutputType | null
     _sum: ProvinceSumAggregateOutputType | null
@@ -2338,6 +2345,7 @@ export namespace Prisma {
   export type ProvinceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    image?: boolean
     fromTrips?: boolean | Province$fromTripsArgs<ExtArgs>
     toTrips?: boolean | Province$toTripsArgs<ExtArgs>
     _count?: boolean | ProvinceCountOutputTypeDefaultArgs<ExtArgs>
@@ -2346,19 +2354,22 @@ export namespace Prisma {
   export type ProvinceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    image?: boolean
   }, ExtArgs["result"]["province"]>
 
   export type ProvinceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    image?: boolean
   }, ExtArgs["result"]["province"]>
 
   export type ProvinceSelectScalar = {
     id?: boolean
     name?: boolean
+    image?: boolean
   }
 
-  export type ProvinceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["province"]>
+  export type ProvinceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "image", ExtArgs["result"]["province"]>
   export type ProvinceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     fromTrips?: boolean | Province$fromTripsArgs<ExtArgs>
     toTrips?: boolean | Province$toTripsArgs<ExtArgs>
@@ -2376,6 +2387,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
+      image: string
     }, ExtArgs["result"]["province"]>
     composites: {}
   }
@@ -2803,6 +2815,7 @@ export namespace Prisma {
   interface ProvinceFieldRefs {
     readonly id: FieldRef<"Province", 'Int'>
     readonly name: FieldRef<"Province", 'String'>
+    readonly image: FieldRef<"Province", 'String'>
   }
     
 
@@ -4486,7 +4499,8 @@ export namespace Prisma {
 
   export const ProvinceScalarFieldEnum: {
     id: 'id',
-    name: 'name'
+    name: 'name',
+    image: 'image'
   };
 
   export type ProvinceScalarFieldEnum = (typeof ProvinceScalarFieldEnum)[keyof typeof ProvinceScalarFieldEnum]
@@ -4677,6 +4691,7 @@ export namespace Prisma {
     NOT?: ProvinceWhereInput | ProvinceWhereInput[]
     id?: IntFilter<"Province"> | number
     name?: StringFilter<"Province"> | string
+    image?: StringFilter<"Province"> | string
     fromTrips?: TripListRelationFilter
     toTrips?: TripListRelationFilter
   }
@@ -4684,6 +4699,7 @@ export namespace Prisma {
   export type ProvinceOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    image?: SortOrder
     fromTrips?: TripOrderByRelationAggregateInput
     toTrips?: TripOrderByRelationAggregateInput
   }
@@ -4694,6 +4710,7 @@ export namespace Prisma {
     AND?: ProvinceWhereInput | ProvinceWhereInput[]
     OR?: ProvinceWhereInput[]
     NOT?: ProvinceWhereInput | ProvinceWhereInput[]
+    image?: StringFilter<"Province"> | string
     fromTrips?: TripListRelationFilter
     toTrips?: TripListRelationFilter
   }, "id" | "name">
@@ -4701,6 +4718,7 @@ export namespace Prisma {
   export type ProvinceOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    image?: SortOrder
     _count?: ProvinceCountOrderByAggregateInput
     _avg?: ProvinceAvgOrderByAggregateInput
     _max?: ProvinceMaxOrderByAggregateInput
@@ -4714,6 +4732,7 @@ export namespace Prisma {
     NOT?: ProvinceScalarWhereWithAggregatesInput | ProvinceScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Province"> | number
     name?: StringWithAggregatesFilter<"Province"> | string
+    image?: StringWithAggregatesFilter<"Province"> | string
   }
 
   export type TripWhereInput = {
@@ -4889,6 +4908,7 @@ export namespace Prisma {
 
   export type ProvinceCreateInput = {
     name: string
+    image: string
     fromTrips?: TripCreateNestedManyWithoutFromProvinceInput
     toTrips?: TripCreateNestedManyWithoutToProvinceInput
   }
@@ -4896,12 +4916,14 @@ export namespace Prisma {
   export type ProvinceUncheckedCreateInput = {
     id?: number
     name: string
+    image: string
     fromTrips?: TripUncheckedCreateNestedManyWithoutFromProvinceInput
     toTrips?: TripUncheckedCreateNestedManyWithoutToProvinceInput
   }
 
   export type ProvinceUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     fromTrips?: TripUpdateManyWithoutFromProvinceNestedInput
     toTrips?: TripUpdateManyWithoutToProvinceNestedInput
   }
@@ -4909,6 +4931,7 @@ export namespace Prisma {
   export type ProvinceUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     fromTrips?: TripUncheckedUpdateManyWithoutFromProvinceNestedInput
     toTrips?: TripUncheckedUpdateManyWithoutToProvinceNestedInput
   }
@@ -4916,15 +4939,18 @@ export namespace Prisma {
   export type ProvinceCreateManyInput = {
     id?: number
     name: string
+    image: string
   }
 
   export type ProvinceUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProvinceUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
   }
 
   export type TripCreateInput = {
@@ -5200,6 +5226,7 @@ export namespace Prisma {
   export type ProvinceCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    image?: SortOrder
   }
 
   export type ProvinceAvgOrderByAggregateInput = {
@@ -5209,11 +5236,13 @@ export namespace Prisma {
   export type ProvinceMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    image?: SortOrder
   }
 
   export type ProvinceMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    image?: SortOrder
   }
 
   export type ProvinceSumOrderByAggregateInput = {
@@ -5725,12 +5754,14 @@ export namespace Prisma {
 
   export type ProvinceCreateWithoutFromTripsInput = {
     name: string
+    image: string
     toTrips?: TripCreateNestedManyWithoutToProvinceInput
   }
 
   export type ProvinceUncheckedCreateWithoutFromTripsInput = {
     id?: number
     name: string
+    image: string
     toTrips?: TripUncheckedCreateNestedManyWithoutToProvinceInput
   }
 
@@ -5741,12 +5772,14 @@ export namespace Prisma {
 
   export type ProvinceCreateWithoutToTripsInput = {
     name: string
+    image: string
     fromTrips?: TripCreateNestedManyWithoutFromProvinceInput
   }
 
   export type ProvinceUncheckedCreateWithoutToTripsInput = {
     id?: number
     name: string
+    image: string
     fromTrips?: TripUncheckedCreateNestedManyWithoutFromProvinceInput
   }
 
@@ -5768,12 +5801,14 @@ export namespace Prisma {
 
   export type ProvinceUpdateWithoutFromTripsInput = {
     name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     toTrips?: TripUpdateManyWithoutToProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutFromTripsInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     toTrips?: TripUncheckedUpdateManyWithoutToProvinceNestedInput
   }
 
@@ -5790,12 +5825,14 @@ export namespace Prisma {
 
   export type ProvinceUpdateWithoutToTripsInput = {
     name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     fromTrips?: TripUpdateManyWithoutFromProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateWithoutToTripsInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
     fromTrips?: TripUncheckedUpdateManyWithoutFromProvinceNestedInput
   }
 

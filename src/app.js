@@ -62,7 +62,7 @@ app.use(passport.session());
 // ==================== ROUTES ====================
 // Test endpoints
 app.get("/", (req, res) => {
-  res.json({ message: "API is running" });
+  res.json({ message: "API is running from Backend" });
 });
 
 app.use("/auth", authRoutes); // login / register / google

@@ -134,7 +134,8 @@ exports.Prisma.UserScalarFieldEnum = {
 
 exports.Prisma.ProvinceScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  name: 'name',
+  image: 'image'
 };
 
 exports.Prisma.TripScalarFieldEnum = {

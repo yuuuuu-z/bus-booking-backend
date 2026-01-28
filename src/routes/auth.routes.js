@@ -8,6 +8,13 @@ const router = express.Router();
 router.post("/register", register);
 router.post("/login", login);
 
+const getFrontendURL = () => {
+  if (process.env.VERCEL_ENV === "production") {
+    return process.env.FRONTEND_URL || "http://localhost:3000";
+  }
+  return "http://localhost:8000";
+};
+
 router.get(
   "/google",
   passport.authenticate("google", {
@@ -21,7 +28,6 @@ router.get(
   "/google/callback",
   passport.authenticate("google", {
     session: false,
-    failureRedirect: "http://localhost:3000/login",
   }),
   (req, res) => {
     const token = jwt.sign(
@@ -30,8 +36,22 @@ router.get(
       { expiresIn: "7d" },
     );
 
-    // 🔁 Redirect to frontend with token
-    res.redirect(`http://localhost:3000/auth/callback?token=${token}`);
+    // For testing: return JSON instead of redirect
+    if (process.env.NODE_ENV === "development") {
+      return res.json({
+        success: true,
+        token,
+        user: {
+          id: req.user.id,
+          email: req.user.email,
+          name: req.user.name,
+          avatar: req.user.avatar,
+        },
+      });
+    }
+
+    // For production: redirect to frontend
+    res.redirect(`${getFrontendURL()}/auth/callback?token=${token}`);
   },
 );
 

@@ -22,8 +22,10 @@ model User {
 }
 
 model Province {
-  id        Int    @id @default(autoincrement())
-  name      String @unique
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  image String // ✅ ADD THIS
+
   fromTrips Trip[] @relation("FromProvince")
   toTrips   Trip[] @relation("ToProvince")
 
