@@ -10,7 +10,9 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({ message: "Email and password required" });
+      return res
+        .status(400)
+        .json({ message: "Email and password are required" });
     }
 
     const user = await prisma.user.findUnique({
@@ -18,12 +20,12 @@ export const login = async (req, res) => {
     });
 
     if (!user || !user.password) {
-      return res.status(401).json({ message: "Invalid credentials" });
+      return res.status(401).json({ message: "Email is incorrect" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(401).json({ message: "Invalid credentials" });
+      return res.status(401).json({ message: "Password is incorrect" });
     }
 
     // ✅ CREATE JWT
@@ -75,7 +77,10 @@ export const register = async (req, res) => {
 
     res.status(201).json(user);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({
+      message: "This email is already registered",
+      error: err.message,
+    });
   }
 };
 

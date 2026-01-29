@@ -6,7 +6,7 @@ import prisma from "../lib/prisma.js";
 export const getProvinces = async (req, res) => {
   try {
     const provinces = await prisma.province.findMany({
-      orderBy: { name: "asc" },
+      orderBy: { id: "asc" },
     });
 
     res.json(provinces);
