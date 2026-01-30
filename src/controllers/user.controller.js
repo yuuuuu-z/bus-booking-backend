@@ -1,5 +1,6 @@
 import prisma from "../lib/prisma.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 /**
  * GET /users
@@ -11,7 +12,8 @@ export const getUsers = async (req, res) => {
         id: true,
         email: true,
         name: true,
-
+        avatar: true,
+        updatedAt: true,
         createdAt: true,
       },
     });
@@ -23,18 +25,33 @@ export const getUsers = async (req, res) => {
 };
 
 /**
- * GET /users/:id
+ * GET /users/me (get user by token)
  */
-export const getUserById = async (req, res) => {
+export const getUserByToken = async (req, res) => {
   try {
-    const id = Number(req.params.id);
+    const authHeader = req.headers.authorization;
+
+    // ❌ No token
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).json({
+        message: "Unauthorized: No token provided",
+      });
+    }
+
+    const token = authHeader.split(" ")[1];
+
+    // Verify token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = decoded.id;
 
     const user = await prisma.user.findUnique({
-      where: { id },
+      where: { id: userId },
       select: {
         id: true,
         email: true,
         name: true,
+        avatar: true,
+        updatedAt: true,
         createdAt: true,
       },
     });
@@ -45,6 +62,9 @@ export const getUserById = async (req, res) => {
 
     res.json(user);
   } catch (err) {
+    if (err.name === "JsonWebTokenError" || err.name === "TokenExpiredError") {
+      return res.status(401).json({ message: "Unauthorized: Invalid token" });
+    }
     res.status(500).json({ error: err.message });
   }
 };
