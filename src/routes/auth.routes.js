@@ -26,9 +26,7 @@ router.get(
 // 2️⃣ Google callback
 router.get(
   "/google/callback",
-  passport.authenticate("google", {
-    session: false,
-  }),
+  passport.authenticate("google", { session: false }),
   (req, res) => {
     const token = jwt.sign(
       { id: req.user.id, email: req.user.email },
@@ -36,22 +34,9 @@ router.get(
       { expiresIn: "7d" },
     );
 
-    // For testing: return JSON instead of redirect
-    if (process.env.NODE_ENV === "development") {
-      return res.json({
-        success: true,
-        token,
-        user: {
-          id: req.user.id,
-          email: req.user.email,
-          name: req.user.name,
-          avatar: req.user.avatar,
-        },
-      });
-    }
+    const frontendURL = process.env.FRONTEND_URL || "http://localhost:3000";
 
-    // For production: redirect to frontend
-    res.redirect(`${getFrontendURL()}/auth/callback?token=${token}`);
+    res.redirect(`${frontendURL}/auth/callback?token=${token}`);
   },
 );
 
