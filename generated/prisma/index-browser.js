@@ -129,7 +129,10 @@ exports.Prisma.UserScalarFieldEnum = {
   avatar: 'avatar',
   provider: 'provider',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  otp: 'otp',
+  otpExpires: 'otpExpires',
+  isVerified: 'isVerified'
 };
 
 exports.Prisma.ProvinceScalarFieldEnum = {

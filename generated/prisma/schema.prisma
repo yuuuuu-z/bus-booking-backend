@@ -18,6 +18,10 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  otp        String?
+  otpExpires DateTime?
+  isVerified Boolean   @default(false)
+
   @@map("users")
 }
 
