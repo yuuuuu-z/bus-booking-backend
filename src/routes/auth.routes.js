@@ -8,6 +8,10 @@ const router = express.Router();
 router.post("/register", register);
 router.post("/verify-otp", verifyOtp);
 router.post("/login", login);
+router.post("/auth/logout", (req, res) => {
+  res.clearCookie("token");
+  res.json({ message: "Logged out" });
+});
 
 const getFrontendURL = () => {
   if (process.env.VERCEL_ENV === "production") {
@@ -37,7 +41,17 @@ router.get(
 
     const frontendURL = process.env.FRONTEND_URL || "http://localhost:3000";
 
-    res.redirect(`${frontendURL}/auth/callback?token=${token}`);
+    res.redirect(`${frontendURL}/auth/callback?`);
+    res.json({
+      message: "Google login successful",
+      token,
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        avatar: user.avatar,
+      },
+    });
   },
 );
 

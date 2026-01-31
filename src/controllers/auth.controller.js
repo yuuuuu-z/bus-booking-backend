@@ -151,22 +151,41 @@ passport.use(
       try {
         const email = profile.emails[0].value;
 
-        let user = await prisma.user.findFirst({
-          where: {
-            OR: [{ googleId: profile.id }, { email }],
-          },
+        // 1️⃣ Find by googleId
+        let user = await prisma.user.findUnique({
+          where: { googleId: profile.id },
         });
 
+        // 2️⃣ If not found, find by email
         if (!user) {
-          user = await prisma.user.create({
-            data: {
-              googleId: profile.id,
-              email,
-              name: profile.displayName,
-              avatar: profile.photos[0]?.value,
-              provider: "google",
-            },
+          user = await prisma.user.findUnique({
+            where: { email },
           });
+
+          // 🔗 Link Google to existing email account
+          if (user) {
+            user = await prisma.user.update({
+              where: { email },
+              data: {
+                googleId: profile.id,
+                provider: "google",
+                isVerified: true,
+                avatar: profile.photos[0]?.value,
+              },
+            });
+          } else {
+            // 🆕 Create new Google user
+            user = await prisma.user.create({
+              data: {
+                googleId: profile.id,
+                email,
+                name: profile.displayName,
+                avatar: profile.photos[0]?.value,
+                provider: "google",
+                isVerified: true,
+              },
+            });
+          }
         }
 
         return done(null, user);
