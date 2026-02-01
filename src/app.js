@@ -8,6 +8,7 @@ import userRoutes from "./routes/user.routes.js";
 import provinceRoutes from "./routes/province.routes.js";
 import tripRoutes from "./routes/trip.routes.js";
 import authRoutes from "./routes/auth.routes.js";
+import uploadRoutes from "./routes/upload.routes.js";
 import passport from "passport";
 import prisma from "./lib/prisma.js";
 import { protect } from "./middlewares/auth.middleware.js";
@@ -24,7 +25,7 @@ app.use(
       secure: false,
       maxAge: 24 * 60 * 60 * 1000,
     },
-  }),
+  })
 );
 
 // ==================== PASSPORT SETUP ====================
@@ -51,7 +52,7 @@ app.use(
   cors({
     origin: "http://localhost:3000",
     credentials: true,
-  }),
+  })
 );
 
 app.use(express.json());
@@ -77,5 +78,6 @@ app.use("/dashboard", protect, (req, res) => {
 });
 app.use("/provinces", protect, provinceRoutes);
 app.use("/trips", protect, tripRoutes);
+app.use("/avatar", protect, uploadRoutes);
 
 export default app;

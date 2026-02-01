@@ -25,7 +25,7 @@ router.get(
   passport.authenticate("google", {
     scope: ["profile", "email"],
     session: false,
-  }),
+  })
 );
 
 // 2️⃣ Google callback
@@ -36,12 +36,12 @@ router.get(
     const token = jwt.sign(
       { id: req.user.id, email: req.user.email },
       process.env.JWT_SECRET,
-      { expiresIn: "7d" },
+      { expiresIn: "7d" }
     );
 
     const frontendURL = process.env.FRONTEND_URL || "http://localhost:3000";
 
-    res.redirect(`${frontendURL}/auth/callback?`);
+    res.redirect(`${frontendURL}/auth/callback?token=${token}`);
     res.json({
       message: "Google login successful",
       token,
@@ -52,7 +52,7 @@ router.get(
         avatar: user.avatar,
       },
     });
-  },
+  }
 );
 
 export default router;

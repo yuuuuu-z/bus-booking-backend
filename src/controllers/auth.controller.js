@@ -11,28 +11,56 @@ export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    if (!email || !password) {
+      return res.status(400).json({
+        message: "Email and password are required",
+      });
+    }
+
     const user = await prisma.user.findUnique({ where: { email } });
 
-    if (!user || !user.password) {
-      return res.status(401).json({ message: "Invalid email or password" });
+    if (!user) {
+      return res.status(401).json({
+        message: "Invalid email or password",
+      });
+    }
+
+    // 🔥 IMPORTANT FIX
+    const provider = user.provider || "local";
+
+    if (provider === "google") {
+      return res.status(400).json({
+        message: "This account uses Google login",
+      });
+    }
+
+    if (!user.password) {
+      return res.status(401).json({
+        message: "Invalid email or password",
+      });
     }
 
     if (!user.isVerified) {
-      return res.status(403).json({ message: "Please verify OTP first" });
+      return res.status(403).json({
+        message: "Please verify OTP first",
+      });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
+
     if (!isMatch) {
-      return res.status(401).json({ message: "Wrong password" });
+      return res.status(401).json({
+        message: "Invalid email or password",
+      });
     }
 
     const token = jwt.sign(
       { id: user.id, email: user.email },
       process.env.JWT_SECRET,
-      { expiresIn: "1d" },
+      { expiresIn: "1d" }
     );
 
-    res.json({
+    return res.json({
       message: "Login successful",
       token,
       user: {
@@ -45,7 +73,9 @@ export const login = async (req, res) => {
       },
     });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    return res.status(500).json({
+      error: err.message,
+    });
   }
 };
 
@@ -192,6 +222,6 @@ passport.use(
       } catch (err) {
         return done(err, null);
       }
-    },
-  ),
+    }
+  )
 );
