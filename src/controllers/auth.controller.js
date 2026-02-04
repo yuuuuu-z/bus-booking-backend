@@ -129,8 +129,8 @@ export const register = async (req, res) => {
 
     res.status(200).json({
       email: user.email,
-      successMessage: "Account created successfully",
-      otpMessage: "OTP has been sent to your email",
+      successMessage: "Your account has been registered.",
+      otpMessage: "We've sent an OTP to your email",
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -148,7 +148,7 @@ export const verifyOtp = async (req, res) => {
     }
 
     if (user.isVerified) {
-      return res.json({ message: "Already verified" });
+      return res.json({ message: "Email already verified" });
     }
 
     if (!user.otp || user.otp !== otp || user.otpExpires < new Date()) {
