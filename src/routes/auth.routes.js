@@ -29,10 +29,43 @@ router.get(
 );
 
 // 2️⃣ Google callback
+// router.get(
+//   "/google/callback",
+//   passport.authenticate("google", {
+//     session: false,
+//   }),
+//   (req, res) => {
+//     const token = jwt.sign(
+//       { id: req.user.id, email: req.user.email },
+//       process.env.JWT_SECRET,
+//       { expiresIn: "7d" },
+//     );
+
+//     // For testing: return JSON instead of redirect
+//     if (process.env.NODE_ENV === "development") {
+//       return res.json({
+//         success: true,
+//         token,
+//         user: {
+//           id: req.user.id,
+//           email: req.user.email,
+//           name: req.user.name,
+//           avatar: req.user.avatar,
+//         },
+//       });
+//     }
+
+//     // For production: redirect to frontend
+//     res.redirect(`${getFrontendURL()}/auth/callback?token=${token}`);
+//   },
+// );
+
+// 2️⃣ Google callback
 router.get(
   "/google/callback",
   passport.authenticate("google", { session: false }),
   (req, res) => {
+    // 1. Create the token
     const token = jwt.sign(
       { id: req.user.id, email: req.user.email },
       process.env.JWT_SECRET,
