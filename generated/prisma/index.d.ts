@@ -24,10 +24,10 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Province = $Result.DefaultSelection<Prisma.$ProvincePayload>
 /**
- * Model Trip
+ * Model Booking
  * 
  */
-export type Trip = $Result.DefaultSelection<Prisma.$TripPayload>
+export type Booking = $Result.DefaultSelection<Prisma.$BookingPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -167,14 +167,14 @@ export class PrismaClient<
   get province(): Prisma.ProvinceDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.trip`: Exposes CRUD operations for the **Trip** model.
+   * `prisma.booking`: Exposes CRUD operations for the **Booking** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Trips
-    * const trips = await prisma.trip.findMany()
+    * // Fetch zero or more Bookings
+    * const bookings = await prisma.booking.findMany()
     * ```
     */
-  get trip(): Prisma.TripDelegate<ExtArgs, ClientOptions>;
+  get booking(): Prisma.BookingDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -611,7 +611,7 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Province: 'Province',
-    Trip: 'Trip'
+    Booking: 'Booking'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -627,7 +627,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "province" | "trip"
+      modelProps: "user" | "province" | "booking"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -779,77 +779,77 @@ export namespace Prisma {
           }
         }
       }
-      Trip: {
-        payload: Prisma.$TripPayload<ExtArgs>
-        fields: Prisma.TripFieldRefs
+      Booking: {
+        payload: Prisma.$BookingPayload<ExtArgs>
+        fields: Prisma.BookingFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.TripFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TripPayload> | null
+            args: Prisma.BookingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.TripFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TripPayload>
+            args: Prisma.BookingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingPayload>
           }
           findFirst: {
-            args: Prisma.TripFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TripPayload> | null
+            args: Prisma.BookingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.TripFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TripPayload>
+            args: Prisma.BookingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingPayload>
           }
           findMany: {
-            args: Prisma.TripFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TripPayload>[]
+            args: Prisma.BookingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingPayload>[]
           }
           create: {
-            args: Prisma.TripCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TripPayload>
+            args: Prisma.BookingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingPayload>
           }
           createMany: {
-            args: Prisma.TripCreateManyArgs<ExtArgs>
+            args: Prisma.BookingCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.TripCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TripPayload>[]
+            args: Prisma.BookingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingPayload>[]
           }
           delete: {
-            args: Prisma.TripDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TripPayload>
+            args: Prisma.BookingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingPayload>
           }
           update: {
-            args: Prisma.TripUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TripPayload>
+            args: Prisma.BookingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingPayload>
           }
           deleteMany: {
-            args: Prisma.TripDeleteManyArgs<ExtArgs>
+            args: Prisma.BookingDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.TripUpdateManyArgs<ExtArgs>
+            args: Prisma.BookingUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.TripUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TripPayload>[]
+            args: Prisma.BookingUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingPayload>[]
           }
           upsert: {
-            args: Prisma.TripUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TripPayload>
+            args: Prisma.BookingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingPayload>
           }
           aggregate: {
-            args: Prisma.TripAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateTrip>
+            args: Prisma.BookingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBooking>
           }
           groupBy: {
-            args: Prisma.TripGroupByArgs<ExtArgs>
-            result: $Utils.Optional<TripGroupByOutputType>[]
+            args: Prisma.BookingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BookingGroupByOutputType>[]
           }
           count: {
-            args: Prisma.TripCountArgs<ExtArgs>
-            result: $Utils.Optional<TripCountAggregateOutputType> | number
+            args: Prisma.BookingCountArgs<ExtArgs>
+            result: $Utils.Optional<BookingCountAggregateOutputType> | number
           }
         }
       }
@@ -963,7 +963,7 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     user?: UserOmit
     province?: ProvinceOmit
-    trip?: TripOmit
+    booking?: BookingOmit
   }
 
   /* Types for Logging */
@@ -1040,17 +1040,48 @@ export namespace Prisma {
 
 
   /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    bookings: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bookings?: boolean | UserCountOutputTypeCountBookingsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookingWhereInput
+  }
+
+
+  /**
    * Count Type ProvinceCountOutputType
    */
 
   export type ProvinceCountOutputType = {
-    fromTrips: number
-    toTrips: number
+    fromBookings: number
+    toBookings: number
   }
 
   export type ProvinceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    fromTrips?: boolean | ProvinceCountOutputTypeCountFromTripsArgs
-    toTrips?: boolean | ProvinceCountOutputTypeCountToTripsArgs
+    fromBookings?: boolean | ProvinceCountOutputTypeCountFromBookingsArgs
+    toBookings?: boolean | ProvinceCountOutputTypeCountToBookingsArgs
   }
 
   // Custom InputTypes
@@ -1067,15 +1098,15 @@ export namespace Prisma {
   /**
    * ProvinceCountOutputType without action
    */
-  export type ProvinceCountOutputTypeCountFromTripsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TripWhereInput
+  export type ProvinceCountOutputTypeCountFromBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookingWhereInput
   }
 
   /**
    * ProvinceCountOutputType without action
    */
-  export type ProvinceCountOutputTypeCountToTripsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TripWhereInput
+  export type ProvinceCountOutputTypeCountToBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookingWhereInput
   }
 
 
@@ -1337,6 +1368,8 @@ export namespace Prisma {
     otp?: boolean
     otpExpires?: boolean
     isVerified?: boolean
+    bookings?: boolean | User$bookingsArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1385,10 +1418,18 @@ export namespace Prisma {
   }
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "googleId" | "avatar" | "provider" | "createdAt" | "updatedAt" | "otp" | "otpExpires" | "isVerified", ExtArgs["result"]["user"]>
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bookings?: boolean | User$bookingsArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
-    objects: {}
+    objects: {
+      bookings: Prisma.$BookingPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -1796,6 +1837,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    bookings<T extends User$bookingsArgs<ExtArgs> = {}>(args?: Subset<T, User$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1854,6 +1896,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1872,6 +1918,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1889,6 +1939,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -1938,6 +1992,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where?: UserWhereInput
@@ -1986,6 +2044,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UserWhereInput
@@ -2028,6 +2090,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to create a User.
      */
@@ -2076,6 +2142,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to update a User.
      */
@@ -2143,6 +2213,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The filter to search for the User to update in case it exists.
      */
     where: UserWhereUniqueInput
@@ -2169,6 +2243,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter which User to delete.
      */
     where: UserWhereUniqueInput
@@ -2189,6 +2267,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.bookings
+   */
+  export type User$bookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Booking
+     */
+    select?: BookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Booking
+     */
+    omit?: BookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingInclude<ExtArgs> | null
+    where?: BookingWhereInput
+    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
+    cursor?: BookingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2200,6 +2302,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
   }
 
 
@@ -2385,8 +2491,8 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     image?: boolean
-    fromTrips?: boolean | Province$fromTripsArgs<ExtArgs>
-    toTrips?: boolean | Province$toTripsArgs<ExtArgs>
+    fromBookings?: boolean | Province$fromBookingsArgs<ExtArgs>
+    toBookings?: boolean | Province$toBookingsArgs<ExtArgs>
     _count?: boolean | ProvinceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["province"]>
 
@@ -2410,8 +2516,8 @@ export namespace Prisma {
 
   export type ProvinceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "image", ExtArgs["result"]["province"]>
   export type ProvinceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    fromTrips?: boolean | Province$fromTripsArgs<ExtArgs>
-    toTrips?: boolean | Province$toTripsArgs<ExtArgs>
+    fromBookings?: boolean | Province$fromBookingsArgs<ExtArgs>
+    toBookings?: boolean | Province$toBookingsArgs<ExtArgs>
     _count?: boolean | ProvinceCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProvinceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2420,8 +2526,8 @@ export namespace Prisma {
   export type $ProvincePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Province"
     objects: {
-      fromTrips: Prisma.$TripPayload<ExtArgs>[]
-      toTrips: Prisma.$TripPayload<ExtArgs>[]
+      fromBookings: Prisma.$BookingPayload<ExtArgs>[]
+      toBookings: Prisma.$BookingPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2821,8 +2927,8 @@ export namespace Prisma {
    */
   export interface Prisma__ProvinceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    fromTrips<T extends Province$fromTripsArgs<ExtArgs> = {}>(args?: Subset<T, Province$fromTripsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    toTrips<T extends Province$toTripsArgs<ExtArgs> = {}>(args?: Subset<T, Province$toTripsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    fromBookings<T extends Province$fromBookingsArgs<ExtArgs> = {}>(args?: Subset<T, Province$fromBookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    toBookings<T extends Province$toBookingsArgs<ExtArgs> = {}>(args?: Subset<T, Province$toBookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3243,51 +3349,51 @@ export namespace Prisma {
   }
 
   /**
-   * Province.fromTrips
+   * Province.fromBookings
    */
-  export type Province$fromTripsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Province$fromBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Trip
+     * Select specific fields to fetch from the Booking
      */
-    select?: TripSelect<ExtArgs> | null
+    select?: BookingSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Trip
+     * Omit specific fields from the Booking
      */
-    omit?: TripOmit<ExtArgs> | null
+    omit?: BookingOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TripInclude<ExtArgs> | null
-    where?: TripWhereInput
-    orderBy?: TripOrderByWithRelationInput | TripOrderByWithRelationInput[]
-    cursor?: TripWhereUniqueInput
+    include?: BookingInclude<ExtArgs> | null
+    where?: BookingWhereInput
+    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
+    cursor?: BookingWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: TripScalarFieldEnum | TripScalarFieldEnum[]
+    distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
   }
 
   /**
-   * Province.toTrips
+   * Province.toBookings
    */
-  export type Province$toTripsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Province$toBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Trip
+     * Select specific fields to fetch from the Booking
      */
-    select?: TripSelect<ExtArgs> | null
+    select?: BookingSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Trip
+     * Omit specific fields from the Booking
      */
-    omit?: TripOmit<ExtArgs> | null
+    omit?: BookingOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TripInclude<ExtArgs> | null
-    where?: TripWhereInput
-    orderBy?: TripOrderByWithRelationInput | TripOrderByWithRelationInput[]
-    cursor?: TripWhereUniqueInput
+    include?: BookingInclude<ExtArgs> | null
+    where?: BookingWhereInput
+    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
+    cursor?: BookingWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: TripScalarFieldEnum | TripScalarFieldEnum[]
+    distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
   }
 
   /**
@@ -3310,483 +3416,474 @@ export namespace Prisma {
 
 
   /**
-   * Model Trip
+   * Model Booking
    */
 
-  export type AggregateTrip = {
-    _count: TripCountAggregateOutputType | null
-    _avg: TripAvgAggregateOutputType | null
-    _sum: TripSumAggregateOutputType | null
-    _min: TripMinAggregateOutputType | null
-    _max: TripMaxAggregateOutputType | null
+  export type AggregateBooking = {
+    _count: BookingCountAggregateOutputType | null
+    _avg: BookingAvgAggregateOutputType | null
+    _sum: BookingSumAggregateOutputType | null
+    _min: BookingMinAggregateOutputType | null
+    _max: BookingMaxAggregateOutputType | null
   }
 
-  export type TripAvgAggregateOutputType = {
+  export type BookingAvgAggregateOutputType = {
     id: number | null
+    userId: number | null
     fromProvinceId: number | null
     toProvinceId: number | null
-    price: number | null
-    totalSeats: number | null
-    availableSeats: number | null
+    tickets: number | null
   }
 
-  export type TripSumAggregateOutputType = {
+  export type BookingSumAggregateOutputType = {
     id: number | null
+    userId: number | null
     fromProvinceId: number | null
     toProvinceId: number | null
-    price: number | null
-    totalSeats: number | null
-    availableSeats: number | null
+    tickets: number | null
   }
 
-  export type TripMinAggregateOutputType = {
+  export type BookingMinAggregateOutputType = {
     id: number | null
+    userId: number | null
     fromProvinceId: number | null
     toProvinceId: number | null
-    date: Date | null
-    departureTime: Date | null
-    price: number | null
-    totalSeats: number | null
-    availableSeats: number | null
-    busNumber: string | null
-    plateNumber: string | null
+    travelDate: Date | null
+    timeLabel: string | null
+    startTime: string | null
+    endTime: string | null
+    tickets: number | null
     createdAt: Date | null
   }
 
-  export type TripMaxAggregateOutputType = {
+  export type BookingMaxAggregateOutputType = {
     id: number | null
+    userId: number | null
     fromProvinceId: number | null
     toProvinceId: number | null
-    date: Date | null
-    departureTime: Date | null
-    price: number | null
-    totalSeats: number | null
-    availableSeats: number | null
-    busNumber: string | null
-    plateNumber: string | null
+    travelDate: Date | null
+    timeLabel: string | null
+    startTime: string | null
+    endTime: string | null
+    tickets: number | null
     createdAt: Date | null
   }
 
-  export type TripCountAggregateOutputType = {
+  export type BookingCountAggregateOutputType = {
     id: number
+    userId: number
     fromProvinceId: number
     toProvinceId: number
-    date: number
-    departureTime: number
-    price: number
-    totalSeats: number
-    availableSeats: number
-    busNumber: number
-    plateNumber: number
+    travelDate: number
+    timeLabel: number
+    startTime: number
+    endTime: number
+    tickets: number
     createdAt: number
     _all: number
   }
 
 
-  export type TripAvgAggregateInputType = {
+  export type BookingAvgAggregateInputType = {
     id?: true
+    userId?: true
     fromProvinceId?: true
     toProvinceId?: true
-    price?: true
-    totalSeats?: true
-    availableSeats?: true
+    tickets?: true
   }
 
-  export type TripSumAggregateInputType = {
+  export type BookingSumAggregateInputType = {
     id?: true
+    userId?: true
     fromProvinceId?: true
     toProvinceId?: true
-    price?: true
-    totalSeats?: true
-    availableSeats?: true
+    tickets?: true
   }
 
-  export type TripMinAggregateInputType = {
+  export type BookingMinAggregateInputType = {
     id?: true
+    userId?: true
     fromProvinceId?: true
     toProvinceId?: true
-    date?: true
-    departureTime?: true
-    price?: true
-    totalSeats?: true
-    availableSeats?: true
-    busNumber?: true
-    plateNumber?: true
+    travelDate?: true
+    timeLabel?: true
+    startTime?: true
+    endTime?: true
+    tickets?: true
     createdAt?: true
   }
 
-  export type TripMaxAggregateInputType = {
+  export type BookingMaxAggregateInputType = {
     id?: true
+    userId?: true
     fromProvinceId?: true
     toProvinceId?: true
-    date?: true
-    departureTime?: true
-    price?: true
-    totalSeats?: true
-    availableSeats?: true
-    busNumber?: true
-    plateNumber?: true
+    travelDate?: true
+    timeLabel?: true
+    startTime?: true
+    endTime?: true
+    tickets?: true
     createdAt?: true
   }
 
-  export type TripCountAggregateInputType = {
+  export type BookingCountAggregateInputType = {
     id?: true
+    userId?: true
     fromProvinceId?: true
     toProvinceId?: true
-    date?: true
-    departureTime?: true
-    price?: true
-    totalSeats?: true
-    availableSeats?: true
-    busNumber?: true
-    plateNumber?: true
+    travelDate?: true
+    timeLabel?: true
+    startTime?: true
+    endTime?: true
+    tickets?: true
     createdAt?: true
     _all?: true
   }
 
-  export type TripAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Trip to aggregate.
+     * Filter which Booking to aggregate.
      */
-    where?: TripWhereInput
+    where?: BookingWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Trips to fetch.
+     * Determine the order of Bookings to fetch.
      */
-    orderBy?: TripOrderByWithRelationInput | TripOrderByWithRelationInput[]
+    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: TripWhereUniqueInput
+    cursor?: BookingWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Trips from the position of the cursor.
+     * Take `±n` Bookings from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Trips.
+     * Skip the first `n` Bookings.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Trips
+     * Count returned Bookings
     **/
-    _count?: true | TripCountAggregateInputType
+    _count?: true | BookingCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: TripAvgAggregateInputType
+    _avg?: BookingAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: TripSumAggregateInputType
+    _sum?: BookingSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: TripMinAggregateInputType
+    _min?: BookingMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: TripMaxAggregateInputType
+    _max?: BookingMaxAggregateInputType
   }
 
-  export type GetTripAggregateType<T extends TripAggregateArgs> = {
-        [P in keyof T & keyof AggregateTrip]: P extends '_count' | 'count'
+  export type GetBookingAggregateType<T extends BookingAggregateArgs> = {
+        [P in keyof T & keyof AggregateBooking]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateTrip[P]>
-      : GetScalarType<T[P], AggregateTrip[P]>
+        : GetScalarType<T[P], AggregateBooking[P]>
+      : GetScalarType<T[P], AggregateBooking[P]>
   }
 
 
 
 
-  export type TripGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TripWhereInput
-    orderBy?: TripOrderByWithAggregationInput | TripOrderByWithAggregationInput[]
-    by: TripScalarFieldEnum[] | TripScalarFieldEnum
-    having?: TripScalarWhereWithAggregatesInput
+  export type BookingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookingWhereInput
+    orderBy?: BookingOrderByWithAggregationInput | BookingOrderByWithAggregationInput[]
+    by: BookingScalarFieldEnum[] | BookingScalarFieldEnum
+    having?: BookingScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: TripCountAggregateInputType | true
-    _avg?: TripAvgAggregateInputType
-    _sum?: TripSumAggregateInputType
-    _min?: TripMinAggregateInputType
-    _max?: TripMaxAggregateInputType
+    _count?: BookingCountAggregateInputType | true
+    _avg?: BookingAvgAggregateInputType
+    _sum?: BookingSumAggregateInputType
+    _min?: BookingMinAggregateInputType
+    _max?: BookingMaxAggregateInputType
   }
 
-  export type TripGroupByOutputType = {
+  export type BookingGroupByOutputType = {
     id: number
+    userId: number
     fromProvinceId: number
     toProvinceId: number
-    date: Date
-    departureTime: Date
-    price: number
-    totalSeats: number
-    availableSeats: number
-    busNumber: string | null
-    plateNumber: string | null
+    travelDate: Date
+    timeLabel: string
+    startTime: string
+    endTime: string
+    tickets: number
     createdAt: Date
-    _count: TripCountAggregateOutputType | null
-    _avg: TripAvgAggregateOutputType | null
-    _sum: TripSumAggregateOutputType | null
-    _min: TripMinAggregateOutputType | null
-    _max: TripMaxAggregateOutputType | null
+    _count: BookingCountAggregateOutputType | null
+    _avg: BookingAvgAggregateOutputType | null
+    _sum: BookingSumAggregateOutputType | null
+    _min: BookingMinAggregateOutputType | null
+    _max: BookingMaxAggregateOutputType | null
   }
 
-  type GetTripGroupByPayload<T extends TripGroupByArgs> = Prisma.PrismaPromise<
+  type GetBookingGroupByPayload<T extends BookingGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<TripGroupByOutputType, T['by']> &
+      PickEnumerable<BookingGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof TripGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof BookingGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], TripGroupByOutputType[P]>
-            : GetScalarType<T[P], TripGroupByOutputType[P]>
+              : GetScalarType<T[P], BookingGroupByOutputType[P]>
+            : GetScalarType<T[P], BookingGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type TripSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type BookingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    userId?: boolean
     fromProvinceId?: boolean
     toProvinceId?: boolean
-    date?: boolean
-    departureTime?: boolean
-    price?: boolean
-    totalSeats?: boolean
-    availableSeats?: boolean
-    busNumber?: boolean
-    plateNumber?: boolean
+    travelDate?: boolean
+    timeLabel?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    tickets?: boolean
     createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
     fromProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
     toProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["trip"]>
+  }, ExtArgs["result"]["booking"]>
 
-  export type TripSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type BookingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    userId?: boolean
     fromProvinceId?: boolean
     toProvinceId?: boolean
-    date?: boolean
-    departureTime?: boolean
-    price?: boolean
-    totalSeats?: boolean
-    availableSeats?: boolean
-    busNumber?: boolean
-    plateNumber?: boolean
+    travelDate?: boolean
+    timeLabel?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    tickets?: boolean
     createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
     fromProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
     toProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["trip"]>
+  }, ExtArgs["result"]["booking"]>
 
-  export type TripSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type BookingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    userId?: boolean
     fromProvinceId?: boolean
     toProvinceId?: boolean
-    date?: boolean
-    departureTime?: boolean
-    price?: boolean
-    totalSeats?: boolean
-    availableSeats?: boolean
-    busNumber?: boolean
-    plateNumber?: boolean
+    travelDate?: boolean
+    timeLabel?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    tickets?: boolean
     createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
     fromProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
     toProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["trip"]>
+  }, ExtArgs["result"]["booking"]>
 
-  export type TripSelectScalar = {
+  export type BookingSelectScalar = {
     id?: boolean
+    userId?: boolean
     fromProvinceId?: boolean
     toProvinceId?: boolean
-    date?: boolean
-    departureTime?: boolean
-    price?: boolean
-    totalSeats?: boolean
-    availableSeats?: boolean
-    busNumber?: boolean
-    plateNumber?: boolean
+    travelDate?: boolean
+    timeLabel?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    tickets?: boolean
     createdAt?: boolean
   }
 
-  export type TripOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fromProvinceId" | "toProvinceId" | "date" | "departureTime" | "price" | "totalSeats" | "availableSeats" | "busNumber" | "plateNumber" | "createdAt", ExtArgs["result"]["trip"]>
-  export type TripInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "fromProvinceId" | "toProvinceId" | "travelDate" | "timeLabel" | "startTime" | "endTime" | "tickets" | "createdAt", ExtArgs["result"]["booking"]>
+  export type BookingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
     fromProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
     toProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
   }
-  export type TripIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
     fromProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
     toProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
   }
-  export type TripIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
     fromProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
     toProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
   }
 
-  export type $TripPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Trip"
+  export type $BookingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Booking"
     objects: {
+      user: Prisma.$UserPayload<ExtArgs>
       fromProvince: Prisma.$ProvincePayload<ExtArgs>
       toProvince: Prisma.$ProvincePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      userId: number
       fromProvinceId: number
       toProvinceId: number
-      date: Date
-      departureTime: Date
-      price: number
-      totalSeats: number
-      availableSeats: number
-      busNumber: string | null
-      plateNumber: string | null
+      travelDate: Date
+      timeLabel: string
+      startTime: string
+      endTime: string
+      tickets: number
       createdAt: Date
-    }, ExtArgs["result"]["trip"]>
+    }, ExtArgs["result"]["booking"]>
     composites: {}
   }
 
-  type TripGetPayload<S extends boolean | null | undefined | TripDefaultArgs> = $Result.GetResult<Prisma.$TripPayload, S>
+  type BookingGetPayload<S extends boolean | null | undefined | BookingDefaultArgs> = $Result.GetResult<Prisma.$BookingPayload, S>
 
-  type TripCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<TripFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: TripCountAggregateInputType | true
+  type BookingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BookingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BookingCountAggregateInputType | true
     }
 
-  export interface TripDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Trip'], meta: { name: 'Trip' } }
+  export interface BookingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Booking'], meta: { name: 'Booking' } }
     /**
-     * Find zero or one Trip that matches the filter.
-     * @param {TripFindUniqueArgs} args - Arguments to find a Trip
+     * Find zero or one Booking that matches the filter.
+     * @param {BookingFindUniqueArgs} args - Arguments to find a Booking
      * @example
-     * // Get one Trip
-     * const trip = await prisma.trip.findUnique({
+     * // Get one Booking
+     * const booking = await prisma.booking.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends TripFindUniqueArgs>(args: SelectSubset<T, TripFindUniqueArgs<ExtArgs>>): Prisma__TripClient<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends BookingFindUniqueArgs>(args: SelectSubset<T, BookingFindUniqueArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Trip that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Booking that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {TripFindUniqueOrThrowArgs} args - Arguments to find a Trip
+     * @param {BookingFindUniqueOrThrowArgs} args - Arguments to find a Booking
      * @example
-     * // Get one Trip
-     * const trip = await prisma.trip.findUniqueOrThrow({
+     * // Get one Booking
+     * const booking = await prisma.booking.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends TripFindUniqueOrThrowArgs>(args: SelectSubset<T, TripFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TripClient<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends BookingFindUniqueOrThrowArgs>(args: SelectSubset<T, BookingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Trip that matches the filter.
+     * Find the first Booking that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TripFindFirstArgs} args - Arguments to find a Trip
+     * @param {BookingFindFirstArgs} args - Arguments to find a Booking
      * @example
-     * // Get one Trip
-     * const trip = await prisma.trip.findFirst({
+     * // Get one Booking
+     * const booking = await prisma.booking.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends TripFindFirstArgs>(args?: SelectSubset<T, TripFindFirstArgs<ExtArgs>>): Prisma__TripClient<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends BookingFindFirstArgs>(args?: SelectSubset<T, BookingFindFirstArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Trip that matches the filter or
+     * Find the first Booking that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TripFindFirstOrThrowArgs} args - Arguments to find a Trip
+     * @param {BookingFindFirstOrThrowArgs} args - Arguments to find a Booking
      * @example
-     * // Get one Trip
-     * const trip = await prisma.trip.findFirstOrThrow({
+     * // Get one Booking
+     * const booking = await prisma.booking.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends TripFindFirstOrThrowArgs>(args?: SelectSubset<T, TripFindFirstOrThrowArgs<ExtArgs>>): Prisma__TripClient<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends BookingFindFirstOrThrowArgs>(args?: SelectSubset<T, BookingFindFirstOrThrowArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Trips that matches the filter.
+     * Find zero or more Bookings that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TripFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {BookingFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Trips
-     * const trips = await prisma.trip.findMany()
+     * // Get all Bookings
+     * const bookings = await prisma.booking.findMany()
      * 
-     * // Get first 10 Trips
-     * const trips = await prisma.trip.findMany({ take: 10 })
+     * // Get first 10 Bookings
+     * const bookings = await prisma.booking.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const tripWithIdOnly = await prisma.trip.findMany({ select: { id: true } })
+     * const bookingWithIdOnly = await prisma.booking.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends TripFindManyArgs>(args?: SelectSubset<T, TripFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends BookingFindManyArgs>(args?: SelectSubset<T, BookingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Trip.
-     * @param {TripCreateArgs} args - Arguments to create a Trip.
+     * Create a Booking.
+     * @param {BookingCreateArgs} args - Arguments to create a Booking.
      * @example
-     * // Create one Trip
-     * const Trip = await prisma.trip.create({
+     * // Create one Booking
+     * const Booking = await prisma.booking.create({
      *   data: {
-     *     // ... data to create a Trip
+     *     // ... data to create a Booking
      *   }
      * })
      * 
      */
-    create<T extends TripCreateArgs>(args: SelectSubset<T, TripCreateArgs<ExtArgs>>): Prisma__TripClient<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends BookingCreateArgs>(args: SelectSubset<T, BookingCreateArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Trips.
-     * @param {TripCreateManyArgs} args - Arguments to create many Trips.
+     * Create many Bookings.
+     * @param {BookingCreateManyArgs} args - Arguments to create many Bookings.
      * @example
-     * // Create many Trips
-     * const trip = await prisma.trip.createMany({
+     * // Create many Bookings
+     * const booking = await prisma.booking.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends TripCreateManyArgs>(args?: SelectSubset<T, TripCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends BookingCreateManyArgs>(args?: SelectSubset<T, BookingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Trips and returns the data saved in the database.
-     * @param {TripCreateManyAndReturnArgs} args - Arguments to create many Trips.
+     * Create many Bookings and returns the data saved in the database.
+     * @param {BookingCreateManyAndReturnArgs} args - Arguments to create many Bookings.
      * @example
-     * // Create many Trips
-     * const trip = await prisma.trip.createManyAndReturn({
+     * // Create many Bookings
+     * const booking = await prisma.booking.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Trips and only return the `id`
-     * const tripWithIdOnly = await prisma.trip.createManyAndReturn({
+     * // Create many Bookings and only return the `id`
+     * const bookingWithIdOnly = await prisma.booking.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -3796,28 +3893,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends TripCreateManyAndReturnArgs>(args?: SelectSubset<T, TripCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends BookingCreateManyAndReturnArgs>(args?: SelectSubset<T, BookingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Trip.
-     * @param {TripDeleteArgs} args - Arguments to delete one Trip.
+     * Delete a Booking.
+     * @param {BookingDeleteArgs} args - Arguments to delete one Booking.
      * @example
-     * // Delete one Trip
-     * const Trip = await prisma.trip.delete({
+     * // Delete one Booking
+     * const Booking = await prisma.booking.delete({
      *   where: {
-     *     // ... filter to delete one Trip
+     *     // ... filter to delete one Booking
      *   }
      * })
      * 
      */
-    delete<T extends TripDeleteArgs>(args: SelectSubset<T, TripDeleteArgs<ExtArgs>>): Prisma__TripClient<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends BookingDeleteArgs>(args: SelectSubset<T, BookingDeleteArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Trip.
-     * @param {TripUpdateArgs} args - Arguments to update one Trip.
+     * Update one Booking.
+     * @param {BookingUpdateArgs} args - Arguments to update one Booking.
      * @example
-     * // Update one Trip
-     * const trip = await prisma.trip.update({
+     * // Update one Booking
+     * const booking = await prisma.booking.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3827,30 +3924,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends TripUpdateArgs>(args: SelectSubset<T, TripUpdateArgs<ExtArgs>>): Prisma__TripClient<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends BookingUpdateArgs>(args: SelectSubset<T, BookingUpdateArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Trips.
-     * @param {TripDeleteManyArgs} args - Arguments to filter Trips to delete.
+     * Delete zero or more Bookings.
+     * @param {BookingDeleteManyArgs} args - Arguments to filter Bookings to delete.
      * @example
-     * // Delete a few Trips
-     * const { count } = await prisma.trip.deleteMany({
+     * // Delete a few Bookings
+     * const { count } = await prisma.booking.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends TripDeleteManyArgs>(args?: SelectSubset<T, TripDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends BookingDeleteManyArgs>(args?: SelectSubset<T, BookingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Trips.
+     * Update zero or more Bookings.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TripUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {BookingUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Trips
-     * const trip = await prisma.trip.updateMany({
+     * // Update many Bookings
+     * const booking = await prisma.booking.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3860,14 +3957,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends TripUpdateManyArgs>(args: SelectSubset<T, TripUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends BookingUpdateManyArgs>(args: SelectSubset<T, BookingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Trips and returns the data updated in the database.
-     * @param {TripUpdateManyAndReturnArgs} args - Arguments to update many Trips.
+     * Update zero or more Bookings and returns the data updated in the database.
+     * @param {BookingUpdateManyAndReturnArgs} args - Arguments to update many Bookings.
      * @example
-     * // Update many Trips
-     * const trip = await prisma.trip.updateManyAndReturn({
+     * // Update many Bookings
+     * const booking = await prisma.booking.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3876,8 +3973,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Trips and only return the `id`
-     * const tripWithIdOnly = await prisma.trip.updateManyAndReturn({
+     * // Update zero or more Bookings and only return the `id`
+     * const bookingWithIdOnly = await prisma.booking.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -3890,56 +3987,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends TripUpdateManyAndReturnArgs>(args: SelectSubset<T, TripUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends BookingUpdateManyAndReturnArgs>(args: SelectSubset<T, BookingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Trip.
-     * @param {TripUpsertArgs} args - Arguments to update or create a Trip.
+     * Create or update one Booking.
+     * @param {BookingUpsertArgs} args - Arguments to update or create a Booking.
      * @example
-     * // Update or create a Trip
-     * const trip = await prisma.trip.upsert({
+     * // Update or create a Booking
+     * const booking = await prisma.booking.upsert({
      *   create: {
-     *     // ... data to create a Trip
+     *     // ... data to create a Booking
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Trip we want to update
+     *     // ... the filter for the Booking we want to update
      *   }
      * })
      */
-    upsert<T extends TripUpsertArgs>(args: SelectSubset<T, TripUpsertArgs<ExtArgs>>): Prisma__TripClient<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends BookingUpsertArgs>(args: SelectSubset<T, BookingUpsertArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Trips.
+     * Count the number of Bookings.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TripCountArgs} args - Arguments to filter Trips to count.
+     * @param {BookingCountArgs} args - Arguments to filter Bookings to count.
      * @example
-     * // Count the number of Trips
-     * const count = await prisma.trip.count({
+     * // Count the number of Bookings
+     * const count = await prisma.booking.count({
      *   where: {
-     *     // ... the filter for the Trips we want to count
+     *     // ... the filter for the Bookings we want to count
      *   }
      * })
     **/
-    count<T extends TripCountArgs>(
-      args?: Subset<T, TripCountArgs>,
+    count<T extends BookingCountArgs>(
+      args?: Subset<T, BookingCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], TripCountAggregateOutputType>
+          : GetScalarType<T['select'], BookingCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Trip.
+     * Allows you to perform aggregations operations on a Booking.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TripAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {BookingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -3959,13 +4056,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends TripAggregateArgs>(args: Subset<T, TripAggregateArgs>): Prisma.PrismaPromise<GetTripAggregateType<T>>
+    aggregate<T extends BookingAggregateArgs>(args: Subset<T, BookingAggregateArgs>): Prisma.PrismaPromise<GetBookingAggregateType<T>>
 
     /**
-     * Group by Trip.
+     * Group by Booking.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TripGroupByArgs} args - Group by arguments.
+     * @param {BookingGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -3980,14 +4077,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends TripGroupByArgs,
+      T extends BookingGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: TripGroupByArgs['orderBy'] }
-        : { orderBy?: TripGroupByArgs['orderBy'] },
+        ? { orderBy: BookingGroupByArgs['orderBy'] }
+        : { orderBy?: BookingGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -4036,21 +4133,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, TripGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTripGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, BookingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBookingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Trip model
+   * Fields of the Booking model
    */
-  readonly fields: TripFieldRefs;
+  readonly fields: BookingFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Trip.
+   * The delegate class that acts as a "Promise-like" for Booking.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__TripClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__BookingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     fromProvince<T extends ProvinceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProvinceDefaultArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     toProvince<T extends ProvinceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProvinceDefaultArgs<ExtArgs>>): Prisma__ProvinceClient<$Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -4079,431 +4177,430 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Trip model
+   * Fields of the Booking model
    */
-  interface TripFieldRefs {
-    readonly id: FieldRef<"Trip", 'Int'>
-    readonly fromProvinceId: FieldRef<"Trip", 'Int'>
-    readonly toProvinceId: FieldRef<"Trip", 'Int'>
-    readonly date: FieldRef<"Trip", 'DateTime'>
-    readonly departureTime: FieldRef<"Trip", 'DateTime'>
-    readonly price: FieldRef<"Trip", 'Float'>
-    readonly totalSeats: FieldRef<"Trip", 'Int'>
-    readonly availableSeats: FieldRef<"Trip", 'Int'>
-    readonly busNumber: FieldRef<"Trip", 'String'>
-    readonly plateNumber: FieldRef<"Trip", 'String'>
-    readonly createdAt: FieldRef<"Trip", 'DateTime'>
+  interface BookingFieldRefs {
+    readonly id: FieldRef<"Booking", 'Int'>
+    readonly userId: FieldRef<"Booking", 'Int'>
+    readonly fromProvinceId: FieldRef<"Booking", 'Int'>
+    readonly toProvinceId: FieldRef<"Booking", 'Int'>
+    readonly travelDate: FieldRef<"Booking", 'DateTime'>
+    readonly timeLabel: FieldRef<"Booking", 'String'>
+    readonly startTime: FieldRef<"Booking", 'String'>
+    readonly endTime: FieldRef<"Booking", 'String'>
+    readonly tickets: FieldRef<"Booking", 'Int'>
+    readonly createdAt: FieldRef<"Booking", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Trip findUnique
+   * Booking findUnique
    */
-  export type TripFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Trip
+     * Select specific fields to fetch from the Booking
      */
-    select?: TripSelect<ExtArgs> | null
+    select?: BookingSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Trip
+     * Omit specific fields from the Booking
      */
-    omit?: TripOmit<ExtArgs> | null
+    omit?: BookingOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TripInclude<ExtArgs> | null
+    include?: BookingInclude<ExtArgs> | null
     /**
-     * Filter, which Trip to fetch.
+     * Filter, which Booking to fetch.
      */
-    where: TripWhereUniqueInput
+    where: BookingWhereUniqueInput
   }
 
   /**
-   * Trip findUniqueOrThrow
+   * Booking findUniqueOrThrow
    */
-  export type TripFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Trip
+     * Select specific fields to fetch from the Booking
      */
-    select?: TripSelect<ExtArgs> | null
+    select?: BookingSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Trip
+     * Omit specific fields from the Booking
      */
-    omit?: TripOmit<ExtArgs> | null
+    omit?: BookingOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TripInclude<ExtArgs> | null
+    include?: BookingInclude<ExtArgs> | null
     /**
-     * Filter, which Trip to fetch.
+     * Filter, which Booking to fetch.
      */
-    where: TripWhereUniqueInput
+    where: BookingWhereUniqueInput
   }
 
   /**
-   * Trip findFirst
+   * Booking findFirst
    */
-  export type TripFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Trip
+     * Select specific fields to fetch from the Booking
      */
-    select?: TripSelect<ExtArgs> | null
+    select?: BookingSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Trip
+     * Omit specific fields from the Booking
      */
-    omit?: TripOmit<ExtArgs> | null
+    omit?: BookingOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TripInclude<ExtArgs> | null
+    include?: BookingInclude<ExtArgs> | null
     /**
-     * Filter, which Trip to fetch.
+     * Filter, which Booking to fetch.
      */
-    where?: TripWhereInput
+    where?: BookingWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Trips to fetch.
+     * Determine the order of Bookings to fetch.
      */
-    orderBy?: TripOrderByWithRelationInput | TripOrderByWithRelationInput[]
+    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Trips.
+     * Sets the position for searching for Bookings.
      */
-    cursor?: TripWhereUniqueInput
+    cursor?: BookingWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Trips from the position of the cursor.
+     * Take `±n` Bookings from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Trips.
+     * Skip the first `n` Bookings.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Trips.
+     * Filter by unique combinations of Bookings.
      */
-    distinct?: TripScalarFieldEnum | TripScalarFieldEnum[]
+    distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
   }
 
   /**
-   * Trip findFirstOrThrow
+   * Booking findFirstOrThrow
    */
-  export type TripFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Trip
+     * Select specific fields to fetch from the Booking
      */
-    select?: TripSelect<ExtArgs> | null
+    select?: BookingSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Trip
+     * Omit specific fields from the Booking
      */
-    omit?: TripOmit<ExtArgs> | null
+    omit?: BookingOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TripInclude<ExtArgs> | null
+    include?: BookingInclude<ExtArgs> | null
     /**
-     * Filter, which Trip to fetch.
+     * Filter, which Booking to fetch.
      */
-    where?: TripWhereInput
+    where?: BookingWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Trips to fetch.
+     * Determine the order of Bookings to fetch.
      */
-    orderBy?: TripOrderByWithRelationInput | TripOrderByWithRelationInput[]
+    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Trips.
+     * Sets the position for searching for Bookings.
      */
-    cursor?: TripWhereUniqueInput
+    cursor?: BookingWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Trips from the position of the cursor.
+     * Take `±n` Bookings from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Trips.
+     * Skip the first `n` Bookings.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Trips.
+     * Filter by unique combinations of Bookings.
      */
-    distinct?: TripScalarFieldEnum | TripScalarFieldEnum[]
+    distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
   }
 
   /**
-   * Trip findMany
+   * Booking findMany
    */
-  export type TripFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Trip
+     * Select specific fields to fetch from the Booking
      */
-    select?: TripSelect<ExtArgs> | null
+    select?: BookingSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Trip
+     * Omit specific fields from the Booking
      */
-    omit?: TripOmit<ExtArgs> | null
+    omit?: BookingOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TripInclude<ExtArgs> | null
+    include?: BookingInclude<ExtArgs> | null
     /**
-     * Filter, which Trips to fetch.
+     * Filter, which Bookings to fetch.
      */
-    where?: TripWhereInput
+    where?: BookingWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Trips to fetch.
+     * Determine the order of Bookings to fetch.
      */
-    orderBy?: TripOrderByWithRelationInput | TripOrderByWithRelationInput[]
+    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Trips.
+     * Sets the position for listing Bookings.
      */
-    cursor?: TripWhereUniqueInput
+    cursor?: BookingWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Trips from the position of the cursor.
+     * Take `±n` Bookings from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Trips.
+     * Skip the first `n` Bookings.
      */
     skip?: number
-    distinct?: TripScalarFieldEnum | TripScalarFieldEnum[]
+    distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
   }
 
   /**
-   * Trip create
+   * Booking create
    */
-  export type TripCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Trip
+     * Select specific fields to fetch from the Booking
      */
-    select?: TripSelect<ExtArgs> | null
+    select?: BookingSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Trip
+     * Omit specific fields from the Booking
      */
-    omit?: TripOmit<ExtArgs> | null
+    omit?: BookingOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TripInclude<ExtArgs> | null
+    include?: BookingInclude<ExtArgs> | null
     /**
-     * The data needed to create a Trip.
+     * The data needed to create a Booking.
      */
-    data: XOR<TripCreateInput, TripUncheckedCreateInput>
+    data: XOR<BookingCreateInput, BookingUncheckedCreateInput>
   }
 
   /**
-   * Trip createMany
+   * Booking createMany
    */
-  export type TripCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Trips.
+     * The data used to create many Bookings.
      */
-    data: TripCreateManyInput | TripCreateManyInput[]
+    data: BookingCreateManyInput | BookingCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Trip createManyAndReturn
+   * Booking createManyAndReturn
    */
-  export type TripCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Trip
+     * Select specific fields to fetch from the Booking
      */
-    select?: TripSelectCreateManyAndReturn<ExtArgs> | null
+    select?: BookingSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Trip
+     * Omit specific fields from the Booking
      */
-    omit?: TripOmit<ExtArgs> | null
+    omit?: BookingOmit<ExtArgs> | null
     /**
-     * The data used to create many Trips.
+     * The data used to create many Bookings.
      */
-    data: TripCreateManyInput | TripCreateManyInput[]
+    data: BookingCreateManyInput | BookingCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TripIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: BookingIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Trip update
+   * Booking update
    */
-  export type TripUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Trip
+     * Select specific fields to fetch from the Booking
      */
-    select?: TripSelect<ExtArgs> | null
+    select?: BookingSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Trip
+     * Omit specific fields from the Booking
      */
-    omit?: TripOmit<ExtArgs> | null
+    omit?: BookingOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TripInclude<ExtArgs> | null
+    include?: BookingInclude<ExtArgs> | null
     /**
-     * The data needed to update a Trip.
+     * The data needed to update a Booking.
      */
-    data: XOR<TripUpdateInput, TripUncheckedUpdateInput>
+    data: XOR<BookingUpdateInput, BookingUncheckedUpdateInput>
     /**
-     * Choose, which Trip to update.
+     * Choose, which Booking to update.
      */
-    where: TripWhereUniqueInput
+    where: BookingWhereUniqueInput
   }
 
   /**
-   * Trip updateMany
+   * Booking updateMany
    */
-  export type TripUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Trips.
+     * The data used to update Bookings.
      */
-    data: XOR<TripUpdateManyMutationInput, TripUncheckedUpdateManyInput>
+    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyInput>
     /**
-     * Filter which Trips to update
+     * Filter which Bookings to update
      */
-    where?: TripWhereInput
+    where?: BookingWhereInput
     /**
-     * Limit how many Trips to update.
+     * Limit how many Bookings to update.
      */
     limit?: number
   }
 
   /**
-   * Trip updateManyAndReturn
+   * Booking updateManyAndReturn
    */
-  export type TripUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Trip
+     * Select specific fields to fetch from the Booking
      */
-    select?: TripSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: BookingSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Trip
+     * Omit specific fields from the Booking
      */
-    omit?: TripOmit<ExtArgs> | null
+    omit?: BookingOmit<ExtArgs> | null
     /**
-     * The data used to update Trips.
+     * The data used to update Bookings.
      */
-    data: XOR<TripUpdateManyMutationInput, TripUncheckedUpdateManyInput>
+    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyInput>
     /**
-     * Filter which Trips to update
+     * Filter which Bookings to update
      */
-    where?: TripWhereInput
+    where?: BookingWhereInput
     /**
-     * Limit how many Trips to update.
+     * Limit how many Bookings to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TripIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: BookingIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Trip upsert
+   * Booking upsert
    */
-  export type TripUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Trip
+     * Select specific fields to fetch from the Booking
      */
-    select?: TripSelect<ExtArgs> | null
+    select?: BookingSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Trip
+     * Omit specific fields from the Booking
      */
-    omit?: TripOmit<ExtArgs> | null
+    omit?: BookingOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TripInclude<ExtArgs> | null
+    include?: BookingInclude<ExtArgs> | null
     /**
-     * The filter to search for the Trip to update in case it exists.
+     * The filter to search for the Booking to update in case it exists.
      */
-    where: TripWhereUniqueInput
+    where: BookingWhereUniqueInput
     /**
-     * In case the Trip found by the `where` argument doesn't exist, create a new Trip with this data.
+     * In case the Booking found by the `where` argument doesn't exist, create a new Booking with this data.
      */
-    create: XOR<TripCreateInput, TripUncheckedCreateInput>
+    create: XOR<BookingCreateInput, BookingUncheckedCreateInput>
     /**
-     * In case the Trip was found with the provided `where` argument, update it with this data.
+     * In case the Booking was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<TripUpdateInput, TripUncheckedUpdateInput>
+    update: XOR<BookingUpdateInput, BookingUncheckedUpdateInput>
   }
 
   /**
-   * Trip delete
+   * Booking delete
    */
-  export type TripDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Trip
+     * Select specific fields to fetch from the Booking
      */
-    select?: TripSelect<ExtArgs> | null
+    select?: BookingSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Trip
+     * Omit specific fields from the Booking
      */
-    omit?: TripOmit<ExtArgs> | null
+    omit?: BookingOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TripInclude<ExtArgs> | null
+    include?: BookingInclude<ExtArgs> | null
     /**
-     * Filter which Trip to delete.
+     * Filter which Booking to delete.
      */
-    where: TripWhereUniqueInput
+    where: BookingWhereUniqueInput
   }
 
   /**
-   * Trip deleteMany
+   * Booking deleteMany
    */
-  export type TripDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Trips to delete
+     * Filter which Bookings to delete
      */
-    where?: TripWhereInput
+    where?: BookingWhereInput
     /**
-     * Limit how many Trips to delete.
+     * Limit how many Bookings to delete.
      */
     limit?: number
   }
 
   /**
-   * Trip without action
+   * Booking without action
    */
-  export type TripDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Trip
+     * Select specific fields to fetch from the Booking
      */
-    select?: TripSelect<ExtArgs> | null
+    select?: BookingSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Trip
+     * Omit specific fields from the Booking
      */
-    omit?: TripOmit<ExtArgs> | null
+    omit?: BookingOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TripInclude<ExtArgs> | null
+    include?: BookingInclude<ExtArgs> | null
   }
 
 
@@ -4548,21 +4645,20 @@ export namespace Prisma {
   export type ProvinceScalarFieldEnum = (typeof ProvinceScalarFieldEnum)[keyof typeof ProvinceScalarFieldEnum]
 
 
-  export const TripScalarFieldEnum: {
+  export const BookingScalarFieldEnum: {
     id: 'id',
+    userId: 'userId',
     fromProvinceId: 'fromProvinceId',
     toProvinceId: 'toProvinceId',
-    date: 'date',
-    departureTime: 'departureTime',
-    price: 'price',
-    totalSeats: 'totalSeats',
-    availableSeats: 'availableSeats',
-    busNumber: 'busNumber',
-    plateNumber: 'plateNumber',
+    travelDate: 'travelDate',
+    timeLabel: 'timeLabel',
+    startTime: 'startTime',
+    endTime: 'endTime',
+    tickets: 'tickets',
     createdAt: 'createdAt'
   };
 
-  export type TripScalarFieldEnum = (typeof TripScalarFieldEnum)[keyof typeof TripScalarFieldEnum]
+  export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4676,6 +4772,7 @@ export namespace Prisma {
     otp?: StringNullableFilter<"User"> | string | null
     otpExpires?: DateTimeNullableFilter<"User"> | Date | string | null
     isVerified?: BoolFilter<"User"> | boolean
+    bookings?: BookingListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -4691,6 +4788,7 @@ export namespace Prisma {
     otp?: SortOrderInput | SortOrder
     otpExpires?: SortOrderInput | SortOrder
     isVerified?: SortOrder
+    bookings?: BookingOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -4709,6 +4807,7 @@ export namespace Prisma {
     otp?: StringNullableFilter<"User"> | string | null
     otpExpires?: DateTimeNullableFilter<"User"> | Date | string | null
     isVerified?: BoolFilter<"User"> | boolean
+    bookings?: BookingListRelationFilter
   }, "id" | "email" | "googleId">
 
   export type UserOrderByWithAggregationInput = {
@@ -4756,16 +4855,16 @@ export namespace Prisma {
     id?: IntFilter<"Province"> | number
     name?: StringFilter<"Province"> | string
     image?: StringFilter<"Province"> | string
-    fromTrips?: TripListRelationFilter
-    toTrips?: TripListRelationFilter
+    fromBookings?: BookingListRelationFilter
+    toBookings?: BookingListRelationFilter
   }
 
   export type ProvinceOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     image?: SortOrder
-    fromTrips?: TripOrderByRelationAggregateInput
-    toTrips?: TripOrderByRelationAggregateInput
+    fromBookings?: BookingOrderByRelationAggregateInput
+    toBookings?: BookingOrderByRelationAggregateInput
   }
 
   export type ProvinceWhereUniqueInput = Prisma.AtLeast<{
@@ -4775,8 +4874,8 @@ export namespace Prisma {
     OR?: ProvinceWhereInput[]
     NOT?: ProvinceWhereInput | ProvinceWhereInput[]
     image?: StringFilter<"Province"> | string
-    fromTrips?: TripListRelationFilter
-    toTrips?: TripListRelationFilter
+    fromBookings?: BookingListRelationFilter
+    toBookings?: BookingListRelationFilter
   }, "id" | "name">
 
   export type ProvinceOrderByWithAggregationInput = {
@@ -4799,94 +4898,92 @@ export namespace Prisma {
     image?: StringWithAggregatesFilter<"Province"> | string
   }
 
-  export type TripWhereInput = {
-    AND?: TripWhereInput | TripWhereInput[]
-    OR?: TripWhereInput[]
-    NOT?: TripWhereInput | TripWhereInput[]
-    id?: IntFilter<"Trip"> | number
-    fromProvinceId?: IntFilter<"Trip"> | number
-    toProvinceId?: IntFilter<"Trip"> | number
-    date?: DateTimeFilter<"Trip"> | Date | string
-    departureTime?: DateTimeFilter<"Trip"> | Date | string
-    price?: FloatFilter<"Trip"> | number
-    totalSeats?: IntFilter<"Trip"> | number
-    availableSeats?: IntFilter<"Trip"> | number
-    busNumber?: StringNullableFilter<"Trip"> | string | null
-    plateNumber?: StringNullableFilter<"Trip"> | string | null
-    createdAt?: DateTimeFilter<"Trip"> | Date | string
+  export type BookingWhereInput = {
+    AND?: BookingWhereInput | BookingWhereInput[]
+    OR?: BookingWhereInput[]
+    NOT?: BookingWhereInput | BookingWhereInput[]
+    id?: IntFilter<"Booking"> | number
+    userId?: IntFilter<"Booking"> | number
+    fromProvinceId?: IntFilter<"Booking"> | number
+    toProvinceId?: IntFilter<"Booking"> | number
+    travelDate?: DateTimeFilter<"Booking"> | Date | string
+    timeLabel?: StringFilter<"Booking"> | string
+    startTime?: StringFilter<"Booking"> | string
+    endTime?: StringFilter<"Booking"> | string
+    tickets?: IntFilter<"Booking"> | number
+    createdAt?: DateTimeFilter<"Booking"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     fromProvince?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
     toProvince?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
   }
 
-  export type TripOrderByWithRelationInput = {
+  export type BookingOrderByWithRelationInput = {
     id?: SortOrder
+    userId?: SortOrder
     fromProvinceId?: SortOrder
     toProvinceId?: SortOrder
-    date?: SortOrder
-    departureTime?: SortOrder
-    price?: SortOrder
-    totalSeats?: SortOrder
-    availableSeats?: SortOrder
-    busNumber?: SortOrderInput | SortOrder
-    plateNumber?: SortOrderInput | SortOrder
+    travelDate?: SortOrder
+    timeLabel?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    tickets?: SortOrder
     createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
     fromProvince?: ProvinceOrderByWithRelationInput
     toProvince?: ProvinceOrderByWithRelationInput
   }
 
-  export type TripWhereUniqueInput = Prisma.AtLeast<{
+  export type BookingWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: TripWhereInput | TripWhereInput[]
-    OR?: TripWhereInput[]
-    NOT?: TripWhereInput | TripWhereInput[]
-    fromProvinceId?: IntFilter<"Trip"> | number
-    toProvinceId?: IntFilter<"Trip"> | number
-    date?: DateTimeFilter<"Trip"> | Date | string
-    departureTime?: DateTimeFilter<"Trip"> | Date | string
-    price?: FloatFilter<"Trip"> | number
-    totalSeats?: IntFilter<"Trip"> | number
-    availableSeats?: IntFilter<"Trip"> | number
-    busNumber?: StringNullableFilter<"Trip"> | string | null
-    plateNumber?: StringNullableFilter<"Trip"> | string | null
-    createdAt?: DateTimeFilter<"Trip"> | Date | string
+    AND?: BookingWhereInput | BookingWhereInput[]
+    OR?: BookingWhereInput[]
+    NOT?: BookingWhereInput | BookingWhereInput[]
+    userId?: IntFilter<"Booking"> | number
+    fromProvinceId?: IntFilter<"Booking"> | number
+    toProvinceId?: IntFilter<"Booking"> | number
+    travelDate?: DateTimeFilter<"Booking"> | Date | string
+    timeLabel?: StringFilter<"Booking"> | string
+    startTime?: StringFilter<"Booking"> | string
+    endTime?: StringFilter<"Booking"> | string
+    tickets?: IntFilter<"Booking"> | number
+    createdAt?: DateTimeFilter<"Booking"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     fromProvince?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
     toProvince?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
   }, "id">
 
-  export type TripOrderByWithAggregationInput = {
+  export type BookingOrderByWithAggregationInput = {
     id?: SortOrder
+    userId?: SortOrder
     fromProvinceId?: SortOrder
     toProvinceId?: SortOrder
-    date?: SortOrder
-    departureTime?: SortOrder
-    price?: SortOrder
-    totalSeats?: SortOrder
-    availableSeats?: SortOrder
-    busNumber?: SortOrderInput | SortOrder
-    plateNumber?: SortOrderInput | SortOrder
+    travelDate?: SortOrder
+    timeLabel?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    tickets?: SortOrder
     createdAt?: SortOrder
-    _count?: TripCountOrderByAggregateInput
-    _avg?: TripAvgOrderByAggregateInput
-    _max?: TripMaxOrderByAggregateInput
-    _min?: TripMinOrderByAggregateInput
-    _sum?: TripSumOrderByAggregateInput
+    _count?: BookingCountOrderByAggregateInput
+    _avg?: BookingAvgOrderByAggregateInput
+    _max?: BookingMaxOrderByAggregateInput
+    _min?: BookingMinOrderByAggregateInput
+    _sum?: BookingSumOrderByAggregateInput
   }
 
-  export type TripScalarWhereWithAggregatesInput = {
-    AND?: TripScalarWhereWithAggregatesInput | TripScalarWhereWithAggregatesInput[]
-    OR?: TripScalarWhereWithAggregatesInput[]
-    NOT?: TripScalarWhereWithAggregatesInput | TripScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Trip"> | number
-    fromProvinceId?: IntWithAggregatesFilter<"Trip"> | number
-    toProvinceId?: IntWithAggregatesFilter<"Trip"> | number
-    date?: DateTimeWithAggregatesFilter<"Trip"> | Date | string
-    departureTime?: DateTimeWithAggregatesFilter<"Trip"> | Date | string
-    price?: FloatWithAggregatesFilter<"Trip"> | number
-    totalSeats?: IntWithAggregatesFilter<"Trip"> | number
-    availableSeats?: IntWithAggregatesFilter<"Trip"> | number
-    busNumber?: StringNullableWithAggregatesFilter<"Trip"> | string | null
-    plateNumber?: StringNullableWithAggregatesFilter<"Trip"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"Trip"> | Date | string
+  export type BookingScalarWhereWithAggregatesInput = {
+    AND?: BookingScalarWhereWithAggregatesInput | BookingScalarWhereWithAggregatesInput[]
+    OR?: BookingScalarWhereWithAggregatesInput[]
+    NOT?: BookingScalarWhereWithAggregatesInput | BookingScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Booking"> | number
+    userId?: IntWithAggregatesFilter<"Booking"> | number
+    fromProvinceId?: IntWithAggregatesFilter<"Booking"> | number
+    toProvinceId?: IntWithAggregatesFilter<"Booking"> | number
+    travelDate?: DateTimeWithAggregatesFilter<"Booking"> | Date | string
+    timeLabel?: StringWithAggregatesFilter<"Booking"> | string
+    startTime?: StringWithAggregatesFilter<"Booking"> | string
+    endTime?: StringWithAggregatesFilter<"Booking"> | string
+    tickets?: IntWithAggregatesFilter<"Booking"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Booking"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -4901,6 +4998,7 @@ export namespace Prisma {
     otp?: string | null
     otpExpires?: Date | string | null
     isVerified?: boolean
+    bookings?: BookingCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -4916,6 +5014,7 @@ export namespace Prisma {
     otp?: string | null
     otpExpires?: Date | string | null
     isVerified?: boolean
+    bookings?: BookingUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -4930,6 +5029,7 @@ export namespace Prisma {
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    bookings?: BookingUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -4945,6 +5045,7 @@ export namespace Prisma {
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    bookings?: BookingUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -4994,31 +5095,31 @@ export namespace Prisma {
   export type ProvinceCreateInput = {
     name: string
     image: string
-    fromTrips?: TripCreateNestedManyWithoutFromProvinceInput
-    toTrips?: TripCreateNestedManyWithoutToProvinceInput
+    fromBookings?: BookingCreateNestedManyWithoutFromProvinceInput
+    toBookings?: BookingCreateNestedManyWithoutToProvinceInput
   }
 
   export type ProvinceUncheckedCreateInput = {
     id?: number
     name: string
     image: string
-    fromTrips?: TripUncheckedCreateNestedManyWithoutFromProvinceInput
-    toTrips?: TripUncheckedCreateNestedManyWithoutToProvinceInput
+    fromBookings?: BookingUncheckedCreateNestedManyWithoutFromProvinceInput
+    toBookings?: BookingUncheckedCreateNestedManyWithoutToProvinceInput
   }
 
   export type ProvinceUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
-    fromTrips?: TripUpdateManyWithoutFromProvinceNestedInput
-    toTrips?: TripUpdateManyWithoutToProvinceNestedInput
+    fromBookings?: BookingUpdateManyWithoutFromProvinceNestedInput
+    toBookings?: BookingUpdateManyWithoutToProvinceNestedInput
   }
 
   export type ProvinceUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
-    fromTrips?: TripUncheckedUpdateManyWithoutFromProvinceNestedInput
-    toTrips?: TripUncheckedUpdateManyWithoutToProvinceNestedInput
+    fromBookings?: BookingUncheckedUpdateManyWithoutFromProvinceNestedInput
+    toBookings?: BookingUncheckedUpdateManyWithoutToProvinceNestedInput
   }
 
   export type ProvinceCreateManyInput = {
@@ -5038,96 +5139,88 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
   }
 
-  export type TripCreateInput = {
-    date: Date | string
-    departureTime: Date | string
-    price: number
-    totalSeats: number
-    availableSeats: number
-    busNumber?: string | null
-    plateNumber?: string | null
+  export type BookingCreateInput = {
+    travelDate: Date | string
+    timeLabel: string
+    startTime: string
+    endTime: string
+    tickets: number
     createdAt?: Date | string
-    fromProvince: ProvinceCreateNestedOneWithoutFromTripsInput
-    toProvince: ProvinceCreateNestedOneWithoutToTripsInput
+    user: UserCreateNestedOneWithoutBookingsInput
+    fromProvince: ProvinceCreateNestedOneWithoutFromBookingsInput
+    toProvince: ProvinceCreateNestedOneWithoutToBookingsInput
   }
 
-  export type TripUncheckedCreateInput = {
+  export type BookingUncheckedCreateInput = {
     id?: number
+    userId: number
     fromProvinceId: number
     toProvinceId: number
-    date: Date | string
-    departureTime: Date | string
-    price: number
-    totalSeats: number
-    availableSeats: number
-    busNumber?: string | null
-    plateNumber?: string | null
+    travelDate: Date | string
+    timeLabel: string
+    startTime: string
+    endTime: string
+    tickets: number
     createdAt?: Date | string
   }
 
-  export type TripUpdateInput = {
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    departureTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: FloatFieldUpdateOperationsInput | number
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    availableSeats?: IntFieldUpdateOperationsInput | number
-    busNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    plateNumber?: NullableStringFieldUpdateOperationsInput | string | null
+  export type BookingUpdateInput = {
+    travelDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeLabel?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    tickets?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    fromProvince?: ProvinceUpdateOneRequiredWithoutFromTripsNestedInput
-    toProvince?: ProvinceUpdateOneRequiredWithoutToTripsNestedInput
+    user?: UserUpdateOneRequiredWithoutBookingsNestedInput
+    fromProvince?: ProvinceUpdateOneRequiredWithoutFromBookingsNestedInput
+    toProvince?: ProvinceUpdateOneRequiredWithoutToBookingsNestedInput
   }
 
-  export type TripUncheckedUpdateInput = {
+  export type BookingUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
     fromProvinceId?: IntFieldUpdateOperationsInput | number
     toProvinceId?: IntFieldUpdateOperationsInput | number
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    departureTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: FloatFieldUpdateOperationsInput | number
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    availableSeats?: IntFieldUpdateOperationsInput | number
-    busNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    plateNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    travelDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeLabel?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    tickets?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TripCreateManyInput = {
+  export type BookingCreateManyInput = {
     id?: number
+    userId: number
     fromProvinceId: number
     toProvinceId: number
-    date: Date | string
-    departureTime: Date | string
-    price: number
-    totalSeats: number
-    availableSeats: number
-    busNumber?: string | null
-    plateNumber?: string | null
+    travelDate: Date | string
+    timeLabel: string
+    startTime: string
+    endTime: string
+    tickets: number
     createdAt?: Date | string
   }
 
-  export type TripUpdateManyMutationInput = {
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    departureTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: FloatFieldUpdateOperationsInput | number
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    availableSeats?: IntFieldUpdateOperationsInput | number
-    busNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    plateNumber?: NullableStringFieldUpdateOperationsInput | string | null
+  export type BookingUpdateManyMutationInput = {
+    travelDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeLabel?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    tickets?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TripUncheckedUpdateManyInput = {
+  export type BookingUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
     fromProvinceId?: IntFieldUpdateOperationsInput | number
     toProvinceId?: IntFieldUpdateOperationsInput | number
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    departureTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: FloatFieldUpdateOperationsInput | number
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    availableSeats?: IntFieldUpdateOperationsInput | number
-    busNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    plateNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    travelDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeLabel?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    tickets?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5199,9 +5292,19 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type BookingListRelationFilter = {
+    every?: BookingWhereInput
+    some?: BookingWhereInput
+    none?: BookingWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type BookingOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -5345,16 +5448,6 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type TripListRelationFilter = {
-    every?: TripWhereInput
-    some?: TripWhereInput
-    none?: TripWhereInput
-  }
-
-  export type TripOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type ProvinceCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -5381,15 +5474,9 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
   }
 
   export type ProvinceScalarRelationFilter = {
@@ -5397,80 +5484,73 @@ export namespace Prisma {
     isNot?: ProvinceWhereInput
   }
 
-  export type TripCountOrderByAggregateInput = {
+  export type BookingCountOrderByAggregateInput = {
     id?: SortOrder
+    userId?: SortOrder
     fromProvinceId?: SortOrder
     toProvinceId?: SortOrder
-    date?: SortOrder
-    departureTime?: SortOrder
-    price?: SortOrder
-    totalSeats?: SortOrder
-    availableSeats?: SortOrder
-    busNumber?: SortOrder
-    plateNumber?: SortOrder
+    travelDate?: SortOrder
+    timeLabel?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    tickets?: SortOrder
     createdAt?: SortOrder
   }
 
-  export type TripAvgOrderByAggregateInput = {
+  export type BookingAvgOrderByAggregateInput = {
     id?: SortOrder
+    userId?: SortOrder
     fromProvinceId?: SortOrder
     toProvinceId?: SortOrder
-    price?: SortOrder
-    totalSeats?: SortOrder
-    availableSeats?: SortOrder
+    tickets?: SortOrder
   }
 
-  export type TripMaxOrderByAggregateInput = {
+  export type BookingMaxOrderByAggregateInput = {
     id?: SortOrder
+    userId?: SortOrder
     fromProvinceId?: SortOrder
     toProvinceId?: SortOrder
-    date?: SortOrder
-    departureTime?: SortOrder
-    price?: SortOrder
-    totalSeats?: SortOrder
-    availableSeats?: SortOrder
-    busNumber?: SortOrder
-    plateNumber?: SortOrder
+    travelDate?: SortOrder
+    timeLabel?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    tickets?: SortOrder
     createdAt?: SortOrder
   }
 
-  export type TripMinOrderByAggregateInput = {
+  export type BookingMinOrderByAggregateInput = {
     id?: SortOrder
+    userId?: SortOrder
     fromProvinceId?: SortOrder
     toProvinceId?: SortOrder
-    date?: SortOrder
-    departureTime?: SortOrder
-    price?: SortOrder
-    totalSeats?: SortOrder
-    availableSeats?: SortOrder
-    busNumber?: SortOrder
-    plateNumber?: SortOrder
+    travelDate?: SortOrder
+    timeLabel?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    tickets?: SortOrder
     createdAt?: SortOrder
   }
 
-  export type TripSumOrderByAggregateInput = {
+  export type BookingSumOrderByAggregateInput = {
     id?: SortOrder
+    userId?: SortOrder
     fromProvinceId?: SortOrder
     toProvinceId?: SortOrder
-    price?: SortOrder
-    totalSeats?: SortOrder
-    availableSeats?: SortOrder
+    tickets?: SortOrder
   }
 
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
+  export type BookingCreateNestedManyWithoutUserInput = {
+    create?: XOR<BookingCreateWithoutUserInput, BookingUncheckedCreateWithoutUserInput> | BookingCreateWithoutUserInput[] | BookingUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutUserInput | BookingCreateOrConnectWithoutUserInput[]
+    createMany?: BookingCreateManyUserInputEnvelope
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+  }
+
+  export type BookingUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<BookingCreateWithoutUserInput, BookingUncheckedCreateWithoutUserInput> | BookingCreateWithoutUserInput[] | BookingUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutUserInput | BookingCreateOrConnectWithoutUserInput[]
+    createMany?: BookingCreateManyUserInputEnvelope
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -5493,6 +5573,20 @@ export namespace Prisma {
     set?: boolean
   }
 
+  export type BookingUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BookingCreateWithoutUserInput, BookingUncheckedCreateWithoutUserInput> | BookingCreateWithoutUserInput[] | BookingUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutUserInput | BookingCreateOrConnectWithoutUserInput[]
+    upsert?: BookingUpsertWithWhereUniqueWithoutUserInput | BookingUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BookingCreateManyUserInputEnvelope
+    set?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    disconnect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    delete?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    update?: BookingUpdateWithWhereUniqueWithoutUserInput | BookingUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BookingUpdateManyWithWhereWithoutUserInput | BookingUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -5501,124 +5595,144 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type TripCreateNestedManyWithoutFromProvinceInput = {
-    create?: XOR<TripCreateWithoutFromProvinceInput, TripUncheckedCreateWithoutFromProvinceInput> | TripCreateWithoutFromProvinceInput[] | TripUncheckedCreateWithoutFromProvinceInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutFromProvinceInput | TripCreateOrConnectWithoutFromProvinceInput[]
-    createMany?: TripCreateManyFromProvinceInputEnvelope
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
+  export type BookingUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BookingCreateWithoutUserInput, BookingUncheckedCreateWithoutUserInput> | BookingCreateWithoutUserInput[] | BookingUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutUserInput | BookingCreateOrConnectWithoutUserInput[]
+    upsert?: BookingUpsertWithWhereUniqueWithoutUserInput | BookingUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BookingCreateManyUserInputEnvelope
+    set?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    disconnect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    delete?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    update?: BookingUpdateWithWhereUniqueWithoutUserInput | BookingUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BookingUpdateManyWithWhereWithoutUserInput | BookingUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
   }
 
-  export type TripCreateNestedManyWithoutToProvinceInput = {
-    create?: XOR<TripCreateWithoutToProvinceInput, TripUncheckedCreateWithoutToProvinceInput> | TripCreateWithoutToProvinceInput[] | TripUncheckedCreateWithoutToProvinceInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutToProvinceInput | TripCreateOrConnectWithoutToProvinceInput[]
-    createMany?: TripCreateManyToProvinceInputEnvelope
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
+  export type BookingCreateNestedManyWithoutFromProvinceInput = {
+    create?: XOR<BookingCreateWithoutFromProvinceInput, BookingUncheckedCreateWithoutFromProvinceInput> | BookingCreateWithoutFromProvinceInput[] | BookingUncheckedCreateWithoutFromProvinceInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutFromProvinceInput | BookingCreateOrConnectWithoutFromProvinceInput[]
+    createMany?: BookingCreateManyFromProvinceInputEnvelope
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
   }
 
-  export type TripUncheckedCreateNestedManyWithoutFromProvinceInput = {
-    create?: XOR<TripCreateWithoutFromProvinceInput, TripUncheckedCreateWithoutFromProvinceInput> | TripCreateWithoutFromProvinceInput[] | TripUncheckedCreateWithoutFromProvinceInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutFromProvinceInput | TripCreateOrConnectWithoutFromProvinceInput[]
-    createMany?: TripCreateManyFromProvinceInputEnvelope
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
+  export type BookingCreateNestedManyWithoutToProvinceInput = {
+    create?: XOR<BookingCreateWithoutToProvinceInput, BookingUncheckedCreateWithoutToProvinceInput> | BookingCreateWithoutToProvinceInput[] | BookingUncheckedCreateWithoutToProvinceInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutToProvinceInput | BookingCreateOrConnectWithoutToProvinceInput[]
+    createMany?: BookingCreateManyToProvinceInputEnvelope
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
   }
 
-  export type TripUncheckedCreateNestedManyWithoutToProvinceInput = {
-    create?: XOR<TripCreateWithoutToProvinceInput, TripUncheckedCreateWithoutToProvinceInput> | TripCreateWithoutToProvinceInput[] | TripUncheckedCreateWithoutToProvinceInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutToProvinceInput | TripCreateOrConnectWithoutToProvinceInput[]
-    createMany?: TripCreateManyToProvinceInputEnvelope
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
+  export type BookingUncheckedCreateNestedManyWithoutFromProvinceInput = {
+    create?: XOR<BookingCreateWithoutFromProvinceInput, BookingUncheckedCreateWithoutFromProvinceInput> | BookingCreateWithoutFromProvinceInput[] | BookingUncheckedCreateWithoutFromProvinceInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutFromProvinceInput | BookingCreateOrConnectWithoutFromProvinceInput[]
+    createMany?: BookingCreateManyFromProvinceInputEnvelope
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
   }
 
-  export type TripUpdateManyWithoutFromProvinceNestedInput = {
-    create?: XOR<TripCreateWithoutFromProvinceInput, TripUncheckedCreateWithoutFromProvinceInput> | TripCreateWithoutFromProvinceInput[] | TripUncheckedCreateWithoutFromProvinceInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutFromProvinceInput | TripCreateOrConnectWithoutFromProvinceInput[]
-    upsert?: TripUpsertWithWhereUniqueWithoutFromProvinceInput | TripUpsertWithWhereUniqueWithoutFromProvinceInput[]
-    createMany?: TripCreateManyFromProvinceInputEnvelope
-    set?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    disconnect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    delete?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    update?: TripUpdateWithWhereUniqueWithoutFromProvinceInput | TripUpdateWithWhereUniqueWithoutFromProvinceInput[]
-    updateMany?: TripUpdateManyWithWhereWithoutFromProvinceInput | TripUpdateManyWithWhereWithoutFromProvinceInput[]
-    deleteMany?: TripScalarWhereInput | TripScalarWhereInput[]
+  export type BookingUncheckedCreateNestedManyWithoutToProvinceInput = {
+    create?: XOR<BookingCreateWithoutToProvinceInput, BookingUncheckedCreateWithoutToProvinceInput> | BookingCreateWithoutToProvinceInput[] | BookingUncheckedCreateWithoutToProvinceInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutToProvinceInput | BookingCreateOrConnectWithoutToProvinceInput[]
+    createMany?: BookingCreateManyToProvinceInputEnvelope
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
   }
 
-  export type TripUpdateManyWithoutToProvinceNestedInput = {
-    create?: XOR<TripCreateWithoutToProvinceInput, TripUncheckedCreateWithoutToProvinceInput> | TripCreateWithoutToProvinceInput[] | TripUncheckedCreateWithoutToProvinceInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutToProvinceInput | TripCreateOrConnectWithoutToProvinceInput[]
-    upsert?: TripUpsertWithWhereUniqueWithoutToProvinceInput | TripUpsertWithWhereUniqueWithoutToProvinceInput[]
-    createMany?: TripCreateManyToProvinceInputEnvelope
-    set?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    disconnect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    delete?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    update?: TripUpdateWithWhereUniqueWithoutToProvinceInput | TripUpdateWithWhereUniqueWithoutToProvinceInput[]
-    updateMany?: TripUpdateManyWithWhereWithoutToProvinceInput | TripUpdateManyWithWhereWithoutToProvinceInput[]
-    deleteMany?: TripScalarWhereInput | TripScalarWhereInput[]
+  export type BookingUpdateManyWithoutFromProvinceNestedInput = {
+    create?: XOR<BookingCreateWithoutFromProvinceInput, BookingUncheckedCreateWithoutFromProvinceInput> | BookingCreateWithoutFromProvinceInput[] | BookingUncheckedCreateWithoutFromProvinceInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutFromProvinceInput | BookingCreateOrConnectWithoutFromProvinceInput[]
+    upsert?: BookingUpsertWithWhereUniqueWithoutFromProvinceInput | BookingUpsertWithWhereUniqueWithoutFromProvinceInput[]
+    createMany?: BookingCreateManyFromProvinceInputEnvelope
+    set?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    disconnect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    delete?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    update?: BookingUpdateWithWhereUniqueWithoutFromProvinceInput | BookingUpdateWithWhereUniqueWithoutFromProvinceInput[]
+    updateMany?: BookingUpdateManyWithWhereWithoutFromProvinceInput | BookingUpdateManyWithWhereWithoutFromProvinceInput[]
+    deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
   }
 
-  export type TripUncheckedUpdateManyWithoutFromProvinceNestedInput = {
-    create?: XOR<TripCreateWithoutFromProvinceInput, TripUncheckedCreateWithoutFromProvinceInput> | TripCreateWithoutFromProvinceInput[] | TripUncheckedCreateWithoutFromProvinceInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutFromProvinceInput | TripCreateOrConnectWithoutFromProvinceInput[]
-    upsert?: TripUpsertWithWhereUniqueWithoutFromProvinceInput | TripUpsertWithWhereUniqueWithoutFromProvinceInput[]
-    createMany?: TripCreateManyFromProvinceInputEnvelope
-    set?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    disconnect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    delete?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    update?: TripUpdateWithWhereUniqueWithoutFromProvinceInput | TripUpdateWithWhereUniqueWithoutFromProvinceInput[]
-    updateMany?: TripUpdateManyWithWhereWithoutFromProvinceInput | TripUpdateManyWithWhereWithoutFromProvinceInput[]
-    deleteMany?: TripScalarWhereInput | TripScalarWhereInput[]
+  export type BookingUpdateManyWithoutToProvinceNestedInput = {
+    create?: XOR<BookingCreateWithoutToProvinceInput, BookingUncheckedCreateWithoutToProvinceInput> | BookingCreateWithoutToProvinceInput[] | BookingUncheckedCreateWithoutToProvinceInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutToProvinceInput | BookingCreateOrConnectWithoutToProvinceInput[]
+    upsert?: BookingUpsertWithWhereUniqueWithoutToProvinceInput | BookingUpsertWithWhereUniqueWithoutToProvinceInput[]
+    createMany?: BookingCreateManyToProvinceInputEnvelope
+    set?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    disconnect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    delete?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    update?: BookingUpdateWithWhereUniqueWithoutToProvinceInput | BookingUpdateWithWhereUniqueWithoutToProvinceInput[]
+    updateMany?: BookingUpdateManyWithWhereWithoutToProvinceInput | BookingUpdateManyWithWhereWithoutToProvinceInput[]
+    deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
   }
 
-  export type TripUncheckedUpdateManyWithoutToProvinceNestedInput = {
-    create?: XOR<TripCreateWithoutToProvinceInput, TripUncheckedCreateWithoutToProvinceInput> | TripCreateWithoutToProvinceInput[] | TripUncheckedCreateWithoutToProvinceInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutToProvinceInput | TripCreateOrConnectWithoutToProvinceInput[]
-    upsert?: TripUpsertWithWhereUniqueWithoutToProvinceInput | TripUpsertWithWhereUniqueWithoutToProvinceInput[]
-    createMany?: TripCreateManyToProvinceInputEnvelope
-    set?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    disconnect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    delete?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    update?: TripUpdateWithWhereUniqueWithoutToProvinceInput | TripUpdateWithWhereUniqueWithoutToProvinceInput[]
-    updateMany?: TripUpdateManyWithWhereWithoutToProvinceInput | TripUpdateManyWithWhereWithoutToProvinceInput[]
-    deleteMany?: TripScalarWhereInput | TripScalarWhereInput[]
+  export type BookingUncheckedUpdateManyWithoutFromProvinceNestedInput = {
+    create?: XOR<BookingCreateWithoutFromProvinceInput, BookingUncheckedCreateWithoutFromProvinceInput> | BookingCreateWithoutFromProvinceInput[] | BookingUncheckedCreateWithoutFromProvinceInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutFromProvinceInput | BookingCreateOrConnectWithoutFromProvinceInput[]
+    upsert?: BookingUpsertWithWhereUniqueWithoutFromProvinceInput | BookingUpsertWithWhereUniqueWithoutFromProvinceInput[]
+    createMany?: BookingCreateManyFromProvinceInputEnvelope
+    set?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    disconnect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    delete?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    update?: BookingUpdateWithWhereUniqueWithoutFromProvinceInput | BookingUpdateWithWhereUniqueWithoutFromProvinceInput[]
+    updateMany?: BookingUpdateManyWithWhereWithoutFromProvinceInput | BookingUpdateManyWithWhereWithoutFromProvinceInput[]
+    deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
   }
 
-  export type ProvinceCreateNestedOneWithoutFromTripsInput = {
-    create?: XOR<ProvinceCreateWithoutFromTripsInput, ProvinceUncheckedCreateWithoutFromTripsInput>
-    connectOrCreate?: ProvinceCreateOrConnectWithoutFromTripsInput
+  export type BookingUncheckedUpdateManyWithoutToProvinceNestedInput = {
+    create?: XOR<BookingCreateWithoutToProvinceInput, BookingUncheckedCreateWithoutToProvinceInput> | BookingCreateWithoutToProvinceInput[] | BookingUncheckedCreateWithoutToProvinceInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutToProvinceInput | BookingCreateOrConnectWithoutToProvinceInput[]
+    upsert?: BookingUpsertWithWhereUniqueWithoutToProvinceInput | BookingUpsertWithWhereUniqueWithoutToProvinceInput[]
+    createMany?: BookingCreateManyToProvinceInputEnvelope
+    set?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    disconnect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    delete?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    update?: BookingUpdateWithWhereUniqueWithoutToProvinceInput | BookingUpdateWithWhereUniqueWithoutToProvinceInput[]
+    updateMany?: BookingUpdateManyWithWhereWithoutToProvinceInput | BookingUpdateManyWithWhereWithoutToProvinceInput[]
+    deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutBookingsInput = {
+    create?: XOR<UserCreateWithoutBookingsInput, UserUncheckedCreateWithoutBookingsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBookingsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ProvinceCreateNestedOneWithoutFromBookingsInput = {
+    create?: XOR<ProvinceCreateWithoutFromBookingsInput, ProvinceUncheckedCreateWithoutFromBookingsInput>
+    connectOrCreate?: ProvinceCreateOrConnectWithoutFromBookingsInput
     connect?: ProvinceWhereUniqueInput
   }
 
-  export type ProvinceCreateNestedOneWithoutToTripsInput = {
-    create?: XOR<ProvinceCreateWithoutToTripsInput, ProvinceUncheckedCreateWithoutToTripsInput>
-    connectOrCreate?: ProvinceCreateOrConnectWithoutToTripsInput
+  export type ProvinceCreateNestedOneWithoutToBookingsInput = {
+    create?: XOR<ProvinceCreateWithoutToBookingsInput, ProvinceUncheckedCreateWithoutToBookingsInput>
+    connectOrCreate?: ProvinceCreateOrConnectWithoutToBookingsInput
     connect?: ProvinceWhereUniqueInput
   }
 
-  export type FloatFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type UserUpdateOneRequiredWithoutBookingsNestedInput = {
+    create?: XOR<UserCreateWithoutBookingsInput, UserUncheckedCreateWithoutBookingsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBookingsInput
+    upsert?: UserUpsertWithoutBookingsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBookingsInput, UserUpdateWithoutBookingsInput>, UserUncheckedUpdateWithoutBookingsInput>
   }
 
-  export type ProvinceUpdateOneRequiredWithoutFromTripsNestedInput = {
-    create?: XOR<ProvinceCreateWithoutFromTripsInput, ProvinceUncheckedCreateWithoutFromTripsInput>
-    connectOrCreate?: ProvinceCreateOrConnectWithoutFromTripsInput
-    upsert?: ProvinceUpsertWithoutFromTripsInput
+  export type ProvinceUpdateOneRequiredWithoutFromBookingsNestedInput = {
+    create?: XOR<ProvinceCreateWithoutFromBookingsInput, ProvinceUncheckedCreateWithoutFromBookingsInput>
+    connectOrCreate?: ProvinceCreateOrConnectWithoutFromBookingsInput
+    upsert?: ProvinceUpsertWithoutFromBookingsInput
     connect?: ProvinceWhereUniqueInput
-    update?: XOR<XOR<ProvinceUpdateToOneWithWhereWithoutFromTripsInput, ProvinceUpdateWithoutFromTripsInput>, ProvinceUncheckedUpdateWithoutFromTripsInput>
+    update?: XOR<XOR<ProvinceUpdateToOneWithWhereWithoutFromBookingsInput, ProvinceUpdateWithoutFromBookingsInput>, ProvinceUncheckedUpdateWithoutFromBookingsInput>
   }
 
-  export type ProvinceUpdateOneRequiredWithoutToTripsNestedInput = {
-    create?: XOR<ProvinceCreateWithoutToTripsInput, ProvinceUncheckedCreateWithoutToTripsInput>
-    connectOrCreate?: ProvinceCreateOrConnectWithoutToTripsInput
-    upsert?: ProvinceUpsertWithoutToTripsInput
+  export type ProvinceUpdateOneRequiredWithoutToBookingsNestedInput = {
+    create?: XOR<ProvinceCreateWithoutToBookingsInput, ProvinceUncheckedCreateWithoutToBookingsInput>
+    connectOrCreate?: ProvinceCreateOrConnectWithoutToBookingsInput
+    upsert?: ProvinceUpsertWithoutToBookingsInput
     connect?: ProvinceWhereUniqueInput
-    update?: XOR<XOR<ProvinceUpdateToOneWithWhereWithoutToTripsInput, ProvinceUpdateWithoutToTripsInput>, ProvinceUncheckedUpdateWithoutToTripsInput>
+    update?: XOR<XOR<ProvinceUpdateToOneWithWhereWithoutToBookingsInput, ProvinceUpdateWithoutToBookingsInput>, ProvinceUncheckedUpdateWithoutToBookingsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -5795,324 +5909,465 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
-  }
-
-  export type TripCreateWithoutFromProvinceInput = {
-    date: Date | string
-    departureTime: Date | string
-    price: number
-    totalSeats: number
-    availableSeats: number
-    busNumber?: string | null
-    plateNumber?: string | null
+  export type BookingCreateWithoutUserInput = {
+    travelDate: Date | string
+    timeLabel: string
+    startTime: string
+    endTime: string
+    tickets: number
     createdAt?: Date | string
-    toProvince: ProvinceCreateNestedOneWithoutToTripsInput
+    fromProvince: ProvinceCreateNestedOneWithoutFromBookingsInput
+    toProvince: ProvinceCreateNestedOneWithoutToBookingsInput
   }
 
-  export type TripUncheckedCreateWithoutFromProvinceInput = {
+  export type BookingUncheckedCreateWithoutUserInput = {
     id?: number
+    fromProvinceId: number
     toProvinceId: number
-    date: Date | string
-    departureTime: Date | string
-    price: number
-    totalSeats: number
-    availableSeats: number
-    busNumber?: string | null
-    plateNumber?: string | null
+    travelDate: Date | string
+    timeLabel: string
+    startTime: string
+    endTime: string
+    tickets: number
     createdAt?: Date | string
   }
 
-  export type TripCreateOrConnectWithoutFromProvinceInput = {
-    where: TripWhereUniqueInput
-    create: XOR<TripCreateWithoutFromProvinceInput, TripUncheckedCreateWithoutFromProvinceInput>
+  export type BookingCreateOrConnectWithoutUserInput = {
+    where: BookingWhereUniqueInput
+    create: XOR<BookingCreateWithoutUserInput, BookingUncheckedCreateWithoutUserInput>
   }
 
-  export type TripCreateManyFromProvinceInputEnvelope = {
-    data: TripCreateManyFromProvinceInput | TripCreateManyFromProvinceInput[]
+  export type BookingCreateManyUserInputEnvelope = {
+    data: BookingCreateManyUserInput | BookingCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
-  export type TripCreateWithoutToProvinceInput = {
-    date: Date | string
-    departureTime: Date | string
-    price: number
-    totalSeats: number
-    availableSeats: number
-    busNumber?: string | null
-    plateNumber?: string | null
-    createdAt?: Date | string
-    fromProvince: ProvinceCreateNestedOneWithoutFromTripsInput
+  export type BookingUpsertWithWhereUniqueWithoutUserInput = {
+    where: BookingWhereUniqueInput
+    update: XOR<BookingUpdateWithoutUserInput, BookingUncheckedUpdateWithoutUserInput>
+    create: XOR<BookingCreateWithoutUserInput, BookingUncheckedCreateWithoutUserInput>
   }
 
-  export type TripUncheckedCreateWithoutToProvinceInput = {
+  export type BookingUpdateWithWhereUniqueWithoutUserInput = {
+    where: BookingWhereUniqueInput
+    data: XOR<BookingUpdateWithoutUserInput, BookingUncheckedUpdateWithoutUserInput>
+  }
+
+  export type BookingUpdateManyWithWhereWithoutUserInput = {
+    where: BookingScalarWhereInput
+    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type BookingScalarWhereInput = {
+    AND?: BookingScalarWhereInput | BookingScalarWhereInput[]
+    OR?: BookingScalarWhereInput[]
+    NOT?: BookingScalarWhereInput | BookingScalarWhereInput[]
+    id?: IntFilter<"Booking"> | number
+    userId?: IntFilter<"Booking"> | number
+    fromProvinceId?: IntFilter<"Booking"> | number
+    toProvinceId?: IntFilter<"Booking"> | number
+    travelDate?: DateTimeFilter<"Booking"> | Date | string
+    timeLabel?: StringFilter<"Booking"> | string
+    startTime?: StringFilter<"Booking"> | string
+    endTime?: StringFilter<"Booking"> | string
+    tickets?: IntFilter<"Booking"> | number
+    createdAt?: DateTimeFilter<"Booking"> | Date | string
+  }
+
+  export type BookingCreateWithoutFromProvinceInput = {
+    travelDate: Date | string
+    timeLabel: string
+    startTime: string
+    endTime: string
+    tickets: number
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutBookingsInput
+    toProvince: ProvinceCreateNestedOneWithoutToBookingsInput
+  }
+
+  export type BookingUncheckedCreateWithoutFromProvinceInput = {
     id?: number
-    fromProvinceId: number
-    date: Date | string
-    departureTime: Date | string
-    price: number
-    totalSeats: number
-    availableSeats: number
-    busNumber?: string | null
-    plateNumber?: string | null
+    userId: number
+    toProvinceId: number
+    travelDate: Date | string
+    timeLabel: string
+    startTime: string
+    endTime: string
+    tickets: number
     createdAt?: Date | string
   }
 
-  export type TripCreateOrConnectWithoutToProvinceInput = {
-    where: TripWhereUniqueInput
-    create: XOR<TripCreateWithoutToProvinceInput, TripUncheckedCreateWithoutToProvinceInput>
+  export type BookingCreateOrConnectWithoutFromProvinceInput = {
+    where: BookingWhereUniqueInput
+    create: XOR<BookingCreateWithoutFromProvinceInput, BookingUncheckedCreateWithoutFromProvinceInput>
   }
 
-  export type TripCreateManyToProvinceInputEnvelope = {
-    data: TripCreateManyToProvinceInput | TripCreateManyToProvinceInput[]
+  export type BookingCreateManyFromProvinceInputEnvelope = {
+    data: BookingCreateManyFromProvinceInput | BookingCreateManyFromProvinceInput[]
     skipDuplicates?: boolean
   }
 
-  export type TripUpsertWithWhereUniqueWithoutFromProvinceInput = {
-    where: TripWhereUniqueInput
-    update: XOR<TripUpdateWithoutFromProvinceInput, TripUncheckedUpdateWithoutFromProvinceInput>
-    create: XOR<TripCreateWithoutFromProvinceInput, TripUncheckedCreateWithoutFromProvinceInput>
+  export type BookingCreateWithoutToProvinceInput = {
+    travelDate: Date | string
+    timeLabel: string
+    startTime: string
+    endTime: string
+    tickets: number
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutBookingsInput
+    fromProvince: ProvinceCreateNestedOneWithoutFromBookingsInput
   }
 
-  export type TripUpdateWithWhereUniqueWithoutFromProvinceInput = {
-    where: TripWhereUniqueInput
-    data: XOR<TripUpdateWithoutFromProvinceInput, TripUncheckedUpdateWithoutFromProvinceInput>
-  }
-
-  export type TripUpdateManyWithWhereWithoutFromProvinceInput = {
-    where: TripScalarWhereInput
-    data: XOR<TripUpdateManyMutationInput, TripUncheckedUpdateManyWithoutFromProvinceInput>
-  }
-
-  export type TripScalarWhereInput = {
-    AND?: TripScalarWhereInput | TripScalarWhereInput[]
-    OR?: TripScalarWhereInput[]
-    NOT?: TripScalarWhereInput | TripScalarWhereInput[]
-    id?: IntFilter<"Trip"> | number
-    fromProvinceId?: IntFilter<"Trip"> | number
-    toProvinceId?: IntFilter<"Trip"> | number
-    date?: DateTimeFilter<"Trip"> | Date | string
-    departureTime?: DateTimeFilter<"Trip"> | Date | string
-    price?: FloatFilter<"Trip"> | number
-    totalSeats?: IntFilter<"Trip"> | number
-    availableSeats?: IntFilter<"Trip"> | number
-    busNumber?: StringNullableFilter<"Trip"> | string | null
-    plateNumber?: StringNullableFilter<"Trip"> | string | null
-    createdAt?: DateTimeFilter<"Trip"> | Date | string
-  }
-
-  export type TripUpsertWithWhereUniqueWithoutToProvinceInput = {
-    where: TripWhereUniqueInput
-    update: XOR<TripUpdateWithoutToProvinceInput, TripUncheckedUpdateWithoutToProvinceInput>
-    create: XOR<TripCreateWithoutToProvinceInput, TripUncheckedCreateWithoutToProvinceInput>
-  }
-
-  export type TripUpdateWithWhereUniqueWithoutToProvinceInput = {
-    where: TripWhereUniqueInput
-    data: XOR<TripUpdateWithoutToProvinceInput, TripUncheckedUpdateWithoutToProvinceInput>
-  }
-
-  export type TripUpdateManyWithWhereWithoutToProvinceInput = {
-    where: TripScalarWhereInput
-    data: XOR<TripUpdateManyMutationInput, TripUncheckedUpdateManyWithoutToProvinceInput>
-  }
-
-  export type ProvinceCreateWithoutFromTripsInput = {
-    name: string
-    image: string
-    toTrips?: TripCreateNestedManyWithoutToProvinceInput
-  }
-
-  export type ProvinceUncheckedCreateWithoutFromTripsInput = {
+  export type BookingUncheckedCreateWithoutToProvinceInput = {
     id?: number
-    name: string
-    image: string
-    toTrips?: TripUncheckedCreateNestedManyWithoutToProvinceInput
-  }
-
-  export type ProvinceCreateOrConnectWithoutFromTripsInput = {
-    where: ProvinceWhereUniqueInput
-    create: XOR<ProvinceCreateWithoutFromTripsInput, ProvinceUncheckedCreateWithoutFromTripsInput>
-  }
-
-  export type ProvinceCreateWithoutToTripsInput = {
-    name: string
-    image: string
-    fromTrips?: TripCreateNestedManyWithoutFromProvinceInput
-  }
-
-  export type ProvinceUncheckedCreateWithoutToTripsInput = {
-    id?: number
-    name: string
-    image: string
-    fromTrips?: TripUncheckedCreateNestedManyWithoutFromProvinceInput
-  }
-
-  export type ProvinceCreateOrConnectWithoutToTripsInput = {
-    where: ProvinceWhereUniqueInput
-    create: XOR<ProvinceCreateWithoutToTripsInput, ProvinceUncheckedCreateWithoutToTripsInput>
-  }
-
-  export type ProvinceUpsertWithoutFromTripsInput = {
-    update: XOR<ProvinceUpdateWithoutFromTripsInput, ProvinceUncheckedUpdateWithoutFromTripsInput>
-    create: XOR<ProvinceCreateWithoutFromTripsInput, ProvinceUncheckedCreateWithoutFromTripsInput>
-    where?: ProvinceWhereInput
-  }
-
-  export type ProvinceUpdateToOneWithWhereWithoutFromTripsInput = {
-    where?: ProvinceWhereInput
-    data: XOR<ProvinceUpdateWithoutFromTripsInput, ProvinceUncheckedUpdateWithoutFromTripsInput>
-  }
-
-  export type ProvinceUpdateWithoutFromTripsInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    image?: StringFieldUpdateOperationsInput | string
-    toTrips?: TripUpdateManyWithoutToProvinceNestedInput
-  }
-
-  export type ProvinceUncheckedUpdateWithoutFromTripsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    image?: StringFieldUpdateOperationsInput | string
-    toTrips?: TripUncheckedUpdateManyWithoutToProvinceNestedInput
-  }
-
-  export type ProvinceUpsertWithoutToTripsInput = {
-    update: XOR<ProvinceUpdateWithoutToTripsInput, ProvinceUncheckedUpdateWithoutToTripsInput>
-    create: XOR<ProvinceCreateWithoutToTripsInput, ProvinceUncheckedCreateWithoutToTripsInput>
-    where?: ProvinceWhereInput
-  }
-
-  export type ProvinceUpdateToOneWithWhereWithoutToTripsInput = {
-    where?: ProvinceWhereInput
-    data: XOR<ProvinceUpdateWithoutToTripsInput, ProvinceUncheckedUpdateWithoutToTripsInput>
-  }
-
-  export type ProvinceUpdateWithoutToTripsInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    image?: StringFieldUpdateOperationsInput | string
-    fromTrips?: TripUpdateManyWithoutFromProvinceNestedInput
-  }
-
-  export type ProvinceUncheckedUpdateWithoutToTripsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    image?: StringFieldUpdateOperationsInput | string
-    fromTrips?: TripUncheckedUpdateManyWithoutFromProvinceNestedInput
-  }
-
-  export type TripCreateManyFromProvinceInput = {
-    id?: number
-    toProvinceId: number
-    date: Date | string
-    departureTime: Date | string
-    price: number
-    totalSeats: number
-    availableSeats: number
-    busNumber?: string | null
-    plateNumber?: string | null
+    userId: number
+    fromProvinceId: number
+    travelDate: Date | string
+    timeLabel: string
+    startTime: string
+    endTime: string
+    tickets: number
     createdAt?: Date | string
   }
 
-  export type TripCreateManyToProvinceInput = {
+  export type BookingCreateOrConnectWithoutToProvinceInput = {
+    where: BookingWhereUniqueInput
+    create: XOR<BookingCreateWithoutToProvinceInput, BookingUncheckedCreateWithoutToProvinceInput>
+  }
+
+  export type BookingCreateManyToProvinceInputEnvelope = {
+    data: BookingCreateManyToProvinceInput | BookingCreateManyToProvinceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BookingUpsertWithWhereUniqueWithoutFromProvinceInput = {
+    where: BookingWhereUniqueInput
+    update: XOR<BookingUpdateWithoutFromProvinceInput, BookingUncheckedUpdateWithoutFromProvinceInput>
+    create: XOR<BookingCreateWithoutFromProvinceInput, BookingUncheckedCreateWithoutFromProvinceInput>
+  }
+
+  export type BookingUpdateWithWhereUniqueWithoutFromProvinceInput = {
+    where: BookingWhereUniqueInput
+    data: XOR<BookingUpdateWithoutFromProvinceInput, BookingUncheckedUpdateWithoutFromProvinceInput>
+  }
+
+  export type BookingUpdateManyWithWhereWithoutFromProvinceInput = {
+    where: BookingScalarWhereInput
+    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyWithoutFromProvinceInput>
+  }
+
+  export type BookingUpsertWithWhereUniqueWithoutToProvinceInput = {
+    where: BookingWhereUniqueInput
+    update: XOR<BookingUpdateWithoutToProvinceInput, BookingUncheckedUpdateWithoutToProvinceInput>
+    create: XOR<BookingCreateWithoutToProvinceInput, BookingUncheckedCreateWithoutToProvinceInput>
+  }
+
+  export type BookingUpdateWithWhereUniqueWithoutToProvinceInput = {
+    where: BookingWhereUniqueInput
+    data: XOR<BookingUpdateWithoutToProvinceInput, BookingUncheckedUpdateWithoutToProvinceInput>
+  }
+
+  export type BookingUpdateManyWithWhereWithoutToProvinceInput = {
+    where: BookingScalarWhereInput
+    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyWithoutToProvinceInput>
+  }
+
+  export type UserCreateWithoutBookingsInput = {
+    name: string
+    email: string
+    password?: string | null
+    googleId?: string | null
+    avatar?: string | null
+    provider?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    otp?: string | null
+    otpExpires?: Date | string | null
+    isVerified?: boolean
+  }
+
+  export type UserUncheckedCreateWithoutBookingsInput = {
+    id?: number
+    name: string
+    email: string
+    password?: string | null
+    googleId?: string | null
+    avatar?: string | null
+    provider?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    otp?: string | null
+    otpExpires?: Date | string | null
+    isVerified?: boolean
+  }
+
+  export type UserCreateOrConnectWithoutBookingsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutBookingsInput, UserUncheckedCreateWithoutBookingsInput>
+  }
+
+  export type ProvinceCreateWithoutFromBookingsInput = {
+    name: string
+    image: string
+    toBookings?: BookingCreateNestedManyWithoutToProvinceInput
+  }
+
+  export type ProvinceUncheckedCreateWithoutFromBookingsInput = {
+    id?: number
+    name: string
+    image: string
+    toBookings?: BookingUncheckedCreateNestedManyWithoutToProvinceInput
+  }
+
+  export type ProvinceCreateOrConnectWithoutFromBookingsInput = {
+    where: ProvinceWhereUniqueInput
+    create: XOR<ProvinceCreateWithoutFromBookingsInput, ProvinceUncheckedCreateWithoutFromBookingsInput>
+  }
+
+  export type ProvinceCreateWithoutToBookingsInput = {
+    name: string
+    image: string
+    fromBookings?: BookingCreateNestedManyWithoutFromProvinceInput
+  }
+
+  export type ProvinceUncheckedCreateWithoutToBookingsInput = {
+    id?: number
+    name: string
+    image: string
+    fromBookings?: BookingUncheckedCreateNestedManyWithoutFromProvinceInput
+  }
+
+  export type ProvinceCreateOrConnectWithoutToBookingsInput = {
+    where: ProvinceWhereUniqueInput
+    create: XOR<ProvinceCreateWithoutToBookingsInput, ProvinceUncheckedCreateWithoutToBookingsInput>
+  }
+
+  export type UserUpsertWithoutBookingsInput = {
+    update: XOR<UserUpdateWithoutBookingsInput, UserUncheckedUpdateWithoutBookingsInput>
+    create: XOR<UserCreateWithoutBookingsInput, UserUncheckedCreateWithoutBookingsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutBookingsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutBookingsInput, UserUncheckedUpdateWithoutBookingsInput>
+  }
+
+  export type UserUpdateWithoutBookingsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    provider?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    otp?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type UserUncheckedUpdateWithoutBookingsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    provider?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    otp?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type ProvinceUpsertWithoutFromBookingsInput = {
+    update: XOR<ProvinceUpdateWithoutFromBookingsInput, ProvinceUncheckedUpdateWithoutFromBookingsInput>
+    create: XOR<ProvinceCreateWithoutFromBookingsInput, ProvinceUncheckedCreateWithoutFromBookingsInput>
+    where?: ProvinceWhereInput
+  }
+
+  export type ProvinceUpdateToOneWithWhereWithoutFromBookingsInput = {
+    where?: ProvinceWhereInput
+    data: XOR<ProvinceUpdateWithoutFromBookingsInput, ProvinceUncheckedUpdateWithoutFromBookingsInput>
+  }
+
+  export type ProvinceUpdateWithoutFromBookingsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    toBookings?: BookingUpdateManyWithoutToProvinceNestedInput
+  }
+
+  export type ProvinceUncheckedUpdateWithoutFromBookingsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    toBookings?: BookingUncheckedUpdateManyWithoutToProvinceNestedInput
+  }
+
+  export type ProvinceUpsertWithoutToBookingsInput = {
+    update: XOR<ProvinceUpdateWithoutToBookingsInput, ProvinceUncheckedUpdateWithoutToBookingsInput>
+    create: XOR<ProvinceCreateWithoutToBookingsInput, ProvinceUncheckedCreateWithoutToBookingsInput>
+    where?: ProvinceWhereInput
+  }
+
+  export type ProvinceUpdateToOneWithWhereWithoutToBookingsInput = {
+    where?: ProvinceWhereInput
+    data: XOR<ProvinceUpdateWithoutToBookingsInput, ProvinceUncheckedUpdateWithoutToBookingsInput>
+  }
+
+  export type ProvinceUpdateWithoutToBookingsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    fromBookings?: BookingUpdateManyWithoutFromProvinceNestedInput
+  }
+
+  export type ProvinceUncheckedUpdateWithoutToBookingsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    fromBookings?: BookingUncheckedUpdateManyWithoutFromProvinceNestedInput
+  }
+
+  export type BookingCreateManyUserInput = {
     id?: number
     fromProvinceId: number
-    date: Date | string
-    departureTime: Date | string
-    price: number
-    totalSeats: number
-    availableSeats: number
-    busNumber?: string | null
-    plateNumber?: string | null
+    toProvinceId: number
+    travelDate: Date | string
+    timeLabel: string
+    startTime: string
+    endTime: string
+    tickets: number
     createdAt?: Date | string
   }
 
-  export type TripUpdateWithoutFromProvinceInput = {
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    departureTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: FloatFieldUpdateOperationsInput | number
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    availableSeats?: IntFieldUpdateOperationsInput | number
-    busNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    plateNumber?: NullableStringFieldUpdateOperationsInput | string | null
+  export type BookingUpdateWithoutUserInput = {
+    travelDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeLabel?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    tickets?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    toProvince?: ProvinceUpdateOneRequiredWithoutToTripsNestedInput
+    fromProvince?: ProvinceUpdateOneRequiredWithoutFromBookingsNestedInput
+    toProvince?: ProvinceUpdateOneRequiredWithoutToBookingsNestedInput
   }
 
-  export type TripUncheckedUpdateWithoutFromProvinceInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    toProvinceId?: IntFieldUpdateOperationsInput | number
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    departureTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: FloatFieldUpdateOperationsInput | number
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    availableSeats?: IntFieldUpdateOperationsInput | number
-    busNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    plateNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TripUncheckedUpdateManyWithoutFromProvinceInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    toProvinceId?: IntFieldUpdateOperationsInput | number
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    departureTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: FloatFieldUpdateOperationsInput | number
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    availableSeats?: IntFieldUpdateOperationsInput | number
-    busNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    plateNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TripUpdateWithoutToProvinceInput = {
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    departureTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: FloatFieldUpdateOperationsInput | number
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    availableSeats?: IntFieldUpdateOperationsInput | number
-    busNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    plateNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    fromProvince?: ProvinceUpdateOneRequiredWithoutFromTripsNestedInput
-  }
-
-  export type TripUncheckedUpdateWithoutToProvinceInput = {
+  export type BookingUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     fromProvinceId?: IntFieldUpdateOperationsInput | number
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    departureTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: FloatFieldUpdateOperationsInput | number
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    availableSeats?: IntFieldUpdateOperationsInput | number
-    busNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    plateNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    toProvinceId?: IntFieldUpdateOperationsInput | number
+    travelDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeLabel?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    tickets?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TripUncheckedUpdateManyWithoutToProvinceInput = {
+  export type BookingUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     fromProvinceId?: IntFieldUpdateOperationsInput | number
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    departureTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: FloatFieldUpdateOperationsInput | number
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    availableSeats?: IntFieldUpdateOperationsInput | number
-    busNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    plateNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    toProvinceId?: IntFieldUpdateOperationsInput | number
+    travelDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeLabel?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    tickets?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookingCreateManyFromProvinceInput = {
+    id?: number
+    userId: number
+    toProvinceId: number
+    travelDate: Date | string
+    timeLabel: string
+    startTime: string
+    endTime: string
+    tickets: number
+    createdAt?: Date | string
+  }
+
+  export type BookingCreateManyToProvinceInput = {
+    id?: number
+    userId: number
+    fromProvinceId: number
+    travelDate: Date | string
+    timeLabel: string
+    startTime: string
+    endTime: string
+    tickets: number
+    createdAt?: Date | string
+  }
+
+  export type BookingUpdateWithoutFromProvinceInput = {
+    travelDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeLabel?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    tickets?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutBookingsNestedInput
+    toProvince?: ProvinceUpdateOneRequiredWithoutToBookingsNestedInput
+  }
+
+  export type BookingUncheckedUpdateWithoutFromProvinceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    toProvinceId?: IntFieldUpdateOperationsInput | number
+    travelDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeLabel?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    tickets?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookingUncheckedUpdateManyWithoutFromProvinceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    toProvinceId?: IntFieldUpdateOperationsInput | number
+    travelDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeLabel?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    tickets?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookingUpdateWithoutToProvinceInput = {
+    travelDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeLabel?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    tickets?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutBookingsNestedInput
+    fromProvince?: ProvinceUpdateOneRequiredWithoutFromBookingsNestedInput
+  }
+
+  export type BookingUncheckedUpdateWithoutToProvinceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    fromProvinceId?: IntFieldUpdateOperationsInput | number
+    travelDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeLabel?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    tickets?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookingUncheckedUpdateManyWithoutToProvinceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    fromProvinceId?: IntFieldUpdateOperationsInput | number
+    travelDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    timeLabel?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    tickets?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

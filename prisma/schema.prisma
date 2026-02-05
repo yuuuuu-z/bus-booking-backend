@@ -21,36 +21,47 @@ model User {
   otpExpires  DateTime?
   isVerified  Boolean  @default(false)
 
+  bookings  Booking[]
+
   @@map("users")
 }
 
 
 
 model Province {
-  id        Int    @id @default(autoincrement())
-  name      String @unique
-  image     String   // ✅ ADD THIS
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  image String
 
-  fromTrips Trip[] @relation("FromProvince")
-  toTrips   Trip[] @relation("ToProvince")
+  fromBookings Booking[] @relation("FromProvinceBooking")
+  toBookings   Booking[] @relation("ToProvinceBooking")
 
   @@map("province")
 }
 
-model Trip {
-  id             Int      @id @default(autoincrement())
+model Booking {
+  id Int @id @default(autoincrement())
+
+  userId Int
+
   fromProvinceId Int
   toProvinceId   Int
-  date           DateTime
-  departureTime  DateTime
-  price          Float
-  totalSeats     Int
-  availableSeats Int
-  busNumber      String?
-  plateNumber    String?
-  createdAt      DateTime @default(now())
-  fromProvince   Province @relation("FromProvince", fields: [fromProvinceId], references: [id])
-  toProvince     Province @relation("ToProvince", fields: [toProvinceId], references: [id])
 
-  @@map("trip")
+  travelDate DateTime
+
+  timeLabel String
+  startTime String
+  endTime   String
+
+  tickets Int
+
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+  fromProvince Province @relation("FromProvinceBooking", fields: [fromProvinceId], references: [id])
+  toProvince   Province @relation("ToProvinceBooking", fields: [toProvinceId], references: [id])
+
+  @@map("booking")
 }
+

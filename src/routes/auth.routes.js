@@ -25,7 +25,7 @@ router.get(
   passport.authenticate("google", {
     scope: ["profile", "email"],
     session: false,
-  })
+  }),
 );
 
 // 2️⃣ Google callback
@@ -36,23 +36,14 @@ router.get(
     const token = jwt.sign(
       { id: req.user.id, email: req.user.email },
       process.env.JWT_SECRET,
-      { expiresIn: "7d" }
+      { expiresIn: "7d" },
     );
 
-    const frontendURL = process.env.FRONTEND_URL || "http://localhost:3000";
+    // 🔥 MOBILE DEEP LINK CALLBACK
+    const deepLink = `myapp://auth/callback?token=${token}`;
 
-    res.redirect(`${frontendURL}/auth/callback?token=${token}`);
-    res.json({
-      message: "Google login successful",
-      token,
-      user: {
-        id: user.id,
-        email: user.email,
-        name: user.name,
-        avatar: user.avatar,
-      },
-    });
-  }
+    return res.redirect(deepLink);
+  },
 );
 
 export default router;

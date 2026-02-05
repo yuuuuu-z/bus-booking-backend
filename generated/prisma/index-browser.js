@@ -141,17 +141,16 @@ exports.Prisma.ProvinceScalarFieldEnum = {
   image: 'image'
 };
 
-exports.Prisma.TripScalarFieldEnum = {
+exports.Prisma.BookingScalarFieldEnum = {
   id: 'id',
+  userId: 'userId',
   fromProvinceId: 'fromProvinceId',
   toProvinceId: 'toProvinceId',
-  date: 'date',
-  departureTime: 'departureTime',
-  price: 'price',
-  totalSeats: 'totalSeats',
-  availableSeats: 'availableSeats',
-  busNumber: 'busNumber',
-  plateNumber: 'plateNumber',
+  travelDate: 'travelDate',
+  timeLabel: 'timeLabel',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  tickets: 'tickets',
   createdAt: 'createdAt'
 };
 
@@ -174,7 +173,7 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   User: 'User',
   Province: 'Province',
-  Trip: 'Trip'
+  Booking: 'Booking'
 };
 
 /**

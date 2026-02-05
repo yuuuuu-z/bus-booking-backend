@@ -113,17 +113,16 @@ exports.Prisma.ProvinceScalarFieldEnum = {
   image: 'image'
 };
 
-exports.Prisma.TripScalarFieldEnum = {
+exports.Prisma.BookingScalarFieldEnum = {
   id: 'id',
+  userId: 'userId',
   fromProvinceId: 'fromProvinceId',
   toProvinceId: 'toProvinceId',
-  date: 'date',
-  departureTime: 'departureTime',
-  price: 'price',
-  totalSeats: 'totalSeats',
-  availableSeats: 'availableSeats',
-  busNumber: 'busNumber',
-  plateNumber: 'plateNumber',
+  travelDate: 'travelDate',
+  timeLabel: 'timeLabel',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  tickets: 'tickets',
   createdAt: 'createdAt'
 };
 
@@ -146,7 +145,7 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   User: 'User',
   Province: 'Province',
-  Trip: 'Trip'
+  Booking: 'Booking'
 };
 /**
  * Create the Client
@@ -156,10 +155,10 @@ const config = {
   "clientVersion": "7.3.0",
   "engineVersion": "9d6ad21cbbceab97458517b147a6a09ff43aa735",
   "activeProvider": "postgresql",
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel User {\n  id        Int      @id @default(autoincrement())\n  name      String\n  email     String   @unique\n  password  String? // Optional for Google OAuth users\n  googleId  String?  @unique // Store Google's user ID\n  avatar    String?\n  provider  String   @default(\"local\") // \"local\" or \"google\"\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  otp        String?\n  otpExpires DateTime?\n  isVerified Boolean   @default(false)\n\n  @@map(\"users\")\n}\n\nmodel Province {\n  id    Int    @id @default(autoincrement())\n  name  String @unique\n  image String // ✅ ADD THIS\n\n  fromTrips Trip[] @relation(\"FromProvince\")\n  toTrips   Trip[] @relation(\"ToProvince\")\n\n  @@map(\"province\")\n}\n\nmodel Trip {\n  id             Int      @id @default(autoincrement())\n  fromProvinceId Int\n  toProvinceId   Int\n  date           DateTime\n  departureTime  DateTime\n  price          Float\n  totalSeats     Int\n  availableSeats Int\n  busNumber      String?\n  plateNumber    String?\n  createdAt      DateTime @default(now())\n  fromProvince   Province @relation(\"FromProvince\", fields: [fromProvinceId], references: [id])\n  toProvince     Province @relation(\"ToProvince\", fields: [toProvinceId], references: [id])\n\n  @@map(\"trip\")\n}\n"
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel User {\n  id        Int      @id @default(autoincrement())\n  name      String\n  email     String   @unique\n  password  String? // Optional for Google OAuth users\n  googleId  String?  @unique // Store Google's user ID\n  avatar    String?\n  provider  String   @default(\"local\") // \"local\" or \"google\"\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  otp        String?\n  otpExpires DateTime?\n  isVerified Boolean   @default(false)\n\n  bookings Booking[]\n\n  @@map(\"users\")\n}\n\nmodel Province {\n  id    Int    @id @default(autoincrement())\n  name  String @unique\n  image String\n\n  fromBookings Booking[] @relation(\"FromProvinceBooking\")\n  toBookings   Booking[] @relation(\"ToProvinceBooking\")\n\n  @@map(\"province\")\n}\n\nmodel Booking {\n  id Int @id @default(autoincrement())\n\n  userId Int\n\n  fromProvinceId Int\n  toProvinceId   Int\n\n  travelDate DateTime\n\n  timeLabel String\n  startTime String\n  endTime   String\n\n  tickets Int\n\n  createdAt DateTime @default(now())\n\n  user User @relation(fields: [userId], references: [id])\n\n  fromProvince Province @relation(\"FromProvinceBooking\", fields: [fromProvinceId], references: [id])\n  toProvince   Province @relation(\"ToProvinceBooking\", fields: [toProvinceId], references: [id])\n\n  @@map(\"booking\")\n}\n"
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"googleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"avatar\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"provider\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"otp\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"otpExpires\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"isVerified\",\"kind\":\"scalar\",\"type\":\"Boolean\"}],\"dbName\":\"users\"},\"Province\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fromTrips\",\"kind\":\"object\",\"type\":\"Trip\",\"relationName\":\"FromProvince\"},{\"name\":\"toTrips\",\"kind\":\"object\",\"type\":\"Trip\",\"relationName\":\"ToProvince\"}],\"dbName\":\"province\"},\"Trip\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"fromProvinceId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"toProvinceId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"date\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"departureTime\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"totalSeats\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"availableSeats\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"busNumber\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"plateNumber\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"fromProvince\",\"kind\":\"object\",\"type\":\"Province\",\"relationName\":\"FromProvince\"},{\"name\":\"toProvince\",\"kind\":\"object\",\"type\":\"Province\",\"relationName\":\"ToProvince\"}],\"dbName\":\"trip\"}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"googleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"avatar\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"provider\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"otp\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"otpExpires\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"isVerified\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"bookings\",\"kind\":\"object\",\"type\":\"Booking\",\"relationName\":\"BookingToUser\"}],\"dbName\":\"users\"},\"Province\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fromBookings\",\"kind\":\"object\",\"type\":\"Booking\",\"relationName\":\"FromProvinceBooking\"},{\"name\":\"toBookings\",\"kind\":\"object\",\"type\":\"Booking\",\"relationName\":\"ToProvinceBooking\"}],\"dbName\":\"province\"},\"Booking\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"fromProvinceId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"toProvinceId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"travelDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"timeLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"startTime\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"endTime\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"tickets\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"BookingToUser\"},{\"name\":\"fromProvince\",\"kind\":\"object\",\"type\":\"Province\",\"relationName\":\"FromProvinceBooking\"},{\"name\":\"toProvince\",\"kind\":\"object\",\"type\":\"Province\",\"relationName\":\"ToProvinceBooking\"}],\"dbName\":\"booking\"}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.compilerWasm = {
   getRuntime: async () => require('./query_compiler_fast_bg.js'),
