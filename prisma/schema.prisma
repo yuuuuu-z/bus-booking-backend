@@ -27,18 +27,16 @@ model User {
 }
 
 
+  model Province {
+    id    Int    @id @default(autoincrement())
+    name  String @unique
+    image String
 
-model Province {
-  id    Int    @id @default(autoincrement())
-  name  String @unique
-  image String
+    fromBookings Booking[] @relation("FromProvinceBooking")
+    toBookings   Booking[] @relation("ToProvinceBooking")
 
-  fromBookings Booking[] @relation("FromProvinceBooking")
-  toBookings   Booking[] @relation("ToProvinceBooking")
-
-  @@map("province")
-}
-
+    @@map("province")
+  }
 model Booking {
   id Int @id @default(autoincrement())
 

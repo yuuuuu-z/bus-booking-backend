@@ -79,6 +79,7 @@ export const createBooking = async (req, res) => {
     res.status(201).json({
       message: "Booking created successfully",
       booking,
+      userEmail: req.user?.email,
     });
   } catch (error) {
     console.error("Booking Error:", error);
@@ -98,7 +99,10 @@ export const getTrips = async (req, res) => {
     },
   });
 
-  res.json(trips);
+  res.json({
+    userEmail: req.user?.email,
+    trips,
+  });
 };
 
 export const deleteBooking = async (req, res) => {
@@ -128,7 +132,7 @@ export const deleteBooking = async (req, res) => {
     });
 
     res.json({
-      message: "Booking cancelled successfully",
+      message: "Booking deleted successfully",
     });
   } catch (error) {
     res.status(500).json({
