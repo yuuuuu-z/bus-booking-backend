@@ -1,5 +1,19 @@
 import prisma from "../lib/prisma.js";
 
+// Time label → auto start/end times (user only selects label; times are derived)
+// Keys are lowercase so lookup is case-insensitive (Morning, morning, MORNING all work)
+const TIME_LABEL_MAP = {
+  morning: { startTime: "7:00 AM", endTime: "12:00 PM" },
+  afternoon: { startTime: "12:00 PM", endTime: "5:00 PM" },
+  evening: { startTime: "5:00 PM", endTime: "8:00 PM" },
+  night: { startTime: "8:00 PM", endTime: "11:00 PM" },
+};
+
+function getTimesFromLabel(timeLabel) {
+  const normalized = (timeLabel || "").trim().toLowerCase();
+  return TIME_LABEL_MAP[normalized] ?? null;
+}
+
 export const createBooking = async (req, res) => {
   try {
     const userId = req.user?.id;
@@ -9,19 +23,17 @@ export const createBooking = async (req, res) => {
       toProvinceId,
       travelDate,
       timeLabel,
-      startTime,
-      endTime,
+      startTime: bodyStartTime,
+      endTime: bodyEndTime,
       tickets,
     } = req.body;
 
-    // 1. Validate required fields
+    // 1. Validate required fields (startTime/endTime are optional — derived from timeLabel)
     if (
       !fromProvinceId ||
       !toProvinceId ||
       !travelDate ||
       !timeLabel ||
-      !startTime ||
-      !endTime ||
       !tickets
     ) {
       return res.status(400).json({
@@ -29,21 +41,38 @@ export const createBooking = async (req, res) => {
       });
     }
 
-    // 2. Prevent same province booking
+    // 2. Resolve start/end time: use body if provided, else from timeLabel
+    const labelTimes = getTimesFromLabel(timeLabel);
+    const startTime = bodyStartTime ?? labelTimes?.startTime;
+    const endTime = bodyEndTime ?? labelTimes?.endTime;
+
+    if (!labelTimes) {
+      return res.status(400).json({
+        message:
+          "Invalid time label. Use one of: Morning, Afternoon, Evening, Night.",
+      });
+    }
+    if (!startTime || !endTime) {
+      return res.status(400).json({
+        message: "Start time and end time are required",
+      });
+    }
+
+    // 3. Prevent same province booking
     if (fromProvinceId === toProvinceId) {
       return res.status(400).json({
         message: "From and To province cannot be the same",
       });
     }
 
-    // 3. Validate tickets
+    // 4. Validate tickets
     if (tickets <= 0) {
       return res.status(400).json({
         message: "Number of tickets must be at least 1",
       });
     }
 
-    // 4. Check if provinces actually exist
+    // 5. Check if provinces actually exist
     const fromProvince = await prisma.province.findUnique({
       where: { id: fromProvinceId },
     });
@@ -58,7 +87,7 @@ export const createBooking = async (req, res) => {
       });
     }
 
-    // 5. Create booking
+    // 6. Create booking
     const booking = await prisma.booking.create({
       data: {
         userId,
@@ -78,8 +107,8 @@ export const createBooking = async (req, res) => {
 
     res.status(201).json({
       message: "Booking created successfully",
-      booking,
       userEmail: req.user?.email,
+      booking,
     });
   } catch (error) {
     console.error("Booking Error:", error);
