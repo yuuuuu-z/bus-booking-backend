@@ -5,6 +5,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+  // url      = env("DATABASE_URL")
 }
 model User {
   id        Int      @id @default(autoincrement())
@@ -52,6 +53,13 @@ model Booking {
   endTime   String
 
   tickets Int
+
+   pricePerTicket Float
+  totalPrice Float
+
+  status String @default("PENDING")
+
+  paymentRef String?
 
   createdAt DateTime @default(now())
 

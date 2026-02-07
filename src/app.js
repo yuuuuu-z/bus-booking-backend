@@ -9,6 +9,7 @@ import provinceRoutes from "./routes/province.routes.js";
 import bookingRoutes from "./routes/booking.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import uploadRoutes from "./routes/upload.routes.js";
+
 import passport from "passport";
 import prisma from "./lib/prisma.js";
 import { protect } from "./middlewares/auth.middleware.js";

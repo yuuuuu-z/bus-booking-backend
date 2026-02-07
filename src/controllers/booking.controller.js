@@ -1,7 +1,6 @@
 import prisma from "../lib/prisma.js";
 
-// Time label → auto start/end times (user only selects label; times are derived)
-// Keys are lowercase so lookup is case-insensitive (Morning, morning, MORNING all work)
+
 const TIME_LABEL_MAP = {
   morning: { startTime: "7:00 AM", endTime: "12:00 PM" },
   afternoon: { startTime: "12:00 PM", endTime: "5:00 PM" },
@@ -28,7 +27,11 @@ export const createBooking = async (req, res) => {
       tickets,
     } = req.body;
 
-    // 1. Validate required fields (startTime/endTime are optional — derived from timeLabel)
+    // TODO: Determine actual price based on route/province
+    const pricePerTicket = 5.0;
+    const totalPrice = pricePerTicket * tickets;
+
+    // 1. Validate required fields
     if (
       !fromProvinceId ||
       !toProvinceId ||
@@ -41,7 +44,7 @@ export const createBooking = async (req, res) => {
       });
     }
 
-    // 2. Resolve start/end time: use body if provided, else from timeLabel
+    // 2. Resolve start/end time from label
     const labelTimes = getTimesFromLabel(timeLabel);
     const startTime = bodyStartTime ?? labelTimes?.startTime;
     const endTime = bodyEndTime ?? labelTimes?.endTime;
@@ -52,6 +55,7 @@ export const createBooking = async (req, res) => {
           "Invalid time label. Use one of: Morning, Afternoon, Evening, Night.",
       });
     }
+
     if (!startTime || !endTime) {
       return res.status(400).json({
         message: "Start time and end time are required",
@@ -72,7 +76,7 @@ export const createBooking = async (req, res) => {
       });
     }
 
-    // 5. Check if provinces actually exist
+    // 5. Check if provinces exist
     const fromProvince = await prisma.province.findUnique({
       where: { id: fromProvinceId },
     });
@@ -87,7 +91,7 @@ export const createBooking = async (req, res) => {
       });
     }
 
-    // 6. Create booking
+    // 6. Create booking FIRST
     const booking = await prisma.booking.create({
       data: {
         userId,
@@ -98,6 +102,9 @@ export const createBooking = async (req, res) => {
         startTime,
         endTime,
         tickets,
+        totalPrice, // <---- ADD THIS
+        pricePerTicket, // <---- ADD THIS
+        status: "PENDING", // <---- ADD THIS
       },
       include: {
         fromProvince: true,
@@ -105,9 +112,18 @@ export const createBooking = async (req, res) => {
       },
     });
 
+    // 7. Generate Bakong QR for payment
+    
     res.status(201).json({
-      message: "Booking created successfully",
+      message: "Booking created. Please complete payment.",
       userEmail: req.user?.email,
+
+      payment: {
+        totalPrice: totalPrice,
+        currency: "USD",
+       
+      },
+
       booking,
     });
   } catch (error) {
@@ -130,6 +146,7 @@ export const getTrips = async (req, res) => {
 
   res.json({
     userEmail: req.user?.email,
+
     trips,
   });
 };
@@ -166,6 +183,44 @@ export const deleteBooking = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       message: "Failed to cancel booking",
+    });
+  }
+};
+
+export const verifyPayment = async (req, res) => {
+  try {
+    const { bookingId } = req.params;
+
+    const booking = await prisma.booking.findUnique({
+      where: { id: Number(bookingId) },
+    });
+
+    if (!booking) {
+      return res.status(404).json({
+        message: "Booking not found",
+      });
+    }
+
+    const status = await checkPaymentStatus(booking.paymentRef);
+
+    if (status.transactionStatus === "SUCCESS") {
+      await prisma.booking.update({
+        where: { id: booking.id },
+        data: { status: "PAID" },
+      });
+
+      return res.json({
+        message: "Payment successful",
+      });
+    }
+
+    res.json({
+      message: "Payment not completed yet",
+      status: status.transactionStatus,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
     });
   }
 };

@@ -65,6 +65,18 @@ npm run dev
 
 ---
 
+## 💳 Bakong (KHQR) payment
+
+The API integrates with [Bakong](https://bakong-api.online) for KHQR payments (Cambodia).
+
+1. **Create booking with payment**  
+   `POST /booking` with body including `amount` (USD). If `BAKONG_ID` and `BAKONG_MERCHANT_NAME` are set, the response includes `payment: { qr, md5, tran, amount }`. Show the `qr` URL as a QR code so the user can pay with their banking app.
+
+2. **Check payment status**  
+   `GET /booking/:id/payment-status` – calls Bakong; if the payment is confirmed, the booking is updated to `paymentStatus: "paid"`. Poll this from the frontend until `paymentStatus` is `"paid"`.
+
+---
+
 ## 🌐 Server
 
 The server will run at:

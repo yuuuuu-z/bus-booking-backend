@@ -151,6 +151,10 @@ exports.Prisma.BookingScalarFieldEnum = {
   startTime: 'startTime',
   endTime: 'endTime',
   tickets: 'tickets',
+  pricePerTicket: 'pricePerTicket',
+  totalPrice: 'totalPrice',
+  status: 'status',
+  paymentRef: 'paymentRef',
   createdAt: 'createdAt'
 };
 

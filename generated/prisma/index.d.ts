@@ -3433,6 +3433,8 @@ export namespace Prisma {
     fromProvinceId: number | null
     toProvinceId: number | null
     tickets: number | null
+    pricePerTicket: number | null
+    totalPrice: number | null
   }
 
   export type BookingSumAggregateOutputType = {
@@ -3441,6 +3443,8 @@ export namespace Prisma {
     fromProvinceId: number | null
     toProvinceId: number | null
     tickets: number | null
+    pricePerTicket: number | null
+    totalPrice: number | null
   }
 
   export type BookingMinAggregateOutputType = {
@@ -3453,6 +3457,10 @@ export namespace Prisma {
     startTime: string | null
     endTime: string | null
     tickets: number | null
+    pricePerTicket: number | null
+    totalPrice: number | null
+    status: string | null
+    paymentRef: string | null
     createdAt: Date | null
   }
 
@@ -3466,6 +3474,10 @@ export namespace Prisma {
     startTime: string | null
     endTime: string | null
     tickets: number | null
+    pricePerTicket: number | null
+    totalPrice: number | null
+    status: string | null
+    paymentRef: string | null
     createdAt: Date | null
   }
 
@@ -3479,6 +3491,10 @@ export namespace Prisma {
     startTime: number
     endTime: number
     tickets: number
+    pricePerTicket: number
+    totalPrice: number
+    status: number
+    paymentRef: number
     createdAt: number
     _all: number
   }
@@ -3490,6 +3506,8 @@ export namespace Prisma {
     fromProvinceId?: true
     toProvinceId?: true
     tickets?: true
+    pricePerTicket?: true
+    totalPrice?: true
   }
 
   export type BookingSumAggregateInputType = {
@@ -3498,6 +3516,8 @@ export namespace Prisma {
     fromProvinceId?: true
     toProvinceId?: true
     tickets?: true
+    pricePerTicket?: true
+    totalPrice?: true
   }
 
   export type BookingMinAggregateInputType = {
@@ -3510,6 +3530,10 @@ export namespace Prisma {
     startTime?: true
     endTime?: true
     tickets?: true
+    pricePerTicket?: true
+    totalPrice?: true
+    status?: true
+    paymentRef?: true
     createdAt?: true
   }
 
@@ -3523,6 +3547,10 @@ export namespace Prisma {
     startTime?: true
     endTime?: true
     tickets?: true
+    pricePerTicket?: true
+    totalPrice?: true
+    status?: true
+    paymentRef?: true
     createdAt?: true
   }
 
@@ -3536,6 +3564,10 @@ export namespace Prisma {
     startTime?: true
     endTime?: true
     tickets?: true
+    pricePerTicket?: true
+    totalPrice?: true
+    status?: true
+    paymentRef?: true
     createdAt?: true
     _all?: true
   }
@@ -3636,6 +3668,10 @@ export namespace Prisma {
     startTime: string
     endTime: string
     tickets: number
+    pricePerTicket: number
+    totalPrice: number
+    status: string
+    paymentRef: string | null
     createdAt: Date
     _count: BookingCountAggregateOutputType | null
     _avg: BookingAvgAggregateOutputType | null
@@ -3668,6 +3704,10 @@ export namespace Prisma {
     startTime?: boolean
     endTime?: boolean
     tickets?: boolean
+    pricePerTicket?: boolean
+    totalPrice?: boolean
+    status?: boolean
+    paymentRef?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     fromProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
@@ -3684,6 +3724,10 @@ export namespace Prisma {
     startTime?: boolean
     endTime?: boolean
     tickets?: boolean
+    pricePerTicket?: boolean
+    totalPrice?: boolean
+    status?: boolean
+    paymentRef?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     fromProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
@@ -3700,6 +3744,10 @@ export namespace Prisma {
     startTime?: boolean
     endTime?: boolean
     tickets?: boolean
+    pricePerTicket?: boolean
+    totalPrice?: boolean
+    status?: boolean
+    paymentRef?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     fromProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
@@ -3716,10 +3764,14 @@ export namespace Prisma {
     startTime?: boolean
     endTime?: boolean
     tickets?: boolean
+    pricePerTicket?: boolean
+    totalPrice?: boolean
+    status?: boolean
+    paymentRef?: boolean
     createdAt?: boolean
   }
 
-  export type BookingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "fromProvinceId" | "toProvinceId" | "travelDate" | "timeLabel" | "startTime" | "endTime" | "tickets" | "createdAt", ExtArgs["result"]["booking"]>
+  export type BookingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "fromProvinceId" | "toProvinceId" | "travelDate" | "timeLabel" | "startTime" | "endTime" | "tickets" | "pricePerTicket" | "totalPrice" | "status" | "paymentRef" | "createdAt", ExtArgs["result"]["booking"]>
   export type BookingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     fromProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
@@ -3753,6 +3805,10 @@ export namespace Prisma {
       startTime: string
       endTime: string
       tickets: number
+      pricePerTicket: number
+      totalPrice: number
+      status: string
+      paymentRef: string | null
       createdAt: Date
     }, ExtArgs["result"]["booking"]>
     composites: {}
@@ -4189,6 +4245,10 @@ export namespace Prisma {
     readonly startTime: FieldRef<"Booking", 'String'>
     readonly endTime: FieldRef<"Booking", 'String'>
     readonly tickets: FieldRef<"Booking", 'Int'>
+    readonly pricePerTicket: FieldRef<"Booking", 'Float'>
+    readonly totalPrice: FieldRef<"Booking", 'Float'>
+    readonly status: FieldRef<"Booking", 'String'>
+    readonly paymentRef: FieldRef<"Booking", 'String'>
     readonly createdAt: FieldRef<"Booking", 'DateTime'>
   }
     
@@ -4655,6 +4715,10 @@ export namespace Prisma {
     startTime: 'startTime',
     endTime: 'endTime',
     tickets: 'tickets',
+    pricePerTicket: 'pricePerTicket',
+    totalPrice: 'totalPrice',
+    status: 'status',
+    paymentRef: 'paymentRef',
     createdAt: 'createdAt'
   };
 
@@ -4911,6 +4975,10 @@ export namespace Prisma {
     startTime?: StringFilter<"Booking"> | string
     endTime?: StringFilter<"Booking"> | string
     tickets?: IntFilter<"Booking"> | number
+    pricePerTicket?: FloatFilter<"Booking"> | number
+    totalPrice?: FloatFilter<"Booking"> | number
+    status?: StringFilter<"Booking"> | string
+    paymentRef?: StringNullableFilter<"Booking"> | string | null
     createdAt?: DateTimeFilter<"Booking"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     fromProvince?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
@@ -4927,6 +4995,10 @@ export namespace Prisma {
     startTime?: SortOrder
     endTime?: SortOrder
     tickets?: SortOrder
+    pricePerTicket?: SortOrder
+    totalPrice?: SortOrder
+    status?: SortOrder
+    paymentRef?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
     fromProvince?: ProvinceOrderByWithRelationInput
@@ -4946,6 +5018,10 @@ export namespace Prisma {
     startTime?: StringFilter<"Booking"> | string
     endTime?: StringFilter<"Booking"> | string
     tickets?: IntFilter<"Booking"> | number
+    pricePerTicket?: FloatFilter<"Booking"> | number
+    totalPrice?: FloatFilter<"Booking"> | number
+    status?: StringFilter<"Booking"> | string
+    paymentRef?: StringNullableFilter<"Booking"> | string | null
     createdAt?: DateTimeFilter<"Booking"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     fromProvince?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
@@ -4962,6 +5038,10 @@ export namespace Prisma {
     startTime?: SortOrder
     endTime?: SortOrder
     tickets?: SortOrder
+    pricePerTicket?: SortOrder
+    totalPrice?: SortOrder
+    status?: SortOrder
+    paymentRef?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: BookingCountOrderByAggregateInput
     _avg?: BookingAvgOrderByAggregateInput
@@ -4983,6 +5063,10 @@ export namespace Prisma {
     startTime?: StringWithAggregatesFilter<"Booking"> | string
     endTime?: StringWithAggregatesFilter<"Booking"> | string
     tickets?: IntWithAggregatesFilter<"Booking"> | number
+    pricePerTicket?: FloatWithAggregatesFilter<"Booking"> | number
+    totalPrice?: FloatWithAggregatesFilter<"Booking"> | number
+    status?: StringWithAggregatesFilter<"Booking"> | string
+    paymentRef?: StringNullableWithAggregatesFilter<"Booking"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Booking"> | Date | string
   }
 
@@ -5145,6 +5229,10 @@ export namespace Prisma {
     startTime: string
     endTime: string
     tickets: number
+    pricePerTicket: number
+    totalPrice: number
+    status?: string
+    paymentRef?: string | null
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutBookingsInput
     fromProvince: ProvinceCreateNestedOneWithoutFromBookingsInput
@@ -5161,6 +5249,10 @@ export namespace Prisma {
     startTime: string
     endTime: string
     tickets: number
+    pricePerTicket: number
+    totalPrice: number
+    status?: string
+    paymentRef?: string | null
     createdAt?: Date | string
   }
 
@@ -5170,6 +5262,10 @@ export namespace Prisma {
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
     tickets?: IntFieldUpdateOperationsInput | number
+    pricePerTicket?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentRef?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutBookingsNestedInput
     fromProvince?: ProvinceUpdateOneRequiredWithoutFromBookingsNestedInput
@@ -5186,6 +5282,10 @@ export namespace Prisma {
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
     tickets?: IntFieldUpdateOperationsInput | number
+    pricePerTicket?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentRef?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5199,6 +5299,10 @@ export namespace Prisma {
     startTime: string
     endTime: string
     tickets: number
+    pricePerTicket: number
+    totalPrice: number
+    status?: string
+    paymentRef?: string | null
     createdAt?: Date | string
   }
 
@@ -5208,6 +5312,10 @@ export namespace Prisma {
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
     tickets?: IntFieldUpdateOperationsInput | number
+    pricePerTicket?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentRef?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5221,6 +5329,10 @@ export namespace Prisma {
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
     tickets?: IntFieldUpdateOperationsInput | number
+    pricePerTicket?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentRef?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5474,6 +5586,17 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -5494,6 +5617,10 @@ export namespace Prisma {
     startTime?: SortOrder
     endTime?: SortOrder
     tickets?: SortOrder
+    pricePerTicket?: SortOrder
+    totalPrice?: SortOrder
+    status?: SortOrder
+    paymentRef?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -5503,6 +5630,8 @@ export namespace Prisma {
     fromProvinceId?: SortOrder
     toProvinceId?: SortOrder
     tickets?: SortOrder
+    pricePerTicket?: SortOrder
+    totalPrice?: SortOrder
   }
 
   export type BookingMaxOrderByAggregateInput = {
@@ -5515,6 +5644,10 @@ export namespace Prisma {
     startTime?: SortOrder
     endTime?: SortOrder
     tickets?: SortOrder
+    pricePerTicket?: SortOrder
+    totalPrice?: SortOrder
+    status?: SortOrder
+    paymentRef?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -5528,6 +5661,10 @@ export namespace Prisma {
     startTime?: SortOrder
     endTime?: SortOrder
     tickets?: SortOrder
+    pricePerTicket?: SortOrder
+    totalPrice?: SortOrder
+    status?: SortOrder
+    paymentRef?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -5537,6 +5674,24 @@ export namespace Prisma {
     fromProvinceId?: SortOrder
     toProvinceId?: SortOrder
     tickets?: SortOrder
+    pricePerTicket?: SortOrder
+    totalPrice?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type BookingCreateNestedManyWithoutUserInput = {
@@ -5709,6 +5864,14 @@ export namespace Prisma {
     create?: XOR<ProvinceCreateWithoutToBookingsInput, ProvinceUncheckedCreateWithoutToBookingsInput>
     connectOrCreate?: ProvinceCreateOrConnectWithoutToBookingsInput
     connect?: ProvinceWhereUniqueInput
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type UserUpdateOneRequiredWithoutBookingsNestedInput = {
@@ -5909,12 +6072,32 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
   export type BookingCreateWithoutUserInput = {
     travelDate: Date | string
     timeLabel: string
     startTime: string
     endTime: string
     tickets: number
+    pricePerTicket: number
+    totalPrice: number
+    status?: string
+    paymentRef?: string | null
     createdAt?: Date | string
     fromProvince: ProvinceCreateNestedOneWithoutFromBookingsInput
     toProvince: ProvinceCreateNestedOneWithoutToBookingsInput
@@ -5929,6 +6112,10 @@ export namespace Prisma {
     startTime: string
     endTime: string
     tickets: number
+    pricePerTicket: number
+    totalPrice: number
+    status?: string
+    paymentRef?: string | null
     createdAt?: Date | string
   }
 
@@ -5971,6 +6158,10 @@ export namespace Prisma {
     startTime?: StringFilter<"Booking"> | string
     endTime?: StringFilter<"Booking"> | string
     tickets?: IntFilter<"Booking"> | number
+    pricePerTicket?: FloatFilter<"Booking"> | number
+    totalPrice?: FloatFilter<"Booking"> | number
+    status?: StringFilter<"Booking"> | string
+    paymentRef?: StringNullableFilter<"Booking"> | string | null
     createdAt?: DateTimeFilter<"Booking"> | Date | string
   }
 
@@ -5980,6 +6171,10 @@ export namespace Prisma {
     startTime: string
     endTime: string
     tickets: number
+    pricePerTicket: number
+    totalPrice: number
+    status?: string
+    paymentRef?: string | null
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutBookingsInput
     toProvince: ProvinceCreateNestedOneWithoutToBookingsInput
@@ -5994,6 +6189,10 @@ export namespace Prisma {
     startTime: string
     endTime: string
     tickets: number
+    pricePerTicket: number
+    totalPrice: number
+    status?: string
+    paymentRef?: string | null
     createdAt?: Date | string
   }
 
@@ -6013,6 +6212,10 @@ export namespace Prisma {
     startTime: string
     endTime: string
     tickets: number
+    pricePerTicket: number
+    totalPrice: number
+    status?: string
+    paymentRef?: string | null
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutBookingsInput
     fromProvince: ProvinceCreateNestedOneWithoutFromBookingsInput
@@ -6027,6 +6230,10 @@ export namespace Prisma {
     startTime: string
     endTime: string
     tickets: number
+    pricePerTicket: number
+    totalPrice: number
+    status?: string
+    paymentRef?: string | null
     createdAt?: Date | string
   }
 
@@ -6239,6 +6446,10 @@ export namespace Prisma {
     startTime: string
     endTime: string
     tickets: number
+    pricePerTicket: number
+    totalPrice: number
+    status?: string
+    paymentRef?: string | null
     createdAt?: Date | string
   }
 
@@ -6248,6 +6459,10 @@ export namespace Prisma {
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
     tickets?: IntFieldUpdateOperationsInput | number
+    pricePerTicket?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentRef?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     fromProvince?: ProvinceUpdateOneRequiredWithoutFromBookingsNestedInput
     toProvince?: ProvinceUpdateOneRequiredWithoutToBookingsNestedInput
@@ -6262,6 +6477,10 @@ export namespace Prisma {
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
     tickets?: IntFieldUpdateOperationsInput | number
+    pricePerTicket?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentRef?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6274,6 +6493,10 @@ export namespace Prisma {
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
     tickets?: IntFieldUpdateOperationsInput | number
+    pricePerTicket?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentRef?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6286,6 +6509,10 @@ export namespace Prisma {
     startTime: string
     endTime: string
     tickets: number
+    pricePerTicket: number
+    totalPrice: number
+    status?: string
+    paymentRef?: string | null
     createdAt?: Date | string
   }
 
@@ -6298,6 +6525,10 @@ export namespace Prisma {
     startTime: string
     endTime: string
     tickets: number
+    pricePerTicket: number
+    totalPrice: number
+    status?: string
+    paymentRef?: string | null
     createdAt?: Date | string
   }
 
@@ -6307,6 +6538,10 @@ export namespace Prisma {
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
     tickets?: IntFieldUpdateOperationsInput | number
+    pricePerTicket?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentRef?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutBookingsNestedInput
     toProvince?: ProvinceUpdateOneRequiredWithoutToBookingsNestedInput
@@ -6321,6 +6556,10 @@ export namespace Prisma {
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
     tickets?: IntFieldUpdateOperationsInput | number
+    pricePerTicket?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentRef?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6333,6 +6572,10 @@ export namespace Prisma {
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
     tickets?: IntFieldUpdateOperationsInput | number
+    pricePerTicket?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentRef?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6342,6 +6585,10 @@ export namespace Prisma {
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
     tickets?: IntFieldUpdateOperationsInput | number
+    pricePerTicket?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentRef?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutBookingsNestedInput
     fromProvince?: ProvinceUpdateOneRequiredWithoutFromBookingsNestedInput
@@ -6356,6 +6603,10 @@ export namespace Prisma {
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
     tickets?: IntFieldUpdateOperationsInput | number
+    pricePerTicket?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentRef?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6368,6 +6619,10 @@ export namespace Prisma {
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
     tickets?: IntFieldUpdateOperationsInput | number
+    pricePerTicket?: FloatFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentRef?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
