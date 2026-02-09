@@ -155,6 +155,10 @@ exports.Prisma.BookingScalarFieldEnum = {
   totalPrice: 'totalPrice',
   status: 'status',
   paymentRef: 'paymentRef',
+  bakongHash: 'bakongHash',
+  currency: 'currency',
+  amount: 'amount',
+  paidAt: 'paidAt',
   createdAt: 'createdAt'
 };
 

@@ -1,4 +1,11 @@
+
 import prisma from "../lib/prisma.js";
+import axios from "axios";
+import {
+  BakongKHQR,
+  IndividualInfo,
+  khqrData,
+} from "bakong-khqr";
 
 
 const TIME_LABEL_MAP = {
@@ -12,6 +19,87 @@ function getTimesFromLabel(timeLabel) {
   const normalized = (timeLabel || "").trim().toLowerCase();
   return TIME_LABEL_MAP[normalized] ?? null;
 }
+
+const checkPaymentStatus = async (md5) => {
+  // --- TEST MODE: Bypass Bakong API if token is invalid but we are in dev ---
+  if (process.env.NODE_ENV === "development" && md5 === "DEBUG_SUCCESS") {
+    return { transactionStatus: "SUCCESS" };
+  }
+
+  if (!md5) {
+    console.error("[checkPaymentStatus] MD5 is missing!");
+    return { transactionStatus: "FAILED", error: "MD5 is missing in database" };
+  }
+
+  const token = process.env.BAKONG_ACCESS_TOKEN;
+  if (!token) {
+    console.error("[checkPaymentStatus] BAKONG_ACCESS_TOKEN is missing in process.env!");
+    return { transactionStatus: "FAILED", error: "BAKONG_ACCESS_TOKEN is missing in .env/Vercel" };
+  }
+
+  try {
+    // 1. Try Production URL
+    const prodUrl = process.env.BAKONG_PROD_BASE_API_URL || "https://api-bakong.nbc.gov.kh/v1";
+    console.log(`[checkPaymentStatus] Env: ${process.env.NODE_ENV} | Trying PROD: ${prodUrl} | MD5: ${md5}`);
+    console.log(`[checkPaymentStatus] Token (first/last 6): ${token.substring(0, 6)}...${token.substring(token.length - 6)}`);
+
+    const headers = { 
+      'Authorization': `Bearer ${token}`,
+      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+      'Accept': 'application/json, text/plain, */*',
+      'Accept-Language': 'en-US,en;q=0.9',
+      'Content-Type': 'application/json',
+      'Origin': 'https://bakong.nbc.gov.kh',
+      'Referer': 'https://bakong.nbc.gov.kh/',
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache'
+    };
+
+    const response = await axios.post(
+      `${prodUrl}/check_transaction_by_md5`,
+      { md5 },
+      { headers }
+    );
+
+    if (response.data && response.data.responseCode === 0) {
+      console.log("[checkPaymentStatus] FOUND in PROD ✅");
+      return { transactionStatus: "SUCCESS", data: response.data.data };
+    }
+    
+    // 2. Fallback to SIT URL (even in production, if not found in PROD)
+    console.log(`[checkPaymentStatus] PROD returned code: ${response.data?.responseCode}. Now trying SIT...`);
+    const devUrl = process.env.BAKONG_DEV_BASE_API_URL || "https://sit-api-bakong.nbc.gov.kh/v1";
+    
+    const devResponse = await axios.post(
+      `${devUrl}/check_transaction_by_md5`,
+      { md5 },
+      { headers }
+    );
+    
+    if (devResponse.data && devResponse.data.responseCode === 0) {
+      console.log("[checkPaymentStatus] FOUND in SIT ✅");
+      return { transactionStatus: "SUCCESS", data: devResponse.data.data };
+    }
+
+    console.log("[checkPaymentStatus] NOT FOUND in both PROD and SIT ❌");
+    return { transactionStatus: "PENDING", rawResponse: { prod: response.data, sit: devResponse.data } }; 
+
+  } catch (error) {
+    const errorData = error.response?.data || error.message;
+    console.error(`[checkPaymentStatus] AXIOS ERROR: ${error.message}`);
+    
+    if (error.response?.status === 403) {
+      console.error("[checkPaymentStatus] 403 Forbidden from CloudFront/Bakong. Error Data:", JSON.stringify(errorData));
+      return { 
+        transactionStatus: "FAILED", 
+        error: "403 Forbidden. Your Vercel IP or User-Agent might be blocked, or token is invalid.",
+        details: errorData,
+        tip: "Check Vercel Dashboard -> Functions -> Logs for the full error HTML."
+      };
+    }
+    return { transactionStatus: "FAILED", error: error.message, details: errorData };
+  }
+};
 
 export const createBooking = async (req, res) => {
   try {
@@ -28,7 +116,7 @@ export const createBooking = async (req, res) => {
     } = req.body;
 
     // TODO: Determine actual price based on route/province
-    const pricePerTicket = 5.0;
+    const pricePerTicket = 0.10;
     const totalPrice = pricePerTicket * tickets;
 
     // 1. Validate required fields
@@ -91,7 +179,42 @@ export const createBooking = async (req, res) => {
       });
     }
 
+    // 5.1 Prepare KHQR data
+    const expirationTimestamp = Date.now() + 5 * 60 * 1000; // 5 minutes validity
+
+    const optionalData  = {
+      currency: khqrData.currency.usd,
+      amount: totalPrice,
+      mobileNumber: process.env.BAKONG_PHONE_NUMBER,
+      storeLabel: "Bus Booking",
+      terminalLabel: "Online",
+      purposeOfTransaction: "Bus Ticket Booking",
+      languagePreference: "km",
+      merchantNameAlternateLanguage: process.env.BAKONG_ACCOUNT_NAME,
+      merchantCityAlternateLanguage: "Phnom Penh",
+      expirationTimestamp
+    };
+
+    const individualInfo = new IndividualInfo(
+      process.env.BAKONG_ACCOUNT_USERNAME,
+      process.env.BAKONG_ACCOUNT_NAME,
+      "Phnom Penh",
+      optionalData
+    );
+
+    const khqr = new BakongKHQR();
+    const qrData = khqr.generateIndividual(individualInfo)
+
+    if (qrData.status.code !== 0) {
+      return res.status(400).json({
+        message: "Failed to generate KHQR",
+        error: qrData.status.message,
+      });
+    }
+
     // 6. Create booking FIRST
+    console.log("[createBooking] Saving booking with MD5:", qrData.data.md5);
+
     const booking = await prisma.booking.create({
       data: {
         userId,
@@ -102,9 +225,10 @@ export const createBooking = async (req, res) => {
         startTime,
         endTime,
         tickets,
-        totalPrice, // <---- ADD THIS
-        pricePerTicket, // <---- ADD THIS
-        status: "PENDING", // <---- ADD THIS
+        totalPrice,
+        pricePerTicket,
+        status: "PENDING",
+        paymentRef: qrData.data.md5 || null, // Ensure MD5 is stored
       },
       include: {
         fromProvince: true,
@@ -112,18 +236,17 @@ export const createBooking = async (req, res) => {
       },
     });
 
-    // 7. Generate Bakong QR for payment
-    
+    // 7. Return response
     res.status(201).json({
-      message: "Booking created. Please complete payment.",
+      message: "Booking is in pending status. Please complete payment.",
       userEmail: req.user?.email,
-
       payment: {
-        totalPrice: totalPrice,
+        qr: qrData.data.qr,
+        md5: qrData.data.md5,
         currency: "USD",
-       
+        amount: totalPrice,
+        expirationTimestamp,
       },
-
       booking,
     });
   } catch (error) {
@@ -201,22 +324,33 @@ export const verifyPayment = async (req, res) => {
       });
     }
 
-    const status = await checkPaymentStatus(booking.paymentRef);
+    const isMock = req.query.mock === "success";
+    const status = await checkPaymentStatus(isMock ? "DEBUG_SUCCESS" : booking.paymentRef);
+
+    console.log("[verifyPayment] Status result:", status);
 
     if (status.transactionStatus === "SUCCESS") {
       await prisma.booking.update({
         where: { id: booking.id },
-        data: { status: "PAID" },
+        data: { 
+          status: "PAID",
+          bakongHash: status.data.hash,
+          currency: status.data.currency,
+          amount: parseFloat(status.data.amount),
+          paidAt: new Date()
+        },
       });
 
       return res.json({
         message: "Payment successful",
+        data: status.data
       });
     }
 
     res.json({
       message: "Payment not completed yet",
       status: status.transactionStatus,
+      debug: status
     });
   } catch (error) {
     res.status(500).json({

@@ -60,7 +60,13 @@ model Booking {
 
   status String @default("PENDING")
 
-  paymentRef String?
+  paymentRef String? // Stores MD5
+  bakongHash String? // Stores Bakong Transaction Hash (on success)
+
+  // Optional: tracking more info from Bakong data
+  currency String?
+  amount   Float?
+  paidAt   DateTime?
 
   createdAt DateTime @default(now())
 
