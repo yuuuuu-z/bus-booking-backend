@@ -1,6 +1,8 @@
 
 import prisma from "../lib/prisma.js";
 import axios from "axios";
+import crypto from "crypto";
+import QRCode from "qrcode";
 import {
   BakongKHQR,
   IndividualInfo,
@@ -330,6 +332,8 @@ export const verifyPayment = async (req, res) => {
     console.log("[verifyPayment] Status result:", status);
 
     if (status.transactionStatus === "SUCCESS") {
+      const checkInToken = booking.checkInToken || crypto.randomBytes(32).toString("hex");
+      
       await prisma.booking.update({
         where: { id: booking.id },
         data: { 
@@ -337,13 +341,25 @@ export const verifyPayment = async (req, res) => {
           bakongHash: status.data.hash,
           currency: status.data.currency,
           amount: parseFloat(status.data.amount),
-          paidAt: new Date()
+          paidAt: new Date(),
+          checkInToken
         },
       });
 
+      // Generate Check-in QR Code
+      // In a real app, this URL should be the frontend URL or a public API URL
+      const baseUrl = process.env.BACKEND_URL || `http://localhost:${process.env.PORT || 8000}`;
+      const checkInUrl = `${baseUrl}/booking/check-in/${checkInToken}`;
+      const qrCodeDataUrl = await QRCode.toDataURL(checkInUrl);
+
       return res.json({
         message: "Payment successful",
-        data: status.data
+        data: {
+          ...status.data,
+          checkInToken,
+          checkInUrl,
+          qrCode: qrCodeDataUrl
+        }
       });
     }
 
@@ -355,6 +371,60 @@ export const verifyPayment = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       message: error.message,
+    });
+  }
+};
+
+export const checkIn = async (req, res) => {
+  try {
+    const { token } = req.params;
+
+    if (!token) {
+      return res.status(400).json({ message: "Check-in token is required" });
+    }
+
+    const booking = await prisma.booking.findUnique({
+      where: { checkInToken: token },
+      include: {
+        user: { select: { name: true, email: true } },
+        fromProvince: true,
+        toProvince: true,
+      }
+    });
+
+    if (!booking) {
+      return res.status(404).json({ message: "Invalid check-in token" });
+    }
+
+    if (booking.isCheckedIn) {
+      return res.json({
+        message: "Ticket already checked in",
+        checkedInAt: booking.checkedInAt,
+        booking
+      });
+    }
+
+    const updatedBooking = await prisma.booking.update({
+      where: { id: booking.id },
+      data: {
+        isCheckedIn: true,
+        checkedInAt: new Date(),
+      },
+    });
+
+    res.json({
+      message: "Check-in successful! Welcome To BusGo.",
+      booking: {
+        ...updatedBooking,
+        user: booking.user,
+        fromProvince: booking.fromProvince,
+        toProvince: booking.toProvince
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to check in",
+      error: error.message
     });
   }
 };

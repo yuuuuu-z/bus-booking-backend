@@ -85,7 +85,7 @@ app.use("/dashboard", protect, (req, res) => {
   });
 });
 app.use("/provinces", protect, provinceRoutes);
-app.use("/booking", protect, bookingRoutes);
+app.use("/booking", bookingRoutes);
 app.use("/avatar", protect, uploadRoutes);
 
 export default app;

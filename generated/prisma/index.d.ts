@@ -3467,6 +3467,9 @@ export namespace Prisma {
     currency: string | null
     amount: number | null
     paidAt: Date | null
+    checkInToken: string | null
+    isCheckedIn: boolean | null
+    checkedInAt: Date | null
     createdAt: Date | null
   }
 
@@ -3488,6 +3491,9 @@ export namespace Prisma {
     currency: string | null
     amount: number | null
     paidAt: Date | null
+    checkInToken: string | null
+    isCheckedIn: boolean | null
+    checkedInAt: Date | null
     createdAt: Date | null
   }
 
@@ -3509,6 +3515,9 @@ export namespace Prisma {
     currency: number
     amount: number
     paidAt: number
+    checkInToken: number
+    isCheckedIn: number
+    checkedInAt: number
     createdAt: number
     _all: number
   }
@@ -3554,6 +3563,9 @@ export namespace Prisma {
     currency?: true
     amount?: true
     paidAt?: true
+    checkInToken?: true
+    isCheckedIn?: true
+    checkedInAt?: true
     createdAt?: true
   }
 
@@ -3575,6 +3587,9 @@ export namespace Prisma {
     currency?: true
     amount?: true
     paidAt?: true
+    checkInToken?: true
+    isCheckedIn?: true
+    checkedInAt?: true
     createdAt?: true
   }
 
@@ -3596,6 +3611,9 @@ export namespace Prisma {
     currency?: true
     amount?: true
     paidAt?: true
+    checkInToken?: true
+    isCheckedIn?: true
+    checkedInAt?: true
     createdAt?: true
     _all?: true
   }
@@ -3704,6 +3722,9 @@ export namespace Prisma {
     currency: string | null
     amount: number | null
     paidAt: Date | null
+    checkInToken: string | null
+    isCheckedIn: boolean
+    checkedInAt: Date | null
     createdAt: Date
     _count: BookingCountAggregateOutputType | null
     _avg: BookingAvgAggregateOutputType | null
@@ -3744,6 +3765,9 @@ export namespace Prisma {
     currency?: boolean
     amount?: boolean
     paidAt?: boolean
+    checkInToken?: boolean
+    isCheckedIn?: boolean
+    checkedInAt?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     fromProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
@@ -3768,6 +3792,9 @@ export namespace Prisma {
     currency?: boolean
     amount?: boolean
     paidAt?: boolean
+    checkInToken?: boolean
+    isCheckedIn?: boolean
+    checkedInAt?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     fromProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
@@ -3792,6 +3819,9 @@ export namespace Prisma {
     currency?: boolean
     amount?: boolean
     paidAt?: boolean
+    checkInToken?: boolean
+    isCheckedIn?: boolean
+    checkedInAt?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     fromProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
@@ -3816,10 +3846,13 @@ export namespace Prisma {
     currency?: boolean
     amount?: boolean
     paidAt?: boolean
+    checkInToken?: boolean
+    isCheckedIn?: boolean
+    checkedInAt?: boolean
     createdAt?: boolean
   }
 
-  export type BookingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "fromProvinceId" | "toProvinceId" | "travelDate" | "timeLabel" | "startTime" | "endTime" | "tickets" | "pricePerTicket" | "totalPrice" | "status" | "paymentRef" | "bakongHash" | "currency" | "amount" | "paidAt" | "createdAt", ExtArgs["result"]["booking"]>
+  export type BookingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "fromProvinceId" | "toProvinceId" | "travelDate" | "timeLabel" | "startTime" | "endTime" | "tickets" | "pricePerTicket" | "totalPrice" | "status" | "paymentRef" | "bakongHash" | "currency" | "amount" | "paidAt" | "checkInToken" | "isCheckedIn" | "checkedInAt" | "createdAt", ExtArgs["result"]["booking"]>
   export type BookingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     fromProvince?: boolean | ProvinceDefaultArgs<ExtArgs>
@@ -3861,6 +3894,9 @@ export namespace Prisma {
       currency: string | null
       amount: number | null
       paidAt: Date | null
+      checkInToken: string | null
+      isCheckedIn: boolean
+      checkedInAt: Date | null
       createdAt: Date
     }, ExtArgs["result"]["booking"]>
     composites: {}
@@ -4305,6 +4341,9 @@ export namespace Prisma {
     readonly currency: FieldRef<"Booking", 'String'>
     readonly amount: FieldRef<"Booking", 'Float'>
     readonly paidAt: FieldRef<"Booking", 'DateTime'>
+    readonly checkInToken: FieldRef<"Booking", 'String'>
+    readonly isCheckedIn: FieldRef<"Booking", 'Boolean'>
+    readonly checkedInAt: FieldRef<"Booking", 'DateTime'>
     readonly createdAt: FieldRef<"Booking", 'DateTime'>
   }
     
@@ -4779,6 +4818,9 @@ export namespace Prisma {
     currency: 'currency',
     amount: 'amount',
     paidAt: 'paidAt',
+    checkInToken: 'checkInToken',
+    isCheckedIn: 'isCheckedIn',
+    checkedInAt: 'checkedInAt',
     createdAt: 'createdAt'
   };
 
@@ -5043,6 +5085,9 @@ export namespace Prisma {
     currency?: StringNullableFilter<"Booking"> | string | null
     amount?: FloatNullableFilter<"Booking"> | number | null
     paidAt?: DateTimeNullableFilter<"Booking"> | Date | string | null
+    checkInToken?: StringNullableFilter<"Booking"> | string | null
+    isCheckedIn?: BoolFilter<"Booking"> | boolean
+    checkedInAt?: DateTimeNullableFilter<"Booking"> | Date | string | null
     createdAt?: DateTimeFilter<"Booking"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     fromProvince?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
@@ -5067,6 +5112,9 @@ export namespace Prisma {
     currency?: SortOrderInput | SortOrder
     amount?: SortOrderInput | SortOrder
     paidAt?: SortOrderInput | SortOrder
+    checkInToken?: SortOrderInput | SortOrder
+    isCheckedIn?: SortOrder
+    checkedInAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
     fromProvince?: ProvinceOrderByWithRelationInput
@@ -5075,6 +5123,7 @@ export namespace Prisma {
 
   export type BookingWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    checkInToken?: string
     AND?: BookingWhereInput | BookingWhereInput[]
     OR?: BookingWhereInput[]
     NOT?: BookingWhereInput | BookingWhereInput[]
@@ -5094,11 +5143,13 @@ export namespace Prisma {
     currency?: StringNullableFilter<"Booking"> | string | null
     amount?: FloatNullableFilter<"Booking"> | number | null
     paidAt?: DateTimeNullableFilter<"Booking"> | Date | string | null
+    isCheckedIn?: BoolFilter<"Booking"> | boolean
+    checkedInAt?: DateTimeNullableFilter<"Booking"> | Date | string | null
     createdAt?: DateTimeFilter<"Booking"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     fromProvince?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
     toProvince?: XOR<ProvinceScalarRelationFilter, ProvinceWhereInput>
-  }, "id">
+  }, "id" | "checkInToken">
 
   export type BookingOrderByWithAggregationInput = {
     id?: SortOrder
@@ -5118,6 +5169,9 @@ export namespace Prisma {
     currency?: SortOrderInput | SortOrder
     amount?: SortOrderInput | SortOrder
     paidAt?: SortOrderInput | SortOrder
+    checkInToken?: SortOrderInput | SortOrder
+    isCheckedIn?: SortOrder
+    checkedInAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: BookingCountOrderByAggregateInput
     _avg?: BookingAvgOrderByAggregateInput
@@ -5147,6 +5201,9 @@ export namespace Prisma {
     currency?: StringNullableWithAggregatesFilter<"Booking"> | string | null
     amount?: FloatNullableWithAggregatesFilter<"Booking"> | number | null
     paidAt?: DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
+    checkInToken?: StringNullableWithAggregatesFilter<"Booking"> | string | null
+    isCheckedIn?: BoolWithAggregatesFilter<"Booking"> | boolean
+    checkedInAt?: DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Booking"> | Date | string
   }
 
@@ -5317,6 +5374,9 @@ export namespace Prisma {
     currency?: string | null
     amount?: number | null
     paidAt?: Date | string | null
+    checkInToken?: string | null
+    isCheckedIn?: boolean
+    checkedInAt?: Date | string | null
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutBookingsInput
     fromProvince: ProvinceCreateNestedOneWithoutFromBookingsInput
@@ -5341,6 +5401,9 @@ export namespace Prisma {
     currency?: string | null
     amount?: number | null
     paidAt?: Date | string | null
+    checkInToken?: string | null
+    isCheckedIn?: boolean
+    checkedInAt?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -5358,6 +5421,9 @@ export namespace Prisma {
     currency?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: NullableFloatFieldUpdateOperationsInput | number | null
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checkInToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheckedIn?: BoolFieldUpdateOperationsInput | boolean
+    checkedInAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutBookingsNestedInput
     fromProvince?: ProvinceUpdateOneRequiredWithoutFromBookingsNestedInput
@@ -5382,6 +5448,9 @@ export namespace Prisma {
     currency?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: NullableFloatFieldUpdateOperationsInput | number | null
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checkInToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheckedIn?: BoolFieldUpdateOperationsInput | boolean
+    checkedInAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5403,6 +5472,9 @@ export namespace Prisma {
     currency?: string | null
     amount?: number | null
     paidAt?: Date | string | null
+    checkInToken?: string | null
+    isCheckedIn?: boolean
+    checkedInAt?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -5420,6 +5492,9 @@ export namespace Prisma {
     currency?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: NullableFloatFieldUpdateOperationsInput | number | null
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checkInToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheckedIn?: BoolFieldUpdateOperationsInput | boolean
+    checkedInAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5441,6 +5516,9 @@ export namespace Prisma {
     currency?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: NullableFloatFieldUpdateOperationsInput | number | null
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checkInToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheckedIn?: BoolFieldUpdateOperationsInput | boolean
+    checkedInAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5744,6 +5822,9 @@ export namespace Prisma {
     currency?: SortOrder
     amount?: SortOrder
     paidAt?: SortOrder
+    checkInToken?: SortOrder
+    isCheckedIn?: SortOrder
+    checkedInAt?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -5776,6 +5857,9 @@ export namespace Prisma {
     currency?: SortOrder
     amount?: SortOrder
     paidAt?: SortOrder
+    checkInToken?: SortOrder
+    isCheckedIn?: SortOrder
+    checkedInAt?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -5797,6 +5881,9 @@ export namespace Prisma {
     currency?: SortOrder
     amount?: SortOrder
     paidAt?: SortOrder
+    checkInToken?: SortOrder
+    isCheckedIn?: SortOrder
+    checkedInAt?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -6286,6 +6373,9 @@ export namespace Prisma {
     currency?: string | null
     amount?: number | null
     paidAt?: Date | string | null
+    checkInToken?: string | null
+    isCheckedIn?: boolean
+    checkedInAt?: Date | string | null
     createdAt?: Date | string
     fromProvince: ProvinceCreateNestedOneWithoutFromBookingsInput
     toProvince: ProvinceCreateNestedOneWithoutToBookingsInput
@@ -6308,6 +6398,9 @@ export namespace Prisma {
     currency?: string | null
     amount?: number | null
     paidAt?: Date | string | null
+    checkInToken?: string | null
+    isCheckedIn?: boolean
+    checkedInAt?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -6358,6 +6451,9 @@ export namespace Prisma {
     currency?: StringNullableFilter<"Booking"> | string | null
     amount?: FloatNullableFilter<"Booking"> | number | null
     paidAt?: DateTimeNullableFilter<"Booking"> | Date | string | null
+    checkInToken?: StringNullableFilter<"Booking"> | string | null
+    isCheckedIn?: BoolFilter<"Booking"> | boolean
+    checkedInAt?: DateTimeNullableFilter<"Booking"> | Date | string | null
     createdAt?: DateTimeFilter<"Booking"> | Date | string
   }
 
@@ -6375,6 +6471,9 @@ export namespace Prisma {
     currency?: string | null
     amount?: number | null
     paidAt?: Date | string | null
+    checkInToken?: string | null
+    isCheckedIn?: boolean
+    checkedInAt?: Date | string | null
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutBookingsInput
     toProvince: ProvinceCreateNestedOneWithoutToBookingsInput
@@ -6397,6 +6496,9 @@ export namespace Prisma {
     currency?: string | null
     amount?: number | null
     paidAt?: Date | string | null
+    checkInToken?: string | null
+    isCheckedIn?: boolean
+    checkedInAt?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -6424,6 +6526,9 @@ export namespace Prisma {
     currency?: string | null
     amount?: number | null
     paidAt?: Date | string | null
+    checkInToken?: string | null
+    isCheckedIn?: boolean
+    checkedInAt?: Date | string | null
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutBookingsInput
     fromProvince: ProvinceCreateNestedOneWithoutFromBookingsInput
@@ -6446,6 +6551,9 @@ export namespace Prisma {
     currency?: string | null
     amount?: number | null
     paidAt?: Date | string | null
+    checkInToken?: string | null
+    isCheckedIn?: boolean
+    checkedInAt?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -6666,6 +6774,9 @@ export namespace Prisma {
     currency?: string | null
     amount?: number | null
     paidAt?: Date | string | null
+    checkInToken?: string | null
+    isCheckedIn?: boolean
+    checkedInAt?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -6683,6 +6794,9 @@ export namespace Prisma {
     currency?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: NullableFloatFieldUpdateOperationsInput | number | null
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checkInToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheckedIn?: BoolFieldUpdateOperationsInput | boolean
+    checkedInAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     fromProvince?: ProvinceUpdateOneRequiredWithoutFromBookingsNestedInput
     toProvince?: ProvinceUpdateOneRequiredWithoutToBookingsNestedInput
@@ -6705,6 +6819,9 @@ export namespace Prisma {
     currency?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: NullableFloatFieldUpdateOperationsInput | number | null
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checkInToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheckedIn?: BoolFieldUpdateOperationsInput | boolean
+    checkedInAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6725,6 +6842,9 @@ export namespace Prisma {
     currency?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: NullableFloatFieldUpdateOperationsInput | number | null
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checkInToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheckedIn?: BoolFieldUpdateOperationsInput | boolean
+    checkedInAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6745,6 +6865,9 @@ export namespace Prisma {
     currency?: string | null
     amount?: number | null
     paidAt?: Date | string | null
+    checkInToken?: string | null
+    isCheckedIn?: boolean
+    checkedInAt?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -6765,6 +6888,9 @@ export namespace Prisma {
     currency?: string | null
     amount?: number | null
     paidAt?: Date | string | null
+    checkInToken?: string | null
+    isCheckedIn?: boolean
+    checkedInAt?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -6782,6 +6908,9 @@ export namespace Prisma {
     currency?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: NullableFloatFieldUpdateOperationsInput | number | null
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checkInToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheckedIn?: BoolFieldUpdateOperationsInput | boolean
+    checkedInAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutBookingsNestedInput
     toProvince?: ProvinceUpdateOneRequiredWithoutToBookingsNestedInput
@@ -6804,6 +6933,9 @@ export namespace Prisma {
     currency?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: NullableFloatFieldUpdateOperationsInput | number | null
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checkInToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheckedIn?: BoolFieldUpdateOperationsInput | boolean
+    checkedInAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6824,6 +6956,9 @@ export namespace Prisma {
     currency?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: NullableFloatFieldUpdateOperationsInput | number | null
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checkInToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheckedIn?: BoolFieldUpdateOperationsInput | boolean
+    checkedInAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6841,6 +6976,9 @@ export namespace Prisma {
     currency?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: NullableFloatFieldUpdateOperationsInput | number | null
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checkInToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheckedIn?: BoolFieldUpdateOperationsInput | boolean
+    checkedInAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutBookingsNestedInput
     fromProvince?: ProvinceUpdateOneRequiredWithoutFromBookingsNestedInput
@@ -6863,6 +7001,9 @@ export namespace Prisma {
     currency?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: NullableFloatFieldUpdateOperationsInput | number | null
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checkInToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheckedIn?: BoolFieldUpdateOperationsInput | boolean
+    checkedInAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6883,6 +7024,9 @@ export namespace Prisma {
     currency?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: NullableFloatFieldUpdateOperationsInput | number | null
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    checkInToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheckedIn?: BoolFieldUpdateOperationsInput | boolean
+    checkedInAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

@@ -67,6 +67,11 @@ model Booking {
   amount     Float?
   paidAt     DateTime?
 
+  // Check-in fields
+  checkInToken String?  @unique
+  isCheckedIn  Boolean  @default(false)
+  checkedInAt  DateTime?
+
   createdAt DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id])

@@ -159,6 +159,9 @@ exports.Prisma.BookingScalarFieldEnum = {
   currency: 'currency',
   amount: 'amount',
   paidAt: 'paidAt',
+  checkInToken: 'checkInToken',
+  isCheckedIn: 'isCheckedIn',
+  checkedInAt: 'checkedInAt',
   createdAt: 'createdAt'
 };
 
