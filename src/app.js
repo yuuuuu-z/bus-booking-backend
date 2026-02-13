@@ -9,7 +9,7 @@ import provinceRoutes from "./routes/province.routes.js";
 import bookingRoutes from "./routes/booking.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import uploadRoutes from "./routes/upload.routes.js";
-
+import analyticsRoutes from "./routes/analytics.routes.js";
 import passport from "passport";
 import prisma from "./lib/prisma.js";
 import { protect } from "./middlewares/auth.middleware.js";
@@ -86,6 +86,7 @@ app.use("/dashboard", protect, (req, res) => {
 });
 app.use("/provinces", protect, provinceRoutes);
 app.use("/booking", bookingRoutes);
+app.use("/analytics", analyticsRoutes);
 app.use("/avatar", protect, uploadRoutes);
 
 export default app;
