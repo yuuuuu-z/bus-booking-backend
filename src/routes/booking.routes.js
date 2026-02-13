@@ -14,7 +14,7 @@ const router = express.Router();
 router.get("/", protect, getTrips);
 router.post("/", protect, createBooking);
 router.get("/verify/:bookingId", protect, verifyPayment);
-router.get("/check-in/:token", checkIn);
+router.get("/check-in/:token", protect, checkIn);
 router.delete("/:id", protect, deleteBooking);
 
 export default router;
