@@ -326,6 +326,36 @@ export const verifyPayment = async (req, res) => {
       });
     }
 
+    // --- NEW: Short-circuit if already PAID ---
+    if (booking.status === "PAID") {
+      let checkInToken = booking.checkInToken;
+      
+      // If for some reason token is missing (e.g. from old data), generate and save it
+      if (!checkInToken) {
+        checkInToken = crypto.randomBytes(32).toString("hex");
+        await prisma.booking.update({
+          where: { id: booking.id },
+          data: { checkInToken }
+        });
+      }
+
+      const baseUrl = process.env.BACKEND_URL || `http://localhost:${process.env.PORT || 8000}`;
+      const checkInUrl = `${baseUrl}/booking/check-in/${checkInToken}`;
+      const qrCodeDataUrl = await QRCode.toDataURL(checkInUrl);
+
+      return res.json({
+        message: "Payment successful",
+        data: {
+          hash: booking.bakongHash,
+          currency: booking.currency,
+          amount: booking.amount,
+          checkInToken,
+          checkInUrl,
+          qrCode: qrCodeDataUrl
+        }
+      });
+    }
+
     const isMock = req.query.mock === "success";
     const status = await checkPaymentStatus(isMock ? "DEBUG_SUCCESS" : booking.paymentRef);
 
@@ -347,7 +377,6 @@ export const verifyPayment = async (req, res) => {
       });
 
       // Generate Check-in QR Code
-      // In a real app, this URL should be the frontend URL or a public API URL
       const baseUrl = process.env.BACKEND_URL || `http://localhost:${process.env.PORT || 8000}`;
       const checkInUrl = `${baseUrl}/booking/check-in/${checkInToken}`;
       const qrCodeDataUrl = await QRCode.toDataURL(checkInUrl);
@@ -397,8 +426,8 @@ export const checkIn = async (req, res) => {
     }
 
     if (booking.isCheckedIn) {
-      return res.json({
-        message: "Ticket already checked in",
+      return res.status(400).json({
+        message: "Ticket already checked in. Each ticket can only be checked in once.",
         checkedInAt: booking.checkedInAt,
         booking
       });
