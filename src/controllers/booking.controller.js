@@ -346,11 +346,12 @@ export const verifyPayment = async (req, res) => {
       return res.json({
         message: "Payment successful",
         data: {
-          hash: booking.bakongHash,
+          isCheckedIn: booking.isCheckedIn ? "Already checked in" : "Not yet checked in",
+          // hash: booking.bakongHash,
           currency: booking.currency,
           amount: booking.amount,
           checkInToken,
-          checkInUrl,
+          // checkInUrl,
           qrCode: qrCodeDataUrl
         }
       });
@@ -387,6 +388,7 @@ export const verifyPayment = async (req, res) => {
           ...status.data,
           checkInToken,
           checkInUrl,
+          isCheckedIn: booking.isCheckedIn ? "Already checked in" : "Not yet checked in",
           qrCode: qrCodeDataUrl
         }
       });
@@ -427,7 +429,7 @@ export const checkIn = async (req, res) => {
 
     if (booking.isCheckedIn) {
       return res.status(400).json({
-        message: "Ticket already checked in. Each ticket can only be checked in once.",
+        message: "Ticket already checked in.",
         checkedInAt: booking.checkedInAt,
         booking
       });
